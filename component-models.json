@@ -143,6 +143,40 @@
     ]
   },
   {
+    "id": "about-us",
+    "fields": [
+      {
+        "component": "select",
+        "name": "variation",
+        "label": "Variation",
+        "options": [
+          {
+            "name": "Our Contributors",
+            "value": "our-contributors"
+          },
+          {
+            "name": "WKND Guides",
+            "value": "wknd-guides"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "card",
     "fields": [
       {

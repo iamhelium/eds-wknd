@@ -1,0 +1,56 @@
+{
+  "definitions": [
+    {
+      "title": "About Us",
+      "id": "about-us",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "About Us",
+              "model": "about-us"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "about-us",
+      "fields": [
+        {
+          "component": "select",
+          "name": "variation",
+          "label": "Variation",
+          "options": [
+            {
+              "name": "Our Contributors",
+              "value": "our-contributors"
+            },
+            {
+              "name": "WKND Guides",
+              "value": "wknd-guides"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Title",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "description",
+          "label": "Description",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "filters": []
+}
