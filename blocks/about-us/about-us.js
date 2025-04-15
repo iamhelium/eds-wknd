@@ -1,4 +1,5 @@
-/* eslint-disable linebreak-style */
+/* eslint-disable linebreak-style *//*
+
 export default async function decorate(block) {
   try {
     const variation = block.dataset.variation || 'our-contributors';
@@ -61,3 +62,4 @@ export default async function decorate(block) {
     console.error('Error loading contributors:', error);
   }
 }
+*/
