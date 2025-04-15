@@ -14,6 +14,7 @@ export default async function decorate(block) {
 
       // Image
       const image = document.createElement('img');
+      // eslint-disable-next-line no-underscore-dangle
       image.src = person.image?._path || 'https://via.placeholder.com/120';
       image.alt = person.name || 'Contributor Image';
 
@@ -32,7 +33,7 @@ export default async function decorate(block) {
       const socialLinks = [
         { label: 'Facebook', url: person.facebookLink },
         { label: 'Twitter', url: person.twitterLink },
-        { label: 'Instagram', url: person.instagramLink }
+        { label: 'Instagram', url: person.instagramLink },
       ];
 
       socialLinks.forEach(({ label, url }) => {
@@ -53,7 +54,6 @@ export default async function decorate(block) {
 
       block.appendChild(wrapper);
     });
-
   } catch (error) {
     console.error('Error loading contributors:', error);
   }
