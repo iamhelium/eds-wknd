@@ -21,11 +21,7 @@
   padding: 2rem;
   max-width: 900px;
   margin: 0 auto;
-  background-color: #f9f9f9; /* Light background for the section */
-  border-radius: 8px; /* Optional rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
-  /* stylelint-disable-next-line color-function-notation */
-  box-shadow: 0 4px 8px rgba(100, 42, 42, 10%); /* Optional shadow for depth */
+  background-color: #f9f9f9;
 }
 
 .contributor-wrapper {
