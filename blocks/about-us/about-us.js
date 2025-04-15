@@ -1,11 +1,11 @@
 /* eslint-disable linebreak-style */
 export default async function decorate(block) {
   try {
-     const variation = block.dataset.variation || 'our-contributors';
-     const graphqlURL = `/graphql/execute.json/eds-wknd/about-us;variation=${variation}`;
+    const variation = block.dataset.variation || 'our-contributors';
+    const graphqlURL = `/graphql/execute.json/eds-wknd/about-us;variation=${variation}`;
 
-     const response = await fetch(graphqlURL);
-     const data = await response.json();
+    const response = await fetch(graphqlURL);
+    const data = await response.json();
 
     const contributors = data?.data?.aboutUsModelList?.items || [];
 
