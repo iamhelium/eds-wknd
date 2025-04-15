@@ -1,8 +1,26 @@
-/* eslint-disable linebreak-style *//*
+/* eslint-disable linebreak-style */
 
 export default async function decorate(block) {
   try {
-    const variation = block.dataset.variation || 'our-contributors';
+    // Get variation, title, and description from DOM
+    const variation = block.querySelector('p[data-aue-prop="variation"]')?.textContent.trim();
+    const title = block.querySelector('p[data-aue-prop="title"]')?.textContent.trim();
+    const description = block.querySelector('p[data-aue-prop="description"]')?.textContent.trim();
+
+    if (title) {
+      const heading = document.createElement('h2');
+      heading.className = 'about-us-title';
+      heading.textContent = title;
+      block.appendChild(heading);
+    }
+
+    if (description) {
+      const desc = document.createElement('p');
+      desc.className = 'about-us-description';
+      desc.textContent = description;
+      block.appendChild(desc);
+    }
+
     const graphqlURL = `/graphql/execute.json/eds-wknd/about-us;variation=${variation}`;
 
     const response = await fetch(graphqlURL);
@@ -27,6 +45,7 @@ export default async function decorate(block) {
       name.textContent = person.name || 'No Name';
 
       // Title
+      // eslint-disable-next-line no-shadow
       const title = document.createElement('p');
       title.textContent = person.title || 'No Title';
 
@@ -62,4 +81,3 @@ export default async function decorate(block) {
     console.error('Error loading contributors:', error);
   }
 }
-*/
