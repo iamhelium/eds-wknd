@@ -1,34 +1,60 @@
 /* eslint-disable linebreak-style */
 export default async function decorate(block) {
   try {
-    const response = await fetch('graphql/execute.json/eds-wknd/about-us;variation=our-contributors');
+    const response = await fetch('/graphql/execute.json/eds-wknd/about-us;variation=our-contributors');
     const data = await response.json();
 
-    const items = data?.data?.aboutUsModelList?.items || [];
+    const contributors = data?.data?.aboutUsModelList?.items || [];
 
     block.replaceChildren();
 
-    const dropdown = document.createElement('select');
-    dropdown.classList.add('custom-dropdown');
+    contributors.forEach((person) => {
+      const wrapper = document.createElement('div');
+      wrapper.classList.add('contributor');
 
-    items.forEach((item) => {
-      const option = document.createElement('option');
-      option.textContent = item.name ?? '';
-      option.value = item.title ?? '';
-      dropdown.appendChild(option);
+      // Image
+      const image = document.createElement('img');
+      image.src = person.image?._path || 'https://via.placeholder.com/120';
+      image.alt = person.name || 'Contributor Image';
+
+      // Name
+      const name = document.createElement('h3');
+      name.textContent = person.name || 'No Name';
+
+      // Title
+      const title = document.createElement('p');
+      title.textContent = person.title || 'No Title';
+
+      // Social links
+      const linksContainer = document.createElement('div');
+      linksContainer.classList.add('links');
+
+      const socialLinks = [
+        { label: 'Facebook', url: person.facebookLink },
+        { label: 'Twitter', url: person.twitterLink },
+        { label: 'Instagram', url: person.instagramLink }
+      ];
+
+      socialLinks.forEach(({ label, url }) => {
+        if (url) {
+          const a = document.createElement('a');
+          a.href = url;
+          a.textContent = label;
+          a.target = '_blank';
+          linksContainer.appendChild(a);
+        }
+      });
+
+      // Combine all
+      wrapper.appendChild(image);
+      wrapper.appendChild(name);
+      wrapper.appendChild(title);
+      wrapper.appendChild(linksContainer);
+
+      block.appendChild(wrapper);
     });
 
-    const titleHeading = document.createElement('h4');
-    titleHeading.classList.add('title-heading');
-    titleHeading.textContent = 'Select a name to see the title';
-
-    dropdown.addEventListener('change', (event) => {
-      titleHeading.textContent = event.target.value || 'No title available';
-    });
-
-    block.replaceChildren(dropdown);
-    block.appendChild(titleHeading);
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error('Error loading contributors:', error);
   }
 }
