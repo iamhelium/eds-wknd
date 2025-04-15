@@ -22,11 +22,7 @@
 }
 
 .contributor-wrapper {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 20px;
-  justify-content: flex-start;
-  overflow-x: auto;
+
 }
 
 .contributor {
