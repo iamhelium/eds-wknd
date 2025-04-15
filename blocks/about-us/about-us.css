@@ -1,6 +1,6 @@
 .about-us-wrapper .title {
-    font-family: var(--fontFamilySerif, "Asar", Georgia, "Times New Roman", Times, serif);
-    font-weight: var(--fontWeightNormal, normal);
+    font-family: "Times New Roman",
+    font-weight: normal;
     margin-bottom: 13.5px;
     margin-top: 27px;
 }
