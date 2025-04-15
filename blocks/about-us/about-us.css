@@ -1,41 +1,61 @@
-/* Wrapper for all contributors */
-.contributor-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* space between items */
-  justify-content: space-between; /* optional: distributes space */
+/* Title styling */
+.about-us-title {
+  font-size: 2rem; /* Adjust the size as needed */
+  font-weight: bold;
+  color: #333; /* Dark gray for the title */
+  margin-bottom: 0.5rem; /* Space below the title */
+  text-align: center; /* Center the title */
 }
 
-/* Individual contributor card */
+/* Description styling */
+.about-us-description {
+  font-size: 1.2rem; /* Slightly smaller than the title */
+  color: #666; /* Light gray for description */
+  text-align: center; /* Center the description */
+  margin-bottom: 2rem; /* Space after the description */
+  line-height: 1.6; /* Better readability with line height */
+}
+
+/* Add some padding and center the block */
+.about-us-wrapper {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #f9f9f9; /* Light background for the section */
+  border-radius: 8px; /* Optional rounded corners */
+  /* stylelint-disable-next-line color-function-notation */
+  box-shadow: 0 4px 8px rgba(100, 42, 42, 10%); /* Optional shadow for depth */
+}
+
+.contributor-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  justify-content: flex-start;
+  overflow-x: auto; 
+}
+
 .contributor {
-  flex: 0 1 calc(25% - 20px); /* 4 per row, accounting for gap */
-  box-sizing: border-box;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-  background-color: #fff;
+  padding: 1rem;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
-/* Image styling */
 .contributor img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
-  margin-bottom: 10px;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
 }
 
-/* Name styling */
-.contributor h3 {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-/* Title styling */
-.contributor p {
-  margin: 4px 0 0;
-  font-size: 0.9rem;
-  color: #666;
+.links a {
+  display: inline-block;
+  margin: 0.25rem;
+  color: #0070f3;
+  text-decoration: none;
 }
