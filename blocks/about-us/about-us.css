@@ -16,11 +16,6 @@
   line-height: 1.6; /* Better readability with line height */
 }
 
-
-.about-us-wrapper {
-
-}
-
 .contributor-wrapper {
   display: flex;
   flex-wrap: wrap;
