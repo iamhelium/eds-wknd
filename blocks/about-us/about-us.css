@@ -1,16 +1,21 @@
 .contributor-wrapper {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  gap: 20px; /* shorthand for row + column gap */
+  max-width: 100%; /* allow it to expand */
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .contributor {
+  background-color: #f9f9f9;
   padding: 1rem;
-  margin: 1rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
 }
 
 .contributor img {
