@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 export default async function decorate(block) {
   try {
-    const variation = block.dataset.variation || 'our-contributors';
+    const variation = block.dataset.variation;
     const graphqlURL = `/graphql/execute.json/eds-wknd/about-us;variation=${variation}`;
 
     const response = await fetch(graphqlURL);
