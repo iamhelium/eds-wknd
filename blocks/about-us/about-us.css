@@ -18,10 +18,7 @@
 
 /* Add some padding and center the block */
 .about-us-wrapper {
-  padding: 2rem;
-  max-width: 900px;
-  margin: 0 auto;
-  background-color: #f9f9f9;
+
 }
 
 .contributor-wrapper {
