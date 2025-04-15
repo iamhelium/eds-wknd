@@ -1,28 +1,7 @@
-/* Title styling */
-.about-us-title {
-  font-size: 2rem; /* Adjust the size as needed */
-  font-weight: bold;
-  color: #333; /* Dark gray for the title */
-  margin-bottom: 0.5rem; /* Space below the title */
-  text-align: center; /* Center the title */
-}
-
-/* Description styling */
-.about-us-description {
-  font-size: 1.2rem; /* Slightly smaller than the title */
-  color: #666; /* Light gray for description */
-  text-align: center; /* Center the description */
-  margin-bottom: 2rem; /* Space after the description */
-  line-height: 1.6; /* Better readability with line height */
-}
-
 .contributor-wrapper {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 0.5em;
-  padding-bottom: 1em;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
 .contributor {
