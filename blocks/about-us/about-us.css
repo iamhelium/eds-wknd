@@ -1,16 +1,3 @@
-.about-us-wrapper .title {
-    font-weight: normal;
-    margin-bottom: 13.5px;
-    margin-top: 27px;
-}
-
-.about-us-wrapper .description {
-    font-size: 18px;
-    line-height: 2.5;
-    margin: 0 0 13.5px;
-    text-align: justify;
-}
-
 .contributor {
   border: 1px solid #ddd;
   padding: 1rem;
