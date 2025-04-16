@@ -1,8 +1,7 @@
 .about-us {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  padding: 1rem;
+  padding: 14px;
 }
 
 .contributor {
@@ -15,7 +14,7 @@
 }
 
 .contributor img {
-  width: 120px;
+  width: 164px;
   height: 120px;
   object-fit: cover;
   border-radius: 50%;
