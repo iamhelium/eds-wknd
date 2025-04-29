@@ -62,13 +62,6 @@
   {
     "id": "tab",
     "components": [
-      "text",
-      "image",
-      "button",
-      "title",
-      "hero",
-      "columns",
-      "seperator",
       "teaser"
     ]
   }
