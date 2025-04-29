@@ -19,7 +19,6 @@
       "seperator",
       "teaser",
       "carousel",
-      "seperator",
       "articles",
       "search"
     ]
@@ -50,6 +49,25 @@
       "image",
       "button",
       "title",
+      "teaser"
+    ]
+  },
+  {
+    "id": "tabs",
+    "components": [
+      "tab"
+    ]
+  },
+  {
+    "id": "tab",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "columns",
+      "seperator",
       "teaser"
     ]
   }
