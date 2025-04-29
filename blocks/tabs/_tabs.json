@@ -34,12 +34,41 @@
     }
   ],
   "models": [
+    {
+      "id": "tabs",
+      "fields": [
+        {
+          "component": "text",
+          "name": "search-placeholder",
+          "label": "Search Placeholder",
+          "value": "Search",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "label": "Search Field Alignment",
+          "name": "classes",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Default",
+              "value": ""
+            },
+            {
+              "name": "Right",
+              "value": "right"
+            }
+          ]
+        }
+      ]
+    }
   ],
   "filters": [
     {
       "id": "tabs",
       "components": [
-        "tab"
+        "tab",
+        "carousel"
       ]
     },
     {

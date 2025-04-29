@@ -57,7 +57,8 @@
   {
     "id": "tabs",
     "components": [
-      "tab"
+      "tab",
+      "carousel"
     ]
   },
   {
