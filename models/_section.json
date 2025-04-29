@@ -81,7 +81,8 @@
         "carousel",
         "articles",
         "search",
-        "tabs"
+        "tabs",
+        "tab"
       ]
     }
   ]
