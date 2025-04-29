@@ -1,13 +1,21 @@
+import { moveInstrumentation } from '../../scripts/scripts.js';
+
 export default function decorate(block) {
-  // const tabDiv = block.querySelector(':scope > div');
+  const tabDiv = block.querySelector(':scope > div');
 
-  // if (tabDiv) {
-  //   tabDiv.setAttribute('data-aue-type', 'container');
-  //   tabDiv.setAttribute('data-aue-behavior', 'component');
-  //   tabDiv.setAttribute('data-block-name', 'tab');
-  //   tabDiv.setAttribute('data-block-status', 'loaded');
-  //   tabDiv.className = 'tab block';
-  // }
+  if (!tabDiv) return;
 
-  console.log(block);
+  // Clone node to avoid issues during attribute overwrite
+  const updatedDiv = tabDiv.cloneNode(true);
+
+  // updatedDiv.className = 'tab block';
+  // updatedDiv.dataset.aueType = 'container';
+  // updatedDiv.dataset.aueBehavior = 'component';
+  // updatedDiv.dataset.blockName = 'tab';
+  // updatedDiv.dataset.blockStatus = 'loaded';
+
+  // Move AEM instrumentation attributes from old to new div
+  moveInstrumentation(tabDiv, updatedDiv);
+
+  block.replaceChild(updatedDiv, tabDiv);
 }
