@@ -80,7 +80,8 @@
         "teaser",
         "carousel",
         "articles",
-        "search"
+        "search",
+        "tabs"
       ]
     }
   ]
