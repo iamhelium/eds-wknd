@@ -468,6 +468,14 @@
     ]
   },
   {
+    "id": "tabs",
+    "container": true
+  },
+  {
+    "id": "tab",
+    "container": true
+  },
+  {
     "id": "teaser",
     "fields": [
       {
