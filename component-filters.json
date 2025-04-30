@@ -57,14 +57,14 @@
   {
     "id": "tabs",
     "components": [
-      "tab",
-      "carousel"
+      "tab"
     ]
   },
   {
     "id": "tab",
     "components": [
-      "teaser"
+      "teaser",
+      "carousel"
     ]
   }
 ]
