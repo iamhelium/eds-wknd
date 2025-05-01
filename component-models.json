@@ -468,6 +468,18 @@
     ]
   },
   {
+    "id": "tab",
+    "fields": [
+      {
+        "component": "text",
+        "name": "search-placeholder",
+        "label": "Search Placeholder",
+        "value": "Search",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "teaser",
     "fields": [
       {
