@@ -1,6 +1,7 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
+  console.log(block);
   const tabDiv = block.querySelector(':scope > div');
 
   if (!tabDiv) return;
