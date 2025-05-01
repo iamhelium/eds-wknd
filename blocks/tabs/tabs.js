@@ -5,7 +5,7 @@ import {
 } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
-  console.log('TAB BLOCK: ', block);
+  console.log('TABS BLOCK: ', block);
 
   // Get all direct children that are tab components
   const tabBlocks = [...block.children].filter((child) => child.dataset?.aueModel === 'tab');

@@ -57,17 +57,19 @@
     ]
   },
   {
-    "id": "tabs",
-    "components": [
-      "tab",
-      "carousel"
-    ]
-  },
-  {
     "id": "tab",
     "components": [
       "teaser",
-      "carousel"
+      "carousel",
+      "text",
+      "title",
+      "hero"
+    ]
+  },
+  {
+    "id": "tabs",
+    "components": [
+      "tab"
     ]
   }
 ]
