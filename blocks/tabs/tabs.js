@@ -5,17 +5,27 @@ import {
 
 export default async function decorate(block) {
   console.log('TAB BLOCK: ', block);
-  // Select all direct children that are "tab" components inside the tabs block
+
+  // Get all direct children that are tab components
   const tabBlocks = [...block.children].filter((child) => child.dataset?.aueModel === 'tab');
 
   tabBlocks.forEach((tab) => {
-    // Add necessary classes and dataset for block behavior
+    // Ensure correct block-like behavior
     tab.classList.add('tab', 'block');
     tab.dataset.blockName = 'tab';
     tab.dataset.blockStatus = 'initialized';
 
-    // Wrap inline text and buttons inside <p> if needed
-    // This simulates block preparation from decorateBlock
+    // Ensure data-aue-type includes "container"
+    if (!tab.dataset.aueType?.includes('container')) {
+      tab.dataset.aueType = 'container';
+    }
+
+    // If data-aue-type was already "component", we append both
+    if (!tab.dataset.aueType.includes('component')) {
+      tab.dataset.aueType += ' component';
+    }
+
+    // Add expected wrapping if inner content isn't inside <p>
     const firstChild = tab.querySelector('div');
     if (firstChild && firstChild.childNodes.length && !firstChild.querySelector('p')) {
       const wrapper = document.createElement('p');
