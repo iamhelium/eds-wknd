@@ -1,22 +1,32 @@
-// import { moveInstrumentation } from '../../scripts/scripts.js';
+import {
+  decorateBlock,
+  loadBlock,
+} from '../../scripts/aem.js';
 
-export default function decorate(block) {
-  console.log(block);
-  // const tabDiv = block.querySelector(':scope > div');
+export default async function decorate(block) {
+  console.log('TAB BLOCK: ', block);
+  // Select all direct children that are "tab" components inside the tabs block
+  const tabBlocks = [...block.children].filter((child) => child.dataset?.aueModel === 'tab');
 
-  // if (!tabDiv) return;
+  tabBlocks.forEach((tab) => {
+    // Add necessary classes and dataset for block behavior
+    tab.classList.add('tab', 'block');
+    tab.dataset.blockName = 'tab';
+    tab.dataset.blockStatus = 'initialized';
 
-  // Clone node to avoid issues during attribute overwrite
-  // const updatedDiv = tabDiv.cloneNode(true);
+    // Wrap inline text and buttons inside <p> if needed
+    // This simulates block preparation from decorateBlock
+    const firstChild = tab.querySelector('div');
+    if (firstChild && firstChild.childNodes.length && !firstChild.querySelector('p')) {
+      const wrapper = document.createElement('p');
+      wrapper.append(...firstChild.childNodes);
+      firstChild.appendChild(wrapper);
+    }
 
-  // updatedDiv.className = 'tab block';
-  // updatedDiv.dataset.aueType = 'container';
-  // updatedDiv.dataset.aueBehavior = 'component';
-  // updatedDiv.dataset.blockName = 'tab';
-  // updatedDiv.dataset.blockStatus = 'loaded';
+    // Now decorate this nested tab as a block
+    decorateBlock(tab);
+  });
 
-  // Move AEM instrumentation attributes from old to new div
-  // moveInstrumentation(tabDiv, updatedDiv);
-
-  // block.replaceChild(updatedDiv, tabDiv);
+  // Load each tab block asynchronously
+  await Promise.all(tabBlocks.map(loadBlock));
 }
