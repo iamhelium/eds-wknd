@@ -1,13 +1,13 @@
-import { moveInstrumentation } from '../../scripts/scripts.js';
+// import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   console.log(block);
-  const tabDiv = block.querySelector(':scope > div');
+  // const tabDiv = block.querySelector(':scope > div');
 
-  if (!tabDiv) return;
+  // if (!tabDiv) return;
 
   // Clone node to avoid issues during attribute overwrite
-  const updatedDiv = tabDiv.cloneNode(true);
+  // const updatedDiv = tabDiv.cloneNode(true);
 
   // updatedDiv.className = 'tab block';
   // updatedDiv.dataset.aueType = 'container';
@@ -16,7 +16,7 @@ export default function decorate(block) {
   // updatedDiv.dataset.blockStatus = 'loaded';
 
   // Move AEM instrumentation attributes from old to new div
-  moveInstrumentation(tabDiv, updatedDiv);
+  // moveInstrumentation(tabDiv, updatedDiv);
 
-  block.replaceChild(updatedDiv, tabDiv);
+  // block.replaceChild(updatedDiv, tabDiv);
 }

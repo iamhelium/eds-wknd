@@ -237,7 +237,6 @@
         {
           "title": "Tab",
           "id": "tab",
-          "container": true,
           "plugins": {
             "xwalk": {
               "page": {
