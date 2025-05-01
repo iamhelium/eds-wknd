@@ -80,8 +80,6 @@ async function applyChanges(event) {
           decorateButtons(parentElement);
           decorateIcons(parentElement);
           decorateRichtext(parentElement);
-          decorateBlocks(parentElement);
-          await loadSections(parentElement);
         }
         return true;
       }
