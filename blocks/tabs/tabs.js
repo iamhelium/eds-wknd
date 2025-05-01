@@ -15,15 +15,9 @@ export default async function decorate(block) {
     tab.dataset.blockName = 'tab';
     tab.dataset.blockStatus = 'initialized';
 
-    // Ensure data-aue-type includes "container"
-    if (!tab.dataset.aueType?.includes('container')) {
-      tab.dataset.aueType = 'container';
-    }
-
-    // If data-aue-type was already "component", we append both
-    if (!tab.dataset.aueType.includes('component')) {
-      tab.dataset.aueType += ' component';
-    }
+    // Set AEM editing attributes
+    tab.dataset.aueType = 'container';
+    tab.dataset.aueBehavior = 'component';
 
     // Add expected wrapping if inner content isn't inside <p>
     const firstChild = tab.querySelector('div');
@@ -33,10 +27,8 @@ export default async function decorate(block) {
       firstChild.appendChild(wrapper);
     }
 
-    // Now decorate this nested tab as a block
     decorateBlock(tab);
   });
 
-  // Load each tab block asynchronously
   await Promise.all(tabBlocks.map(loadBlock));
 }
