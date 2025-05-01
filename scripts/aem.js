@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-use-before-define */
 /*
  * Copyright 2025 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -18,7 +16,7 @@ function sampleRUM(checkpoint, data) {
   const timeShift = () => (window.performance ? window.performance.now() : Date.now() - window.hlx.rum.firstReadTime);
   try {
     window.hlx = window.hlx || {};
-    sampleRUM.enhance = () => { };
+    sampleRUM.enhance = () => {};
     if (!window.hlx.rum) {
       const param = new URLSearchParams(window.location.search).get('rum');
       const weight = (window.SAMPLE_PAGEVIEWS_AT_RATE === 'high' && 10)
@@ -642,21 +640,6 @@ async function loadBlock(block) {
 }
 
 /**
- * Decorates all tabs within a tabs block.
- * Each tab is treated like a section that may contain blocks.
- * @param {Element} block The .tabs block element
- */
-function decorateTabs(block) {
-  const tabs = block.querySelectorAll('.tab-content.section');
-  tabs.forEach((tab) => {
-    decorateBlocks(tab); // Apply block decorations within each tab
-    decorateButtons(tab); // Optional: style buttons inside tabs
-    decorateIcons(tab); // Optional: style icons inside tabs
-    decorateRichtext(tab); // Optional: enhance richtext areas
-  });
-}
-
-/**
  * Decorates a block.
  * @param {Element} block The block element
  */
@@ -673,10 +656,6 @@ function decorateBlock(block) {
     if (section) section.classList.add(`${shortBlockName}-container`);
     // eslint-disable-next-line no-use-before-define
     decorateButtons(block);
-
-    if (shortBlockName === 'tabs') {
-      decorateTabs(block);
-    }
   }
 }
 
