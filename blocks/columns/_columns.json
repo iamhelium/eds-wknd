@@ -51,7 +51,9 @@
         "image",
         "button",
         "title",
-        "teaser"
+        "teaser",
+        "tabs",
+        "tab"
       ]
     }
   ]
