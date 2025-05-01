@@ -1,5 +1,6 @@
 import {
   decorateBlock,
+  decorateBlocks,
   loadBlock,
 } from '../../scripts/aem.js';
 
@@ -27,7 +28,9 @@ export default async function decorate(block) {
       firstChild.appendChild(wrapper);
     }
 
+    // Treat tab as a block and decorate its children blocks
     decorateBlock(tab);
+    decorateBlocks(tab);
   });
 
   await Promise.all(tabBlocks.map(loadBlock));
