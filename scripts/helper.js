@@ -1,5 +1,4 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable import/prefer-default-export */
+/* eslint-disable linebreak-style, import/prefer-default-export */
 
 /**
  * Adds the 'active' class to anchor tags within the container that match the current pathname.
