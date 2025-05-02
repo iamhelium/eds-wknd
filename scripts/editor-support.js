@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 import {
   decorateBlock,
   decorateBlocks,
@@ -49,8 +50,27 @@ async function applyChanges(event) {
       if (newBlock) {
         newBlock.style.display = 'none';
         block.insertAdjacentElement('afterend', newBlock);
+
         decorateButtons(newBlock);
         decorateIcons(newBlock);
+
+        const blockName = newBlock.dataset.blockName;
+        if (blockName === 'tabs') {
+          const nestedTabs = newBlock.querySelectorAll('.block[data-block-name="tab"]');
+          nestedTabs.forEach((tab) => {
+            const innerBlocks = tab.querySelectorAll('.block[data-block-name]');
+            innerBlocks.forEach((inner) => {
+              decorateButtons(inner);
+              decorateIcons(inner);
+              decorateRichtext(inner);
+            });
+          });
+
+          block.remove();
+          newBlock.style.display = null;
+          return true;
+        }
+
         decorateBlock(newBlock);
         decorateRichtext(newBlock);
         await loadBlock(newBlock);
