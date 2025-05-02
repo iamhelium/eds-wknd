@@ -58,6 +58,9 @@ async function applyChanges(event) {
         if (blockName === 'tabs') {
           const nestedTabs = newBlock.querySelectorAll('.block[data-block-name="tab"]');
           nestedTabs.forEach((tab) => {
+            tab.dataset.aueType = 'container';
+            tab.dataset.aueBehavior = 'component';
+
             const innerBlocks = tab.querySelectorAll('.block[data-block-name]');
             innerBlocks.forEach((inner) => {
               decorateButtons(inner);

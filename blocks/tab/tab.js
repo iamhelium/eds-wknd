@@ -1,7 +1,7 @@
-import {
-  decorateBlocks,
-  loadBlock,
-} from '../../scripts/aem.js';
+// import {
+//   decorateBlocks,
+//   loadBlock,
+// } from '../../scripts/aem.js';
 
 /**
  * Decorates a single `tab` block and its children.
@@ -12,9 +12,9 @@ import {
 export default async function decorate(block) {
   console.log('TAB :', block);
 
-  // Apply EDS block logic to children
-  decorateBlocks(block);
+  // // Apply EDS block logic to children
+  // decorateBlocks(block);
 
-  // Load any nested blocks inside this tab
-  await loadBlock(block);
+  // // Load any nested blocks inside this tab
+  // await loadBlock(block);
 }
