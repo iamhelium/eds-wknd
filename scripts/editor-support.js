@@ -30,6 +30,7 @@ async function applyChanges(event) {
 
   if (element) {
     if (element.matches('main')) {
+      console.log('Inside IF element: ', element);
       const newMain = parsedUpdate.querySelector(`[data-aue-resource="${resource}"]`);
       newMain.style.display = 'none';
       element.insertAdjacentElement('afterend', newMain);
@@ -45,9 +46,11 @@ async function applyChanges(event) {
 
     const block = element.parentElement?.closest('.block[data-aue-resource]') || element?.closest('.block[data-aue-resource]');
     if (block) {
+      console.log('inside IF block: ', block);
       const blockResource = block.getAttribute('data-aue-resource');
       const newBlock = parsedUpdate.querySelector(`[data-aue-resource="${blockResource}"]`);
       if (newBlock) {
+        console.log('inside IF newBlock: ', newBlock);
         newBlock.style.display = 'none';
         block.insertAdjacentElement('afterend', newBlock);
 
@@ -56,6 +59,7 @@ async function applyChanges(event) {
 
         const blockName = newBlock.dataset.blockName;
         if (blockName === 'tabs') {
+          console.log('inside IF blockName == tabs : ', blockName);
           const nestedTabs = newBlock.querySelectorAll('.block[data-block-name="tab"]');
           nestedTabs.forEach((tab) => {
             tab.dataset.aueType = 'container';
@@ -82,6 +86,7 @@ async function applyChanges(event) {
         return true;
       }
     } else {
+      console.log('inside ELSE block: ');
       // sections and default content, may be multiple in the case of richtext
       const newElements = parsedUpdate.querySelectorAll(`[data-aue-resource="${resource}"],[data-richtext-resource="${resource}"]`);
       if (newElements.length) {
