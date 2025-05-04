@@ -84,5 +84,21 @@
       "tnc",
       "wizard"
     ]
+  },
+  {
+    "id": "tab",
+    "components": [
+      "teaser",
+      "carousel",
+      "text",
+      "title",
+      "hero"
+    ]
+  },
+  {
+    "id": "tabs",
+    "components": [
+      "tab"
+    ]
   }
 ]
