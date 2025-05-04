@@ -57,26 +57,26 @@ async function applyChanges(event) {
         decorateButtons(newBlock);
         decorateIcons(newBlock);
 
-        const blockName = newBlock.dataset.blockName;
-        if (blockName === 'tabs') {
-          console.log('inside IF blockName == tabs : ', blockName);
-          const nestedTabs = newBlock.querySelectorAll('.block[data-block-name="tab"]');
-          nestedTabs.forEach((tab) => {
-            tab.dataset.aueType = 'container';
-            tab.dataset.aueBehavior = 'component';
+        // const blockName = newBlock.dataset.blockName;
+        // if (blockName === 'tabs') {
+        //   console.log('inside IF blockName == tabs : ', blockName);
+        //   const nestedTabs = newBlock.querySelectorAll('.block[data-block-name="tab"]');
+        //   nestedTabs.forEach((tab) => {
+        //     tab.dataset.aueType = 'container';
+        //     tab.dataset.aueBehavior = 'component';
 
-            const innerBlocks = tab.querySelectorAll('.block[data-block-name]');
-            innerBlocks.forEach((inner) => {
-              decorateButtons(inner);
-              decorateIcons(inner);
-              decorateRichtext(inner);
-            });
-          });
+        //     const innerBlocks = tab.querySelectorAll('.block[data-block-name]');
+        //     innerBlocks.forEach((inner) => {
+        //       decorateButtons(inner);
+        //       decorateIcons(inner);
+        //       decorateRichtext(inner);
+        //     });
+        //   });
 
-          block.remove();
-          newBlock.style.display = null;
-          return true;
-        }
+        //   block.remove();
+        //   newBlock.style.display = null;
+        //   return true;
+        // }
 
         decorateBlock(newBlock);
         decorateRichtext(newBlock);
