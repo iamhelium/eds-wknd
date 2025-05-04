@@ -25,7 +25,8 @@
       "components": [
         "tab",
         "teaser",
-        "carousel"
+        "carousel",
+        "card"
       ]
     }
   ]
