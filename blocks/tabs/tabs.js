@@ -1,6 +1,6 @@
 import {
-  decorateBlock,
-  decorateBlocks,
+  // decorateBlock,
+  // decorateBlocks,
   loadBlock,
 } from '../../scripts/aem.js';
 
