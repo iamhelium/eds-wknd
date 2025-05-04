@@ -24,7 +24,9 @@
       "search",
       "accordion",
       "form",
-      "embed-adaptive-form"
+      "embed-adaptive-form",
+      "tabs",
+      "tab"
     ]
   },
   {
