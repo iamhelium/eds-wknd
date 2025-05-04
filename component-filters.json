@@ -100,7 +100,9 @@
   {
     "id": "tabs",
     "components": [
-      "tab"
+      "tab",
+      "teaser",
+      "carousel"
     ]
   }
 ]
