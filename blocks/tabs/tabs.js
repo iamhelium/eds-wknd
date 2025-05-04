@@ -5,11 +5,12 @@ import {
 } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
-  // console.log('TABS BLOCK: ', block);
+  console.log('TABS BLOCK: ', block);
 
   // Get all direct children that are tab components
   const tabBlocks = [...block.children].filter((child) => child.dataset?.aueModel === 'tab');
 
+  console.log(tabBlocks);
   tabBlocks.forEach((tab) => {
     // Ensure correct block-like behavior
     tab.classList.add('tab', 'block');
@@ -29,8 +30,8 @@ export default async function decorate(block) {
     }
 
     // Treat tab as a block and decorate its children blocks
-    decorateBlock(tab);
-    decorateBlocks(tab);
+    // decorateBlock(tab);
+    // decorateBlocks(tab);
   });
 
   await Promise.all(tabBlocks.map(loadBlock));
