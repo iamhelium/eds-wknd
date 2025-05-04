@@ -1,8 +1,8 @@
-import {
-  // decorateBlock,
-  // decorateBlocks,
-  loadBlock,
-} from '../../scripts/aem.js';
+// import {
+//   decorateBlock,
+//   decorateBlocks,
+//   loadBlock,
+// } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
   console.log('TABS BLOCK: ', block);
@@ -34,5 +34,5 @@ export default async function decorate(block) {
     // decorateBlocks(tab);
   });
 
-  await Promise.all(tabBlocks.map(loadBlock));
+  // await Promise.all(tabBlocks.map(loadBlock));
 }
