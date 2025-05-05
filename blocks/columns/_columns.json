@@ -26,7 +26,7 @@
           "label": "Columns Style",
           "valueType": "string",
           "required": true,
-          "maxSize": 1,
+          "maxSize": 2,
           "options": [
             {
               "name": "Column Variant",
@@ -38,6 +38,19 @@
                 {
                   "name": "Right Main Content",
                   "value": "right-main"
+                }
+              ]
+            },
+            {
+              "name": "Column Image",
+              "children": [
+                {
+                  "name": "Default",
+                  "value": ""
+                },
+                {
+                  "name": "Mobile - col 8",
+                  "value": "img-m--col-8"
                 }
               ]
             }
