@@ -29,15 +29,15 @@
           "maxSize": 1,
           "options": [
             {
-              "name": "Margin Bottom",
+              "name": "Column Variant",
               "children": [
                 {
-                  "name": "default",
+                  "name": "Left Main Content",
                   "value": ""
                 },
                 {
-                  "name": "Margin 72px",
-                  "value": "margin-lxxii"
+                  "name": "Right Main Content",
+                  "value": "right-main"
                 }
               ]
             }
