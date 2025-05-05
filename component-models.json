@@ -406,7 +406,7 @@
             "children": [
               {
                 "name": "Left Main Content",
-                "value": ""
+                "value": "left-main"
               },
               {
                 "name": "Right Main Content",
@@ -419,7 +419,7 @@
             "children": [
               {
                 "name": "Default",
-                "value": ""
+                "value": "default-img"
               },
               {
                 "name": "Mobile - col 8",
