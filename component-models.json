@@ -5526,6 +5526,82 @@
     ]
   },
   {
+    "id": "testimonials",
+    "fields": [
+      {
+        "component": "container",
+        "label": "Testimonial Author",
+        "name": "author-info",
+        "fields": [
+          {
+            "component": "text",
+            "label": "Name",
+            "name": "name",
+            "valueType": "string",
+            "required": true
+          },
+          {
+            "component": "text",
+            "label": "Role",
+            "name": "role",
+            "valueType": "string"
+          },
+          {
+            "component": "richtext",
+            "label": "Quote",
+            "name": "quote",
+            "valueType": "string"
+          }
+        ]
+      },
+      {
+        "component": "container",
+        "label": "Author Image",
+        "name": "author-image",
+        "fields": [
+          {
+            "component": "reference",
+            "label": "Image",
+            "name": "image",
+            "valueType": "string"
+          },
+          {
+            "component": "text",
+            "label": "Alt text",
+            "name": "imageAlt",
+            "valueType": "string",
+            "required": true
+          }
+        ]
+      },
+      {
+        "component": "container",
+        "label": "Social Media Links",
+        "name": "social-links",
+        "fields": [
+          {
+            "component": "text",
+            "label": "Facebook URL",
+            "name": "facebook",
+            "valueType": "string"
+          },
+          {
+            "component": "text",
+            "label": "Twitter URL",
+            "name": "twitter",
+            "valueType": "string"
+          },
+          {
+            "component": "text",
+            "label": "Instagram URL",
+            "name": "instagram",
+            "valueType": "string"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "text",
     "fields": [
       {
