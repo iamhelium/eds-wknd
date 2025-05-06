@@ -65,31 +65,6 @@
                 "required": true
               }
             ]
-          },
-          {
-            "component": "container",
-            "label": "Social Media Links",
-            "name": "social-links",
-            "fields": [
-              {
-                "component": "text",
-                "label": "Facebook URL",
-                "name": "facebook",
-                "valueType": "string"
-              },
-              {
-                "component": "text",
-                "label": "Twitter URL",
-                "name": "twitter",
-                "valueType": "string"
-              },
-              {
-                "component": "text",
-                "label": "Instagram URL",
-                "name": "instagram",
-                "valueType": "string"
-              }
-            ]
           }
         ]
       }
