@@ -8,3 +8,20 @@
 <noscript>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Asar&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap">
 </noscript>
+<script>
+  (function () {
+    var href = window.location.href;
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+
+    if (href.includes('eds-wknd-2')) {
+      link.href = '/styles/styles2.css';
+    } else if (href.includes('eds-wknd')) {
+      link.href = '/styles/styles.css';
+    }
+
+    if (link.href) {
+      document.head.appendChild(link);
+    }
+  })();
+</script>
