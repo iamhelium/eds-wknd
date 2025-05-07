@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /*
  * Copyright 2025 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -16,7 +17,7 @@ function sampleRUM(checkpoint, data) {
   const timeShift = () => (window.performance ? window.performance.now() : Date.now() - window.hlx.rum.firstReadTime);
   try {
     window.hlx = window.hlx || {};
-    sampleRUM.enhance = () => {};
+    sampleRUM.enhance = () => { };
     if (!window.hlx.rum) {
       const param = new URLSearchParams(window.location.search).get('rum');
       const weight = (window.SAMPLE_PAGEVIEWS_AT_RATE === 'high' && 10)
@@ -611,14 +612,19 @@ async function loadBlock(block) {
   if (status !== 'loading' && status !== 'loaded') {
     block.dataset.blockStatus = 'loading';
     const { blockName } = block.dataset;
+
+    // Determine base path based on current URL
+    const isEdsWkndStage = window.location.href.includes('eds-wknd-stage');
+    const blockBasePath = isEdsWkndStage
+      ? `${window.hlx.codeBasePath}/multisite/eds-wknd-stage/blocks/${blockName}`
+      : `${window.hlx.codeBasePath}/blocks/${blockName}`;
+
     try {
-      const cssLoaded = loadCSS(`${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.css`);
+      const cssLoaded = loadCSS(`${blockBasePath}/${blockName}.css`);
       const decorationComplete = new Promise((resolve) => {
         (async () => {
           try {
-            const mod = await import(
-              `${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.js`
-            );
+            const mod = await import(`${blockBasePath}/${blockName}.js`);
             if (mod.default) {
               await mod.default(block);
             }
@@ -638,6 +644,62 @@ async function loadBlock(block) {
   }
   return block;
 }
+
+// async function loadBlock(block) {
+//   const status = block.dataset.blockStatus;
+//   if (status !== 'loading' && status !== 'loaded') {
+//     block.dataset.blockStatus = 'loading';
+//     const { blockName } = block.dataset;
+
+//     const isEdsWkndStage = window.location.href.includes('eds-wknd-stage');
+//     const defaultPath = `${window.hlx.codeBasePath}/blocks/${blockName}`;
+//     const overridePath = `${window.hlx.codeBasePath}/multisite/eds-wknd-stage/blocks/${blockName}`;
+
+//     try {
+//       // Load both CSS files (default and override)
+//       const cssLoaded = Promise.all([
+//         loadCSS(`${defaultPath}/${blockName}.css`),
+//         isEdsWkndStage ? loadCSS(`${overridePath}/${blockName}.css`) : Promise.resolve(),
+//       ]);
+
+//       // Load both JS modules (default and override if exists)
+//       const decorationComplete = new Promise((resolve) => {
+//         (async () => {
+//           try {
+//             // Load and run default block logic
+//             const defaultMod = await import(`${defaultPath}/${blockName}.js`);
+//             if (defaultMod.default) {
+//               await defaultMod.default(block);
+//             }
+
+//             // Optionally load and run override block logic
+//             if (isEdsWkndStage) {
+//               try {
+//                 const overrideMod = await import(`${overridePath}/${blockName}.js`);
+//                 if (overrideMod.default) {
+//                   await overrideMod.default(block);
+//                 }
+//               } catch (overrideErr) {
+//                 console.log(`no override found for ${blockName}`, overrideErr);
+//               }
+//             }
+//           } catch (error) {
+//             console.log(`failed to load default module for ${blockName}`, error);
+//           }
+//           resolve();
+//         })();
+//       });
+
+//       await Promise.all([cssLoaded, decorationComplete]);
+//     } catch (error) {
+//       console.log(`failed to load block ${blockName}`, error);
+//     }
+
+//     block.dataset.blockStatus = 'loaded';
+//   }
+
+//   return block;
+// }
 
 /**
  * Decorates a block.
