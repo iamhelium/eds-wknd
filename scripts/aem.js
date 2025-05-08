@@ -679,6 +679,8 @@ async function loadBlock(block) {
           .then((res) => res.ok)
           .catch(() => false);
 
+        console.log('overrideExists', overrideExists);
+
         if (overrideExists) {
           cssTasks.push(loadCSS(`${overridePath}/${blockName}.css`));
           decorationTasks.push(
