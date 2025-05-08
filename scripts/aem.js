@@ -679,8 +679,6 @@ async function loadBlock(block) {
           .then((res) => res.ok)
           .catch(() => false);
 
-        console.log('overrideExists', overrideExists);
-
         if (overrideExists) {
           cssTasks.push(loadCSS(`${overridePath}/${blockName}.css`));
           decorationTasks.push(
@@ -700,7 +698,7 @@ async function loadBlock(block) {
 
       await Promise.all([...cssTasks, ...decorationTasks]);
     } catch (error) {
-      console.log(`Failed to load block ${blockName}`, error);
+      // console.log(`Failed to load block ${blockName}`, error);
     }
 
     block.dataset.blockStatus = 'loaded';

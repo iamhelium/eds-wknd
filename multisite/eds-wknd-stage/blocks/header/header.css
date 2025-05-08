@@ -152,7 +152,7 @@ footer {
 
 .nav-wrapper-desktop .nav-sections ul li a.active,
 .nav-wrapper-desktop .nav-sections ul li a:hover {
-  background-color: var(green);
+  background-color: green;
 }
 
 
