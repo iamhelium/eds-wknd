@@ -1,0 +1,260 @@
+/* stylelint-disable no-descending-specificity */
+
+/* ============================================================
+  General Header and Navigation Layout
+============================================================ */
+header .nav-wrapper {
+  background-color: var(--color-white);
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+}
+
+header p {
+  margin: 0;
+}
+
+.scrolling .nav-wrapper {
+  box-shadow: 0 8px 20px 0 rgb(0 0 0 / 26%);
+}
+
+.header-visible.scrolling .nav-wrapper {
+  position: relative;
+}
+
+.header-visible.scrolling main {
+  padding: 0;
+}
+
+/* ============================================================
+  Navigation Panels (Mobile/Desktop)
+============================================================ */
+#nav-mobile {
+  display: block;
+}
+
+#nav-mobile[aria-expanded='true'] {
+  transform: translateX(0);
+}
+
+#nav-desktop {
+  display: flex;
+  padding: 15px 0 15px var(--gutter-padding);
+}
+
+.nav-wrapper-desktop .nav-sections {
+  display: none;
+  padding: 15px var(--gutter-padding) 0;
+  width: 66.6667%;
+}
+
+@media (width >=1024px) {
+  .nav-wrapper-desktop .nav-sections {
+    display: block;
+  }
+}
+
+body.header-visible #nav-desktop,
+body.header-visible main,
+body.header-visible footer {
+  transform: translateX(275px);
+}
+
+#nav-mobile,
+#nav-desktop,
+main,
+footer {
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+}
+
+/* Hamburger Icon Default State */
+#nav-mobile .nav-hamburger,
+#nav-desktop .nav-hamburger {
+  display: block;
+}
+
+@media (width >=1024px) {
+  #nav-mobile {
+    display: none;
+  }
+
+  #nav-desktop {
+    box-sizing: content-box;
+    display: flex;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 50px 0;
+    transition: padding-bottom 0s ease, padding-top 0s;
+  }
+
+  .scrolling #nav-desktop {
+    padding: 15px 0 5px;
+    transition: padding-bottom 0.5s ease, padding-top 0.5s;
+  }
+
+  #nav-mobile .nav-hamburger,
+  #nav-desktop .nav-hamburger {
+    display: none;
+  }
+
+  main,
+  footer {
+    transform: none;
+  }
+}
+
+/* ============================================================
+  Desktop Branding and Logo Styles
+============================================================ */
+.nav-wrapper-desktop .nav-brand {
+  padding: 0 var(--gutter-padding);
+  width: 50%;
+}
+
+@media (width >=1024px) {
+  .nav-wrapper-desktop .nav-brand {
+    width: 16.6667%;
+  }
+}
+
+.nav-wrapper-desktop .nav-brand img {
+  margin: 12px 0 7px 32px;
+  max-width: 6rem;
+  width: 100%;
+}
+
+@media (width >=1024px) {
+  .nav-wrapper-desktop .nav-brand img {
+    margin: 7px 0 14px;
+    max-width: 8rem;
+  }
+}
+
+/* ============================================================
+  Desktop Navigation Links
+============================================================ */
+.nav-wrapper-desktop .nav-sections ul {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-wrapper-desktop .nav-sections ul li a {
+  color: var(--brand-secondary);
+  display: inline;
+  font-size: var(--font-size-small);
+  padding: 15px 17px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.nav-wrapper-desktop .nav-sections ul li a.active,
+.nav-wrapper-desktop .nav-sections ul li a:hover {
+  background-color: var(green);
+}
+
+
+/* ============================================================
+  Desktop Tools (Search, etc.)
+============================================================ */
+.nav-wrapper-desktop .nav-tools {
+  padding: 0 var(--gutter-padding);
+  width: 50%;
+}
+
+.nav-wrapper-desktop .nav-tools .icon-search {
+  max-width: 16px;
+}
+
+@media (width >=1024px) {
+  .nav-wrapper-desktop .nav-tools {
+    width: 16.6667%;
+  }
+}
+
+/* ============================================================
+  Mobile Navigation Panel
+============================================================ */
+.nav-wrapper-mobile {
+  background: var(--brand-secondary);
+  box-shadow: inset -3px 0 5px 0 rgb(0 0 0 / 35%);
+  display: block;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  transform: translateX(-275px);
+  width: 275px;
+  z-index: 1000;
+}
+
+.nav-wrapper-mobile .nav-sections {
+  padding-top: 15px;
+}
+
+.nav-wrapper-mobile .nav-sections ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-wrapper-mobile .nav-sections a {
+  border-top: 1px solid hsl(0deg 0% 100% / 5%);
+  color: var(--color-gray-light);
+  display: block;
+  height: 44px;
+  font-size: var(--font-size-small);
+  line-height: 44px;
+  padding: 0 1em;
+  text-decoration: none;
+}
+
+.nav-wrapper-mobile .nav-sections a:hover {
+  color: var(--color-yellow);
+}
+
+/* ============================================================
+  Hamburger Button & Icon Styling
+============================================================ */
+.nav-hamburger button {
+  background-color: transparent;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-wrapper-desktop .nav-hamburger button {
+  left: 10px;
+  position: absolute;
+}
+
+.nav-wrapper-mobile .nav-hamburger button {
+  display: none;
+  position: absolute;
+  right: -60px;
+  top: 40px;
+}
+
+.scrolling.header-visible .nav-wrapper-desktop .nav-hamburger button {
+  display: none;
+}
+
+.scrolling .nav-wrapper-mobile[aria-expanded='true'] .nav-hamburger button {
+  display: block;
+}
+
+.nav-hamburger-icon.wkndicon-menu {
+  background: rgb(68 68 68 / 75%);
+  border: 1px solid dimgray;
+  color: var(--color-white);
+  display: block;
+  font-size: 1.75rem;
+  padding: 0.5rem;
+}
+
+.nav-wrapper-desktop .nav-hamburger-icon.wkndicon-menu {
+  background: transparent;
+  border: none;
+  color: var(--brand-secondary);
+}
