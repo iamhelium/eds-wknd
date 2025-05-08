@@ -655,50 +655,39 @@ async function loadBlock(block) {
     const defaultPath = `${window.hlx.codeBasePath}/blocks/${blockName}`;
     const overridePath = `${window.hlx.codeBasePath}/multisite/eds-wknd-stage/blocks/${blockName}`;
 
-    try {
-      // Always load default CSS
-      const cssTasks = [loadCSS(`${defaultPath}/${blockName}.css`)];
+    const cssTasks = [loadCSS(`${defaultPath}/${blockName}.css`)];
 
-      // Always load default JS
-      const decorationTasks = [
-        (async () => {
-          try {
-            const mod = await import(`${defaultPath}/${blockName}.js`);
-            if (mod.default) {
-              await mod.default(block);
-            }
-          } catch (err) {
-            console.log(`Failed to load default module for ${blockName}`, err);
+    // Always load default JS
+    const decorationTasks = [
+      (async () => {
+        try {
+          const mod = await import(`${defaultPath}/${blockName}.js`);
+          if (mod?.default) {
+            await mod.default(block);
           }
-        })(),
-      ];
-
-      // If override exists, load override CSS and JS
-      if (isEdsWkndStage) {
-        const overrideExists = await fetch(`${overridePath}/${blockName}.js`, { method: 'HEAD' })
-          .then((res) => res.ok)
-          .catch(() => false);
-
-        if (overrideExists) {
-          cssTasks.push(loadCSS(`${overridePath}/${blockName}.css`));
-          decorationTasks.push(
-            (async () => {
-              try {
-                const overrideMod = await import(`${overridePath}/${blockName}.js`);
-                if (overrideMod.default) {
-                  await overrideMod.default(block);
-                }
-              } catch (err) {
-                console.log(`Failed to load override module for ${blockName}`, err);
-              }
-            })(),
-          );
+        } catch (err) {
+          console.log(`Failed to load default block for ${blockName}`, err);
         }
-      }
+      })(),
+    ];
 
+    // If override JS exists, load override JS + CSS
+    if (isEdsWkndStage) {
+      try {
+        const overrideMod = await import(`${overridePath}/${blockName}.js`);
+        if (overrideMod?.default) {
+          cssTasks.push(loadCSS(`${overridePath}/${blockName}.css`));
+          decorationTasks.push(overrideMod.default(block));
+        }
+      } catch {
+        // Silently fail without logging 404
+      }
+    }
+
+    try {
       await Promise.all([...cssTasks, ...decorationTasks]);
     } catch (error) {
-      // console.log(`Failed to load block ${blockName}`, error);
+      console.log(`Failed to load block ${blockName}`, error);
     }
 
     block.dataset.blockStatus = 'loaded';
