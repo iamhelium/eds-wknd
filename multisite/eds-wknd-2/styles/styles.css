@@ -16,7 +16,5 @@
  :root {
   /* colors */
   --color-alice-blue: #F0F8FF;
-
-  /* brand Colors */
-  --brand-primary: red;
+  --color-dodger-blue: #1e90ff9c;
 }

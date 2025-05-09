@@ -652,6 +652,7 @@ async function loadBlock(block) {
     const { blockName } = block.dataset;
 
     const isEdsWknd2 = window.location.href.includes('eds-wknd-2');
+    console.log(isEdsWknd2);
     const defaultPath = `${window.hlx.codeBasePath}/blocks/${blockName}`;
     const overridePath = `${window.hlx.codeBasePath}/multisite/eds-wknd-2/blocks/${blockName}`;
 
