@@ -4,7 +4,7 @@
   General Header and Navigation Layout
 ============================================================ */
 header .nav-wrapper {
-  background-color: var(--color-white);
+  background-color: var(--color-alice-blue);
   position: fixed;
   width: 100%;
   z-index: 2;
