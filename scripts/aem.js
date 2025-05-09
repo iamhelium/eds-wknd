@@ -651,9 +651,9 @@ async function loadBlock(block) {
     block.dataset.blockStatus = 'loading';
     const { blockName } = block.dataset;
 
-    const isEdsWkndStage = window.location.href.includes('eds-wknd-stage');
+    const isEdsWknd2 = window.location.href.includes('eds-wknd-2');
     const defaultPath = `${window.hlx.codeBasePath}/blocks/${blockName}`;
-    const overridePath = `${window.hlx.codeBasePath}/multisite/eds-wknd-stage/blocks/${blockName}`;
+    const overridePath = `${window.hlx.codeBasePath}/multisite/eds-wknd-2/blocks/${blockName}`;
 
     const cssTasks = [loadCSS(`${defaultPath}/${blockName}.css`)];
 
@@ -672,7 +672,7 @@ async function loadBlock(block) {
     ];
 
     // If override JS exists, load override JS + CSS
-    if (isEdsWkndStage) {
+    if (isEdsWknd2) {
       try {
         const overrideMod = await import(`${overridePath}/${blockName}.js`);
         if (overrideMod?.default) {
