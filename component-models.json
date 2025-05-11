@@ -467,16 +467,16 @@
       {
         "component": "select",
         "label": "Component Author Class",
-        "name": "classes",
+        "name": "cmp-author",
         "valueType": "string",
         "options": [
           {
             "name": "Accordion",
-            "value": "accordion"
+            "value": "accordion-class"
           },
           {
             "name": "Teaser",
-            "value": "teaser"
+            "value": "teaser-class"
           }
         ]
       }
