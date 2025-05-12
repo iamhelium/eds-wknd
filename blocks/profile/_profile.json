@@ -48,13 +48,13 @@
             {
               "component": "reference",
               "valueType": "string",
-              "name": "profile-image",
+              "name": "image",
               "label": "Profile Image"
             },
             {
               "component": "text",
               "valueType": "string",
-              "name": "profile-image-alt",
+              "name": "imageAlt",
               "label": "Alternative text for accessibility",
               "required": true
             },
