@@ -41,7 +41,6 @@
         },
         {
           "component": "container",
-          "label": "Profile Details",
           "name": "profile-detail",
           "valueType": "string",
           "collapsible": false,
