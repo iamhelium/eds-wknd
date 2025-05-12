@@ -45,7 +45,7 @@ export default async function decorate(block) {
 
     const descDiv = document.createElement('div');
     descDiv.className = 'profile-description';
-    descDiv.innerHTML = `<p class="description">${description}</p>`;
+    descDiv.innerHTML = `<h5 class="description">${description}</h5>`;
 
     content.append(imageDiv, titleDiv, descDiv);
 
