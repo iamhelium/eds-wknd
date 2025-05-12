@@ -1,19 +1,19 @@
 /* stylelint-disable selector-class-pattern */
-.profile.custom-profile .profile-wrapper {
+.profile .profile-wrapper {
     width: 25%;
     padding: 0 14px;
 }
 
-.profile.custom-profile .profile--content {
+.profile .profile--content {
     text-align: center;
 }
 
-.profile.custom-profile .profile-image picture {
+.profile .profile-image picture {
     display: flex;
     justify-content: center;
 }
 
-.profile.custom-profile .profile-image img {
+.profile .profile-image img {
     border-radius: 50%;
     height: 164px;
     object-fit: cover;
@@ -22,26 +22,26 @@
     margin-top: 7px;
 }
 
-.profile.custom-profile .profile-title .title,
-.profile.custom-profile .profile-description .description {
+.profile .profile-title .title,
+.profile .profile-description .description {
     margin-bottom: 0.25em;
     margin-top: 0;
 }
 
-.profile.custom-profile .profile--socials {
+.profile .profile--socials {
     padding-top: 1em;
     display: flex;
     justify-content: center;
 }
 
-.profile.custom-profile .profile--socials .social-container {
+.profile .profile--socials .social-container {
     margin: 0;
 }
 
-.profile.custom-profile .profile--socials .social-container a.social-button {
+.profile .profile--socials .social-container a.social-button {
  background-color: #202020;
 }
 
-.profile.custom-profile .profile--socials .social-container a i {
+.profile .profile--socials .social-container a i {
   color: #ebebeb;
 }
