@@ -63,15 +63,13 @@
               "component": "text",
               "name": "profile-name",
               "label": "Full Name",
-              "valueType": "string",
-              "required": true
+              "valueType": "string"
             },
             {
               "component": "text",
               "name": "profile-description",
               "label": "Description",
-              "valueType": "string",
-              "required": true
+              "valueType": "string"
             },
             {
               "component": "text",
