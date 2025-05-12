@@ -5353,13 +5353,13 @@
           },
           {
             "component": "text",
-            "name": "profile-name",
+            "name": "name",
             "label": "Full Name",
             "valueType": "string"
           },
           {
             "component": "text",
-            "name": "profile-description",
+            "name": "description",
             "label": "Description",
             "valueType": "string"
           },
