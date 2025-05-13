@@ -1,37 +1,66 @@
 /* stylelint-disable selector-class-pattern */
-.profile .profile-wrapper {
-    width: 25%;
-    padding: 0 14px;
+
+/* ================================================================
+   Style for 'our-contributors' and 'wknd-guides' profile block
+=================================================================== */
+.profile.our-contributors,
+.profile.wknd-guides {
+    display: flex;
+    flex-wrap: wrap;
 }
 
+.profile.our-contributors .profile-wrapper,
+.profile.wknd-guides .profile-wrapper {
+    padding: 0.5em 14px 1em;
+    width: 25%;
+}
+
+@media (width <=1024px) {
+    .profile.our-contributors .profile-wrapper,
+    .profile.wknd-guides .profile-wrapper {
+        width: 50%;
+    }
+
+    @media (width <=767px) {
+        .profile.our-contributors .profile-wrapper,
+        .profile.wknd-guides .profile-wrapper {
+            width: 100%;
+        }
+    }
+}
+
+/* Content center alignment */
 .profile .profile--content {
     text-align: center;
 }
 
+/* Profile image alignment */
 .profile .profile-image picture {
     display: flex;
     justify-content: center;
 }
 
+/* Profile image styling */
 .profile .profile-image img {
+    background-color: var(--color-gray-lightest);
     border-radius: 50%;
-    height: 164px;
-    object-fit: cover;
     width: 164px;
-    margin-bottom: 7px;
-    margin-top: 7px;
+    height: 164px;
+    margin: 7px 0;
+    object-fit: cover;
 }
 
+/* Title and description spacing */
 .profile .profile-title .title,
 .profile .profile-description .description {
-    margin-bottom: 0.25em;
-    margin-top: 0;
+    margin: 0 0 0.25em;
 }
 
+/* Style for Social button */
 .profile .profile--socials {
-    padding-top: 1em;
     display: flex;
     justify-content: center;
+    padding-top: 1em;
 }
 
 .profile .profile--socials .social-container {
@@ -39,9 +68,72 @@
 }
 
 .profile .profile--socials .social-container a.social-button {
- background-color: #202020;
+    background-color: var(--color-black);
 }
 
 .profile .profile--socials .social-container a i {
-  color: #ebebeb;
+    color: var(--color-gray-light);
+}
+
+/* ===========================================
+   Style for 'custom-profile' profile block
+============================================== */
+.profile.custom-profile .profile-wrapper {
+    display: flex;
+    column-gap: 14px;
+}
+
+/* Image positioning */
+.profile.custom-profile .profile-image {
+    float: left;
+}
+
+/* Custom image size and shape */
+.profile.custom-profile .profile-image img {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+}
+
+/* Content layout for custom-profile */
+.profile.custom-profile .profile--content {
+    text-align: left;
+    width: 75%;
+}
+
+/* Socials layout for custom-profile */
+.profile.custom-profile .profile--socials {
+    align-items: baseline;
+    display: flex;
+    justify-content: flex-start;
+    width: 25%;
+    padding: 0;
+}
+
+/* Custom title styling with offset for floated image */
+.profile.custom-profile .profile-title .title {
+    font-size: 24px;
+    margin: 0 0 0.25rem 85px;
+    padding-top: 0.5rem;
+}
+
+/* Custom description styling */
+.profile.custom-profile .profile-description .description {
+    font-size: 12px;
+    color: var(--color-dimgray);
+    text-transform: uppercase;
+    margin: 0 0 13.5px 85px;
+}
+
+/* Responsive adjustment for custom-profile layout */
+@media (width <=1024px) {
+    .profile.custom-profile .profile-wrapper {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .profile.custom-profile .profile--content,
+    .profile.custom-profile .profile--socials {
+        width: 100%;
+    }
 }

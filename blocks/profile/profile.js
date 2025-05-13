@@ -1,143 +1,114 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable operator-linebreak */
-/* eslint-disable no-mixed-operators */
-
+/* eslint-disable no-console, no-underscore-dangle */
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { getAEMDomain } from '../../scripts/helper.js';
+
+function createSocialIcon(link, title, iconClass) {
+  return `
+    <p class="button-container social-container">
+      <a href="${link || '#'}" title="${title}" class="button social-icon social-button">
+        <i class="wknd-icon wkndicon-${iconClass}"></i>
+      </a>
+    </p>
+  `;
+}
+
+function createProfileBlock({
+  imagePath,
+  alt = '',
+  name,
+  title,
+  isHTML = false,
+  facebookLink,
+  twitterLink,
+  instagramLink,
+}) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'profile-wrapper';
+
+  const content = document.createElement('div');
+  content.className = 'profile--content';
+
+  const imageDiv = document.createElement('div');
+  imageDiv.className = 'profile-image';
+  const imageInner = document.createElement('div');
+  imageInner.className = 'image';
+
+  if (isHTML && imagePath instanceof HTMLElement) {
+    imageInner.append(imagePath);
+  } else if (typeof imagePath === 'string') {
+    imageInner.append(createOptimizedPicture(imagePath, alt, false));
+  }
+
+  imageDiv.append(imageInner);
+
+  const titleDiv = document.createElement('div');
+  titleDiv.className = 'profile-title';
+  titleDiv.innerHTML = `<h3 class="title">${name}</h3>`;
+
+  const descDiv = document.createElement('div');
+  descDiv.className = 'profile-description';
+  descDiv.innerHTML = `<${isHTML ? 'p' : 'h5'} class="description">${title}</${isHTML ? 'p' : 'h5'}>`;
+
+  content.append(imageDiv, titleDiv, descDiv);
+
+  const socials = document.createElement('div');
+  socials.className = 'profile--socials';
+  socials.innerHTML = createSocialIcon(facebookLink, 'Facebook', 'facebook')
+    + createSocialIcon(twitterLink, 'Twitter', 'twitter')
+    + createSocialIcon(instagramLink, 'Instagram', 'instagram');
+
+  wrapper.append(content, socials);
+  return wrapper;
+}
 
 export default async function decorate(block) {
-  const variation =
-    block.classList.contains('custom-profile') && 'custom-profile' ||
-    block.classList.contains('our-contributors') && 'our-contributors' ||
-    block.classList.contains('wknd-guides') && 'wknd-guides';
+  const variation = (block.classList.contains('custom-profile') && 'custom-profile')
+    || (block.classList.contains('our-contributors') && 'our-contributors')
+    || (block.classList.contains('wknd-guides') && 'wknd-guides');
 
   if (!variation) return;
 
   if (variation === 'custom-profile') {
-    // Handle inline HTML structure
     const divs = [...block.children];
     if (divs.length < 6) return;
 
-    const picture = divs[0].querySelector('picture');
-    const name = divs[1].textContent.trim();
-    const description = divs[2].textContent.trim();
-    const facebookLink = divs[3].querySelector('a')?.getAttribute('href') || '#';
-    const twitterLink = divs[4].querySelector('a')?.getAttribute('href') || '#';
-    const instagramLink = divs[5].querySelector('a')?.getAttribute('href') || '#';
+    const [picDiv, nameDiv, descDiv, fbDiv, twDiv, igDiv] = divs;
+
+    const profile = {
+      imagePath: picDiv.querySelector('picture'),
+      name: nameDiv.textContent.trim(),
+      title: descDiv.textContent.trim(),
+      facebookLink: fbDiv.querySelector('a')?.href,
+      twitterLink: twDiv.querySelector('a')?.href,
+      instagramLink: igDiv.querySelector('a')?.href,
+      isHTML: true,
+    };
 
     block.textContent = '';
-
-    const wrapper = document.createElement('div');
-    wrapper.className = 'profile-wrapper';
-
-    const content = document.createElement('div');
-    content.className = 'profile--content';
-
-    const imageDiv = document.createElement('div');
-    imageDiv.className = 'profile-image';
-    const imageInner = document.createElement('div');
-    imageInner.className = 'image';
-    if (picture) imageInner.append(picture);
-    imageDiv.append(imageInner);
-
-    const titleDiv = document.createElement('div');
-    titleDiv.className = 'profile-title';
-    titleDiv.innerHTML = `<h3 class="title">${name}</h3>`;
-
-    const descDiv = document.createElement('div');
-    descDiv.className = 'profile-description';
-    descDiv.innerHTML = `<h5 class="description">${description}</h5>`;
-
-    content.append(imageDiv, titleDiv, descDiv);
-
-    const socials = document.createElement('div');
-    socials.className = 'profile--socials';
-
-    socials.innerHTML = `
-      <p class="button-container social-container">
-        <a href="${facebookLink}" title="Facebook" class="button social-icon social-button">
-          <i class="wknd-icon wkndicon-facebook"></i>
-        </a>
-      </p>
-      <p class="button-container social-container">
-        <a href="${twitterLink}" title="Twitter" class="button social-icon social-button">
-          <i class="wknd-icon wkndicon-twitter"></i>
-        </a>
-      </p>
-      <p class="button-container social-container">
-        <a href="${instagramLink}" title="Instagram" class="button social-icon social-button">
-          <i class="wknd-icon wkndicon-instagram"></i>
-        </a>
-      </p>
-    `;
-
-    wrapper.append(content, socials);
-    block.append(wrapper);
+    block.append(createProfileBlock(profile));
   } else {
-    // Fetch GraphQL data
     try {
-      const resp = await fetch(`/graphql/execute.json/eds-wknd/about-us;variation=${variation}`);
+      const domain = getAEMDomain();
+      const endpoint = `/graphql/execute.json/eds-wknd/about-us;variation=${variation}`;
+      const url = domain ? `https://${domain}${endpoint}` : endpoint;
+
+      const resp = await fetch(url);
       const json = await resp.json();
       const profiles = json?.data?.aboutUsModelList?.items || [];
 
-      block.textContent = '';
-
-      profiles.forEach((profile) => {
-        const {
-          image,
+      profiles.forEach(({
+        image, alt, name, title, facebookLink, twitterLink, instagramLink,
+      }) => {
+        const profile = {
+          imagePath: image._path,
           alt,
           name,
           title,
-          facebookLink = '#',
-          twitterLink = '#',
-          instagramLink = '#',
-        } = profile;
-
-        const wrapper = document.createElement('div');
-        wrapper.className = 'profile-wrapper';
-
-        const content = document.createElement('div');
-        content.className = 'profile--content';
-
-        const imageDiv = document.createElement('div');
-        imageDiv.className = 'profile-image';
-        const imageInner = document.createElement('div');
-        imageInner.className = 'image';
-        imageInner.append(createOptimizedPicture(image._path, alt || '', false));
-        imageDiv.append(imageInner);
-
-        const titleDiv = document.createElement('div');
-        titleDiv.className = 'profile-title';
-        titleDiv.innerHTML = `<h3 class="title">${name}</h3>`;
-
-        const descDiv = document.createElement('div');
-        descDiv.className = 'profile-description';
-        descDiv.innerHTML = `<h5 class="description">${title}</h5>`;
-
-        content.append(imageDiv, titleDiv, descDiv);
-
-        const socials = document.createElement('div');
-        socials.className = 'profile--socials';
-
-        socials.innerHTML = `
-          <p class="button-container social-container">
-            <a href="${facebookLink}" title="Facebook" class="button social-icon social-button">
-              <i class="wknd-icon wkndicon-facebook"></i>
-            </a>
-          </p>
-          <p class="button-container social-container">
-            <a href="${twitterLink}" title="Twitter" class="button social-icon social-button">
-              <i class="wknd-icon wkndicon-twitter"></i>
-            </a>
-          </p>
-          <p class="button-container social-container">
-            <a href="${instagramLink}" title="Instagram" class="button social-icon social-button">
-              <i class="wknd-icon wkndicon-instagram"></i>
-            </a>
-          </p>
-        `;
-
-        wrapper.append(content, socials);
-        block.append(wrapper);
+          facebookLink,
+          twitterLink,
+          instagramLink,
+        };
+        block.append(createProfileBlock(profile));
       });
     } catch (e) {
       console.error('Failed to load profiles:', e);

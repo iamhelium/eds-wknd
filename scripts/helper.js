@@ -1,5 +1,5 @@
 /* eslint-disable linebreak-style */
-/* eslint-disable import/prefer-default-export */
+import { ENVIRONMENT_DOMAINS } from './constants.js';
 
 /**
  * Adds the 'active' class to anchor tags within the container that match the current pathname.
@@ -57,4 +57,24 @@ export function getDepth(path = '') {
   // Split the path by slashes ('/'), filter out any empty segments,
   // and count the remaining segments to determine the depth
   return path.split('/').filter(Boolean).length;
+}
+
+/**
+ * Returns the current AEM environment based on the hostname.
+ * If the hostname contains 'adobeaemcloud', it's considered an author environment.
+ * Otherwise, it's treated as a publish environment.
+ */
+export function getAEMEnv() {
+  return window.location.hostname.includes('adobeaemcloud') ? 'author' : 'publish';
+}
+
+/**
+ * Returns the AEM publish domain if the environment is 'publish'.
+ * Otherwise, returns an empty string.
+ *
+ * @returns {string} - The publish domain or an empty string.
+ */
+export function getAEMDomain() {
+  const env = getAEMEnv();
+  return env === 'publish' ? ENVIRONMENT_DOMAINS.publish : '';
 }
