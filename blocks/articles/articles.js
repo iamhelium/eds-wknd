@@ -150,6 +150,8 @@ export default async function decorate(block) {
   let articleList = [];
   try {
     articleList = await ffetch('/article-index.json').all();
+    articleList = articleList.filter((article) => (article['cq-tags'] || '').split(',')
+      .map((t) => t.trim()).includes('eds-wknd:article'));
   } catch (e) {
     console.warn('Failed to fetch articles:', e);
     return;
