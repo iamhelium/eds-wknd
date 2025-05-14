@@ -14,38 +14,41 @@
     font-size: 14px;
     font-weight: bold;
   }
-  
-  .signin-card-wrapper {
-    position: relative;
-  }
-  
-  .signin-card {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 250px;
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: black;
-    color: black;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: black;
+    color: white;
+    padding: 24px;
     border-radius: 8px;
-    padding: 16px;
-    box-shadow: 0 2px 8px black;
-    z-index: 10;
+    width: 300px;
+    box-shadow: 0 2px 12px black;
   }
   
-  .signin-card h3 {
-    margin: 0 0 4px;
-    font-size: 16px;
+  .modal-content h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
     font-weight: bold;
-    color: white;
   }
   
-  .subheading {
-    margin: 0 0 12px;
-    font-size: 12px;
-    color: white;
+  .modal-content .subheading {
+    font-size: 14px;
+    margin-bottom: 12px;
   }
   
-  .signin-card input {
+  .modal-content input {
     width: 100%;
     padding: 8px;
     margin: 6px 0;
@@ -53,19 +56,19 @@
     border-radius: 4px;
   }
   
-  .forgot-link {
-    display: block;
+  .modal-content .forgot-link {
     font-size: 12px;
     color: white;
-    margin: 8px 0;
     text-decoration: none;
+    margin: 8px 0;
+    display: block;
   }
   
-  .forgot-link:hover {
+  .modal-content .forgot-link:hover {
     color: white;
   }
   
-  .signin-btn {
+  .modal-content .signin-btn {
     background: #ffea00;
     color: black;
     border: none;
@@ -79,4 +82,12 @@
     align-items: center;
   }
   
+  .modal-close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+  }
   
