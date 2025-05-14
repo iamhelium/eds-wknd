@@ -21,6 +21,42 @@
       "id": "columns",
       "fields": [
         {
+          "component": "multiselect",
+          "name": "classes",
+          "label": "Columns Style",
+          "valueType": "string",
+          "required": true,
+          "maxSize": 2,
+          "options": [
+            {
+              "name": "Column Variant",
+              "children": [
+                {
+                  "name": "Left Main Content",
+                  "value": "left-main"
+                },
+                {
+                  "name": "Right Main Content",
+                  "value": "right-main"
+                }
+              ]
+            },
+            {
+              "name": "Column Image",
+              "children": [
+                {
+                  "name": "Default",
+                  "value": "default-img"
+                },
+                {
+                  "name": "Mobile - col 8",
+                  "value": "img-m-col-8"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "component": "text",
           "valueType": "number",
           "name": "columns",
