@@ -22,6 +22,7 @@ export default function decorate(block) {
       <input type="password" placeholder="Password" />
       <a href="#" class="forgot-link">Forgot password?</a>
       <button class="signin-btn">Sign In</button>
+       <hr class="signin-separator">
     `;
 
   // Append content to overlay
