@@ -47,11 +47,7 @@
     {
       "id": "column",
       "components": [
-        "text",
         "image",
-        "button",
-        "title",
-        "teaser",
         "fragment"
       ]
     }

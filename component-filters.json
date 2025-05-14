@@ -26,8 +26,7 @@
       "breadcrumbs",
       "form",
       "embed-adaptive-form",
-      "profile",
-      "wkndcolumns"
+      "profile"
     ]
   },
   {
@@ -52,11 +51,7 @@
   {
     "id": "column",
     "components": [
-      "text",
       "image",
-      "button",
-      "title",
-      "teaser",
       "fragment"
     ]
   },
@@ -87,20 +82,6 @@
       "text-input",
       "tnc",
       "wizard"
-    ]
-  },
-  {
-    "id": "wkndcolumns",
-    "components": [
-      "column"
-    ]
-  },
-  {
-    "id": "column",
-    "components": [
-      "text",
-      "image",
-      "fragment"
     ]
   }
 ]
