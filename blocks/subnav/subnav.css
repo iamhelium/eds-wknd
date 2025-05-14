@@ -17,21 +17,20 @@
 
   .modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 50%;
+    left: 50%;
+    width: 450px;
     background: black;
-    display: none;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 999999;
+    transform: translate(-50%,-50%);
   }
   
   .modal-content {
     background: black;
     color: white;
-    padding: 24px;
+    padding: 2rem 1.75rem;
     border-radius: 8px;
     width: 300px;
     box-shadow: 0 2px 12px black;
@@ -39,29 +38,35 @@
   
   .modal-content h3 {
     margin: 0 0 8px;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 40px;
+    color:white;
   }
   
   .modal-content .subheading {
-    font-size: 14px;
+    font-size: 24px;
     margin-bottom: 12px;
+    font-weight: 300;
   }
   
   .modal-content input {
     width: 100%;
-    padding: 8px;
+    padding: 2rem 1rem;
     margin: 6px 0;
-    border: 1px solid #ccc;
+    border: 1px solid #ebebeb;
     border-radius: 4px;
+    background-color: #2020;
+    font-weight: 400;
+    font-size: 18px;
+    height: 3pc;
   }
   
   .modal-content .forgot-link {
-    font-size: 12px;
+    font-size: 18px;
     color: white;
     text-decoration: none;
-    margin: 8px 0;
+    margin: 0 0 13.5px;
     display: block;
+    line-height: normal;
   }
   
   .modal-content .forgot-link:hover {
@@ -69,19 +74,20 @@
   }
   
   .modal-content .signin-btn {
-    background: #ffea00;
+    background:#ffea00 0 0 no-repeat padding-box;
     color: black;
     border: none;
-    padding: 10px;
-    width: 100%;
-    border-radius: 4px;
-    font-weight: bold;
+    padding: .75rem 1rem;
+    width: 180px;
+    border-radius: 1px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 18px;
+    font-weight: 500;
   }
-  
+
   .modal-close {
     position: absolute;
     top: 8px;
