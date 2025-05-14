@@ -1,8 +1,8 @@
 {
   "definitions": [
     {
-      "title": "Columns",
-      "id": "columns",
+      "title": "Wknd Column",
+      "id": "wkndcolumns",
       "plugins": {
         "xwalk": {
           "page": {
@@ -18,7 +18,7 @@
   ],
   "models": [
     {
-      "id": "columns",
+      "id": "wkndcolumns",
       "fields": [
         {
           "component": "text",
@@ -39,7 +39,7 @@
   ],
   "filters": [
     {
-      "id": "columns",
+      "id": "wkndcolumns",
       "components": [
         "column"
       ]
@@ -47,11 +47,6 @@
     {
       "id": "column",
       "components": [
-        "text",
-        "image",
-        "button",
-        "title",
-        "teaser",
         "fragment"
       ]
     }
