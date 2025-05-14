@@ -23,12 +23,12 @@
                 {
                     "component": "text",
                     "name": "linkText",
-                    "label": "Text"
+                    "label": "Signin"
                   },
                   {
                     "component": "text",
-                    "name": "linkText",
-                    "label": "Text"
+                    "name": "buttonText",
+                    "label": "Sign out"
                   }
              
             ]
