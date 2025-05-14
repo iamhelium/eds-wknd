@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import path from 'path';
 /* eslint import/no-unresolved: */
 import fs from 'fs';
