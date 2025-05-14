@@ -1,0 +1,64 @@
+.subnav-wrapper {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    gap: 1rem;
+    background: black;
+    color: white;
+    padding: 0.5rem 1rem; 
+   
+    
+  }
+  
+  .subnav-wrapper > div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .subnav-wrapper p {
+    margin: 0;
+    font-size:14px;
+    
+  }
+
+  .sign-in-popup {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    width: 300px;
+    padding: 20px;
+    background: #1d1d1d;
+    color: white;
+    box-shadow: 0 0 10px pink;
+    z-index: 999;
+  }
+  
+  .sign-in-popup input {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px;
+    background: black;
+    border: 1px solid #fff;
+    color: white;
+  }
+  
+  .sign-in-popup a {
+    color: white;
+    font-size: 0.9rem;
+  }
+  
+  .sign-in-popup button {
+    margin-top: 10px;
+    background: yellow;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    font-weight: bold;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
