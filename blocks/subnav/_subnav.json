@@ -16,23 +16,6 @@
         }
       }
     ],
-    "models": [
-        {
-            "id": "subnav",
-            "fields": [
-                {
-                    "component": "text",
-                    "name": "linkText",
-                    "label": "Signin"
-                  },
-                  {
-                    "component": "text",
-                    "name": "buttonText",
-                    "label": "Sign out"
-                  }
-             
-            ]
-          }          
-    ],
+    "models": [],
     "filters": []
   }

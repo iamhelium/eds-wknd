@@ -15,7 +15,7 @@ export default function decorate(block) {
       <input type="text" placeholder="Username" />
       <input type="password" placeholder="Password" />
       <a href="#" class="forgot-link">Forgot password?</a>
-      <button class="signin-btn">Sign In <span class="arrow">→</span></button>
+      <button class="signin-btn">Sign In </button>
     `;
   signInTrigger.addEventListener('click', (e) => {
     e.stopPropagation();
