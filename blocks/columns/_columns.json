@@ -83,7 +83,6 @@
     {
       "id": "column",
       "components": [
-        "image",
         "fragment"
       ]
     }
