@@ -20,7 +20,7 @@
     top: 50%;
     left: 50%;
     width: 369px;
-    background: black;
+    background: #2020;
     justify-content: center;
     align-items: center;
     z-index: 999999;
@@ -28,7 +28,7 @@
   }
   
   .modal-content {
-    background: black;
+    background: #2020;
     color: white;
     padding: 2rem 1.75rem;
     border-radius: 8px;
@@ -96,10 +96,11 @@
     cursor: pointer;
     color: white;
   }
-  
+
   .signin-separator {
     border: none;
     border-top: 1px solid #444;
-    margin: 20px 0 0;
+    margin: 1rem 0;
+    height: 2px;
   }
   
