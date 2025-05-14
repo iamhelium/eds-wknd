@@ -45,18 +45,12 @@
   {
     "id": "columns",
     "components": [
-      "column",
-      ""
+      "column"
     ]
   },
   {
     "id": "column",
     "components": [
-      "text",
-      "image",
-      "button",
-      "title",
-      "teaser",
       "fragment"
     ]
   },
