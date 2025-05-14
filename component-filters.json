@@ -98,6 +98,8 @@
   {
     "id": "column",
     "components": [
+      "text",
+      "image",
       "fragment"
     ]
   }
