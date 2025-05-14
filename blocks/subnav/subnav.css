@@ -61,6 +61,10 @@
     text-decoration: none;
   }
   
+  .forgot-link:hover {
+    color: white;
+  }
+  
   .signin-btn {
     background: #ffea00;
     color: black;
