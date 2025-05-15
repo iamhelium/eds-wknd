@@ -129,6 +129,8 @@
     margin-top: 8px;
     z-index: 1000;
     min-width: 220px;
+    margin-left: 60px;
+    width: 23em;
   }
   
   .language-item {
