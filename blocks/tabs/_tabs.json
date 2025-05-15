@@ -38,8 +38,8 @@
       "fields": [
         {
           "component": "text",
-          "label": "Tabs Aria Label",
-          "name": "tabs-aria-label",
+          "label": "Aria Label",
+          "name": "aria-label",
           "valueType": "string"
         }
       ]
