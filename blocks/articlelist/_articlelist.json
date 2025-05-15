@@ -51,7 +51,10 @@
           "component": "aem-content",
           "name": "link",
           "label": "Link",
-          "valueType": "string"
+          "valueType": "string",
+          "validation": {
+            "rootPath": "/content/eds-wknd"
+          }
         }
       ]
     }
