@@ -6,8 +6,9 @@
     background: black;
     color: white;
     font-family: sans-serif;
-    gap:4rem;
-    padding-top: 1em;
+    gap:2rem;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
   }
   
   .signin-trigger {
