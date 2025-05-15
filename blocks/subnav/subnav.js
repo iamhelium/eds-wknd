@@ -11,10 +11,10 @@ export default function decorate(block) {
   languageText.className = 'language-text';
 
   languageText.innerHTML = `
-      <img src="https://flagcdn.com/us.svg" alt="US Flag" class="flag-icon top-flag" />
-      <span class="lang-code">EN-US</span>
-      <span class="caret-icon">⌄</span>
-    `;
+        <img src="https://flagcdn.com/us.svg" alt="US Flag" class="flag-icon top-flag" />
+        <span class="lang-code">EN-US</span>
+        <span class="caret-icon"></span>
+      `;
 
   const caretIcon = languageText.querySelector('.caret-icon');
 
@@ -77,12 +77,12 @@ export default function decorate(block) {
     const item = document.createElement('div');
     item.className = 'language-item';
     item.innerHTML = `
-        <img src="${lang.flag}" alt="${lang.country} Flag" class="flag-icon"/>
-        <div class="language-info">
-          <div class="country-name">${lang.country}</div>
-          <div class="language-codes">${lang.languages}</div>
-        </div>
-      `;
+          <img src="${lang.flag}" alt="${lang.country} Flag" class="flag-icon"/>
+          <div class="language-info">
+            <div class="country-name">${lang.country}</div>
+            <div class="language-codes">${lang.languages}</div>
+          </div>
+        `;
     languageDropdown.appendChild(item);
 
     if (index < languages.length - 1) {
@@ -97,13 +97,13 @@ export default function decorate(block) {
     e.stopPropagation();
     const isOpen = languageDropdown.style.display === 'block';
     languageDropdown.style.display = isOpen ? 'none' : 'block';
-    caretIcon.textContent = isOpen ? '⌄' : '⌃';
+    caretIcon.classList.toggle('open', !isOpen);
   });
 
   // Hide dropdown when clicking elsewhere
   document.addEventListener('click', () => {
     languageDropdown.style.display = 'none';
-    caretIcon.textContent = '⌄';
+    caretIcon.classList.remove('open');
   });
 
   // ========== MODAL ==========
@@ -114,15 +114,15 @@ export default function decorate(block) {
   const modalContent = document.createElement('div');
   modalContent.className = 'modal-content';
   modalContent.innerHTML = `
-      <span class="modal-close">&times;</span>
-      <h3>Sign In</h3>
-      <p class="subheading">Welcome back</p>
-      <input type="text" placeholder="Username" />
-      <input type="password" placeholder="Password" />
-      <a href="#" class="forgot-link">Forgot password?</a>
-      <button class="signin-btn">Sign In</button>
-      <hr class="signin-separator">
-    `;
+        <span class="modal-close">&times;</span>
+        <h3>Sign In</h3>
+        <p class="subheading">Welcome back</p>
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+        <a href="#" class="forgot-link">Forgot password?</a>
+        <button class="signin-btn">Sign In</button>
+        <hr class="signin-separator">
+      `;
 
   modalOverlay.appendChild(modalContent);
 

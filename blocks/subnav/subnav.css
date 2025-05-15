@@ -194,10 +194,22 @@
     font-size: 14px;
     color: white;
   }
-  
-  .caret-icon {
-  font-size: 14px;
-  cursor: pointer; /* Only caret is clickable */
-  user-select: none;
+
+.caret-icon {
+  width: 0.45em;
+  height: 0.45em;
+  border-style: solid;
+  border-width: 0.15em 0.15em 0 0;
+  border-color: #222;
+  transform: rotate(135deg);
   transition: transform 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  top: 0.2em;
+}
+
+/* When open, rotate caret up */
+.caret-icon.open {
+  transform: rotate(-45deg);
 }
