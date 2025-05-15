@@ -2,7 +2,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 11rem;
     background: black;
     color: white;
     font-family: sans-serif;
@@ -177,7 +177,7 @@
 
    .language-separator {
     border: none;
-    border-top: 1px solid #ccc;
+    border-bottom: 0.5px solid dimgray;
     margin: 4px 0;
   }
   
