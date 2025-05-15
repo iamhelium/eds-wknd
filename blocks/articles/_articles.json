@@ -44,19 +44,15 @@
           "options": [
             {
               "name": "All Articles",
-              "value": "child-article"
-            },
-            {
-              "name": "All Articles with tags",
-              "value": "child-article-tag"
+              "value": "child-articles"
             },
             {
               "name": "Recent Articles",
-              "value": "recent-article"
+              "value": "recent-articles"
             },
             {
               "name": "Create Articles Manually",
-              "value": "manual-article"
+              "value": "manual-articles"
             }
           ]
         },
@@ -87,6 +83,26 @@
                 "numberMin": 1,
                 "customErrorMsg": "Value cannot be less than 1."
               }
+            },
+            {
+              "component": "boolean",
+              "label": "List all Articles with Tags filter",
+              "name": "tag-filter",
+              "valueType": "boolean"
+            },
+            {
+              "component": "aem-tag",
+              "label": "AEM Tag Picker",
+              "name": "cq:tags",
+              "valueType": "string",
+              "condition": {
+                "===": [
+                  {
+                    "var": "tag-filter"
+                  },
+                  true
+                ]
+              }
             }
           ],
           "condition": {
@@ -94,7 +110,7 @@
               {
                 "var": "layout-type"
               },
-              "child-article"
+              "child-articles"
             ]
           }
         },
