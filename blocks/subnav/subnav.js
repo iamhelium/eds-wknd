@@ -1,7 +1,6 @@
 export default function decorate(block) {
   block.innerHTML = '';
 
-  // Create SIGN IN and Language text
   const signInTrigger = document.createElement('p');
   signInTrigger.className = 'signin-trigger';
   signInTrigger.textContent = 'SIGN IN';
@@ -18,7 +17,6 @@ export default function decorate(block) {
   navWrapper.appendChild(signInTrigger);
   navWrapper.appendChild(languageText);
 
-  // ========== LANGUAGE DROPDOWN ==========
   const languageDropdown = document.createElement('div');
   languageDropdown.className = 'language-dropdown';
   languageDropdown.style.display = 'none';
@@ -80,7 +78,6 @@ export default function decorate(block) {
       `;
     languageDropdown.appendChild(item);
 
-    // Add separator except after the last item
     if (index < languages.length - 1) {
       const separator = document.createElement('hr');
       separator.className = 'language-separator';
@@ -88,18 +85,15 @@ export default function decorate(block) {
     }
   });
 
-  // Toggle dropdown on languageText click
   languageText.addEventListener('click', (e) => {
     e.stopPropagation();
     languageDropdown.style.display = languageDropdown.style.display === 'block' ? 'none' : 'block';
   });
 
-  // Hide dropdown when clicking elsewhere
   document.addEventListener('click', () => {
     languageDropdown.style.display = 'none';
   });
 
-  // ========== MODAL ==========
   const modalOverlay = document.createElement('div');
   modalOverlay.className = 'modal-overlay';
   modalOverlay.style.display = 'none';
@@ -134,7 +128,6 @@ export default function decorate(block) {
     modalOverlay.style.display = 'none';
   });
 
-  // Append all elements to the block
   block.appendChild(navWrapper);
   block.appendChild(languageDropdown);
   block.appendChild(modalOverlay);
