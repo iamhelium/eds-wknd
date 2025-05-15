@@ -1,18 +1,14 @@
 export default function decorate(block) {
   block.innerHTML = '';
 
-  // Create SIGN IN and Language text with flag and caret
+  // Create SIGN IN and Language text
   const signInTrigger = document.createElement('p');
   signInTrigger.className = 'signin-trigger';
   signInTrigger.textContent = 'SIGN IN';
 
   const languageText = document.createElement('p');
   languageText.className = 'language-text';
-  languageText.innerHTML = `
-      <img src="https://flagcdn.com/us.svg" class="language-flag" alt="US Flag" />
-      <span class="language-label">EN-US</span>
-      <span class="caret-icon">▼</span>
-    `;
+  languageText.textContent = 'EN-US';
 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'subnav-wrapper';
@@ -73,12 +69,12 @@ export default function decorate(block) {
     const item = document.createElement('div');
     item.className = 'language-item';
     item.innerHTML = `
-          <img src="${lang.flag}" alt="${lang.country} Flag" class="flag-icon"/>
-          <div class="language-info">
-            <div class="country-name">${lang.country}</div>
-            <div class="language-codes">${lang.languages}</div>
-          </div>
-        `;
+        <img src="${lang.flag}" alt="${lang.country} Flag" class="flag-icon"/>
+        <div class="language-info">
+          <div class="country-name">${lang.country}</div>
+          <div class="language-codes">${lang.languages}</div>
+        </div>
+      `;
     languageDropdown.appendChild(item);
 
     // Add separator except after the last item
@@ -89,20 +85,15 @@ export default function decorate(block) {
     }
   });
 
-  const caret = languageText.querySelector('.caret-icon');
-
   // Toggle dropdown on languageText click
   languageText.addEventListener('click', (e) => {
     e.stopPropagation();
-    const isOpen = languageDropdown.style.display === 'block';
-    languageDropdown.style.display = isOpen ? 'none' : 'block';
-    caret.textContent = isOpen ? '▼' : '▲';
+    languageDropdown.style.display = languageDropdown.style.display === 'block' ? 'none' : 'block';
   });
 
   // Hide dropdown when clicking elsewhere
   document.addEventListener('click', () => {
     languageDropdown.style.display = 'none';
-    caret.textContent = '▼';
   });
 
   // ========== MODAL ==========
@@ -113,15 +104,15 @@ export default function decorate(block) {
   const modalContent = document.createElement('div');
   modalContent.className = 'modal-content';
   modalContent.innerHTML = `
-        <span class="modal-close">&times;</span>
-        <h3>Sign In</h3>
-        <p class="subheading">Welcome back</p>
-        <input type="text" placeholder="Username" />
-        <input type="password" placeholder="Password" />
-        <a href="#" class="forgot-link">Forgot password?</a>
-        <button class="signin-btn">Sign In</button>
-        <hr class="signin-separator">
-      `;
+      <span class="modal-close">&times;</span>
+      <h3>Sign In</h3>
+      <p class="subheading">Welcome back</p>
+      <input type="text" placeholder="Username" />
+      <input type="password" placeholder="Password" />
+      <a href="#" class="forgot-link">Forgot password?</a>
+      <button class="signin-btn">Sign In</button>
+      <hr class="signin-separator">
+    `;
 
   modalOverlay.appendChild(modalContent);
 
