@@ -1,102 +1,129 @@
 export default function decorate(block) {
   block.innerHTML = '';
 
+  // Sign In trigger
   const signInTrigger = document.createElement('p');
   signInTrigger.className = 'signin-trigger';
   signInTrigger.textContent = 'SIGN IN';
 
-  // Language selector wrapper (flag + code + dropdown arrow)
-  const languageWrapper = document.createElement('div');
-  languageWrapper.className = 'language-wrapper';
+  // Language selector container
+  const languageText = document.createElement('p');
+  languageText.className = 'language-text';
+  languageText.setAttribute('tabindex', '0'); // make it focusable for accessibility
 
-  // Flag image
+  // Add flag + country + code to languageText
   const flagImg = document.createElement('img');
-  flagImg.className = 'flag-icon';
-  flagImg.src = 'https://flagcdn.com/us.svg';// US flag SVG from flagcdn
+  flagImg.className = 'language-flag';
+  flagImg.src = 'https://flagcdn.com/us.svg'; // US flag URL (can be changed)
   flagImg.alt = 'US Flag';
 
-  // Language code text
+  const countryName = document.createElement('span');
+  countryName.textContent = 'United States';
+
   const langCode = document.createElement('span');
-  langCode.className = 'language-code';
   langCode.textContent = 'EN-US';
+  langCode.style.marginLeft = '6px';
+  langCode.style.fontWeight = 'bold';
 
-  // Dropdown arrow
-  const dropdownArrow = document.createElement('span');
-  dropdownArrow.className = 'dropdown-arrow';
-  dropdownArrow.textContent = '▼';
+  languageText.appendChild(flagImg);
+  languageText.appendChild(countryName);
+  languageText.appendChild(langCode);
 
-  languageWrapper.appendChild(flagImg);
-  languageWrapper.appendChild(langCode);
-  languageWrapper.appendChild(dropdownArrow);
+  // Dropdown list for other languages
+  const languageDropdown = document.createElement('ul');
+  languageDropdown.className = 'language-dropdown';
 
-  // Subnav wrapper holding sign in and language selector
+  const languages = [
+    { country: 'United States', code: 'EN-US', flag: 'https://flagcdn.com/us.svg' },
+    { country: 'Germany', code: 'DE-DE', flag: 'https://flagcdn.com/de.svg' },
+    { country: 'France', code: 'FR-FR', flag: 'https://flagcdn.com/fr.svg' },
+    { country: 'Japan', code: 'JA-JP', flag: 'https://flagcdn.com/jp.svg' },
+  ];
+
+  languages.forEach(({ country, code, flag }) => {
+    const li = document.createElement('li');
+    const liFlag = document.createElement('img');
+    liFlag.className = 'language-flag';
+    liFlag.src = flag;
+    liFlag.alt = `${country} Flag`;
+
+    li.appendChild(liFlag);
+    li.appendChild(document.createTextNode(`${country} ${code}`));
+
+    li.addEventListener('click', () => {
+      // Update the main language display
+      flagImg.src = flag;
+      flagImg.alt = `${country} Flag`;
+      countryName.textContent = country;
+      langCode.textContent = code;
+
+      languageDropdown.classList.remove('show');
+    });
+
+    languageDropdown.appendChild(li);
+  });
+
+  // Toggle dropdown on click
+  languageText.addEventListener('click', (e) => {
+    e.stopPropagation();
+    languageDropdown.classList.toggle('show');
+  });
+
+  // Close dropdown if clicked outside
+  document.addEventListener('click', () => {
+    languageDropdown.classList.remove('show');
+  });
+
+  // Keyboard accessibility (close on Escape key)
+  languageText.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      languageDropdown.classList.remove('show');
+      languageText.blur();
+    }
+  });
+
   const navWrapper = document.createElement('div');
   navWrapper.className = 'subnav-wrapper';
 
   navWrapper.appendChild(signInTrigger);
-  navWrapper.appendChild(languageWrapper);
+  navWrapper.appendChild(languageText);
+  languageText.appendChild(languageDropdown);
 
-  // Dropdown card for languages
-  const languageDropdown = document.createElement('div');
-  languageDropdown.className = 'language-dropdown';
-  languageDropdown.style.display = 'none';
+  // Modal for sign in
+  const modalOverlay = document.createElement('div');
+  modalOverlay.className = 'modal-overlay';
+  modalOverlay.style.display = 'none';
 
-  // Language list data
-  const languages = [
-    { country: 'United States', code: 'EN-US', flag: 'https://flagcdn.com/us.svg' },
-    { country: 'France', code: 'FR-FR', flag: 'https://flagcdn.com/fr.svg' },
-    { country: 'Germany', code: 'DE-DE', flag: 'https://flagcdn.com/de.svg' },
-    { country: 'Spain', code: 'ES-ES', flag: 'https://flagcdn.com/es.svg' },
-  ];
+  const modalContent = document.createElement('div');
+  modalContent.className = 'modal-content';
+  modalContent.innerHTML = `
+        <span class="modal-close">&times;</span>
+        <h3>Sign In</h3>
+        <p class="subheading">Welcome back</p>
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+        <a href="#" class="forgot-link">Forgot password?</a>
+        <button class="signin-btn">Sign In</button>
+        <hr class="signin-separator">
+    `;
 
-  // Build language list items
-  languages.forEach(({ country, code, flag }) => {
-    const item = document.createElement('div');
-    item.className = 'language-item';
+  modalOverlay.appendChild(modalContent);
 
-    const itemFlag = document.createElement('img');
-    itemFlag.className = 'flag-icon';
-    itemFlag.src = flag;
-    itemFlag.alt = `${country} Flag`;
-
-    const itemText = document.createElement('div');
-    itemText.className = 'language-text';
-
-    const countryName = document.createElement('div');
-    countryName.className = 'country-name';
-    countryName.textContent = country;
-
-    const langCodeItem = document.createElement('div');
-    langCodeItem.className = 'lang-code-item';
-    langCodeItem.textContent = code;
-
-    itemText.appendChild(countryName);
-    itemText.appendChild(langCodeItem);
-
-    item.appendChild(itemFlag);
-    item.appendChild(itemText);
-
-    // Optional: click event to select language
-    item.addEventListener('click', () => {
-      flagImg.src = flag;
-      langCode.textContent = code;
-      languageDropdown.style.display = 'none';
-    });
-
-    languageDropdown.appendChild(item);
-  });
-
-  // Toggle dropdown on clicking languageWrapper
-  languageWrapper.addEventListener('click', (e) => {
+  signInTrigger.addEventListener('click', (e) => {
     e.stopPropagation();
-    languageDropdown.style.display = languageDropdown.style.display === 'flex' ? 'none' : 'flex';
+    modalOverlay.style.display = 'flex';
   });
 
-  // Close dropdown clicking outside
-  document.addEventListener('click', () => {
-    languageDropdown.style.display = 'none';
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) {
+      modalOverlay.style.display = 'none';
+    }
+  });
+
+  modalContent.querySelector('.modal-close').addEventListener('click', () => {
+    modalOverlay.style.display = 'none';
   });
 
   block.appendChild(navWrapper);
-  block.appendChild(languageDropdown);
+  block.appendChild(modalOverlay);
 }
