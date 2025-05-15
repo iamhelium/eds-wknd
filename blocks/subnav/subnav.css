@@ -106,10 +106,14 @@
   }
   
   .language-text {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;      /* spacing between flag, code, caret */
     margin-left: 1rem;
     font-size: 14px;
     color: white;
-    cursor: default;
+    cursor: default; /* default cursor on text */
+    user-select: none; /* prevent accidental text selection */
   }
   
   .signin-trigger, .language-text {
