@@ -34,6 +34,36 @@ export default function decorate(block) {
       languages: 'EN-CA | FR-CA',
     },
     {
+      code: 'ch',
+      flag: 'https://flagcdn.com/ch.svg',
+      country: 'Switzerland',
+      languages: 'DE-CH | FR-CH | IT-CH',
+    },
+    {
+      code: 'de',
+      flag: 'https://flagcdn.com/de.svg',
+      country: 'Germany',
+      languages: 'DE-DE',
+    },
+    {
+      code: 'fr',
+      flag: 'https://flagcdn.com/fr.svg',
+      country: 'France',
+      languages: 'FR-FR',
+    },
+    {
+      code: 'es',
+      flag: 'https://flagcdn.com/es.svg',
+      country: 'Spain',
+      languages: 'ES-ES',
+    },
+    {
+      code: 'it',
+      flag: 'https://flagcdn.com/it.svg',
+      country: 'Italy',
+      languages: 'IT-IT',
+    },
+    {
       code: 'en-au',
       flag: 'https://flagcdn.com/au.svg',
       country: 'Australia',
