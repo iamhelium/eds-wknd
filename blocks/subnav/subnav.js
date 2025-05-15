@@ -8,7 +8,10 @@ export default function decorate(block) {
 
   const languageText = document.createElement('p');
   languageText.className = 'language-text';
-  languageText.textContent = 'EN-US';
+  languageText.innerHTML = `
+  <img src="https://flagcdn.com/us.svg" alt="US Flag" class="flag-icon top-flag" />
+  <span class="lang-code">EN-US</span>
+`;
 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'subnav-wrapper';

@@ -183,3 +183,15 @@
     margin: 4px 0;
   }
   
+  .language-text .top-flag {
+    width: 20px;
+    height: auto;
+    margin-right: 6px;
+    object-fit: contain;
+  }
+  
+  .language-text .lang-code {
+    font-size: 14px;
+    color: white;
+  }
+  
