@@ -120,3 +120,45 @@
     display: flex;
     align-items: center;
   }
+
+  .language-dropdown {
+    position: absolute;
+    top: 48px;
+    right: 1rem;
+    background: #202020;
+    color: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px gray;
+    width: 300px;
+    z-index: 1000000;
+    font-family: sans-serif;
+    padding: 0.5rem 0;
+   }
+
+   .language-option {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #444;
+    display: flex;
+    flex-direction: column;
+   }
+   
+   .language-option:last-child {
+    border-bottom: none;
+   }
+
+   .language-option:hover {
+    background-color: #333;
+    cursor: pointer;
+   }
+
+   .flag-icon {
+    width: 20px;
+    height: 14px;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+   }
+   
+   .language-codes {
+    margin-top: 0.25rem;
+    font-size: 14px;
+   }
