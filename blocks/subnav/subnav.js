@@ -65,7 +65,7 @@ export default function decorate(block) {
     },
   ];
 
-  languages.forEach((lang) => {
+  languages.forEach((lang, index) => {
     const item = document.createElement('div');
     item.className = 'language-item';
     item.innerHTML = `
@@ -76,6 +76,13 @@ export default function decorate(block) {
         </div>
       `;
     languageDropdown.appendChild(item);
+
+    // Add separator except after the last item
+    if (index < languages.length - 1) {
+      const separator = document.createElement('hr');
+      separator.className = 'language-separator';
+      languageDropdown.appendChild(separator);
+    }
   });
 
   // Toggle dropdown on languageText click

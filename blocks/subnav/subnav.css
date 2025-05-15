@@ -174,3 +174,10 @@
     gap: 16px;
   }
    */
+
+   .language-separator {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 4px 0;
+  }
+  
