@@ -146,9 +146,11 @@
   
   .flag-icon {
     width: 24px;
-    height: 16px;
+    height: auto;
     margin-right: 10px;
+    object-fit: contain;
   }
+  
   
   .language-info {
     display: flex;

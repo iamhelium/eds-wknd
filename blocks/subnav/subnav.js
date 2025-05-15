@@ -23,19 +23,19 @@ export default function decorate(block) {
   const languages = [
     {
       code: 'en-us',
-      flag: '/flags/us.svg',
+      flag: 'https://flagcdn.com/us.svg',
       country: 'United States',
       languages: 'EN-US | ES-US',
     },
     {
       code: 'en-ca',
-      flag: '/flags/ca.svg',
+      flag: 'https://flagcdn.com/ca.svg',
       country: 'Canada',
       languages: 'EN-CA | FR-CA',
     },
     {
       code: 'en-au',
-      flag: '/flags/au.svg',
+      flag: 'https://flagcdn.com/au.svg',
       country: 'Australia',
       languages: 'EN-AU',
     },
