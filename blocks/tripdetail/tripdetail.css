@@ -1,3 +1,40 @@
-.tripdetail{
-  color: red;
+/* stylelint-disable selector-class-pattern */
+.cmp-trip-detail__item {
+  border-left: 5px solid var(--color-gray-light);
+  height: 84px;
+  margin-bottom: 1.25em;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+@media (width <=1024px) {
+  .cmp-trip-detail {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  .cmp-trip-detail__item {
+    border-width: 3px;
+    border-left: none;
+    padding-left: 0;
+    padding-right: 2em;
+    width: unset;
+  }
+}
+
+.cmp-trip-detail__label {
+  color: var(--color-dimgray);
+  font-size: var(--font-size-xsmall);
+  padding-top: 1em;
+  text-transform: uppercase;
+}
+
+.cmp-trip-detail__value {
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  margin-inline-start: 0;
+  padding-top: 0.5em;
+  text-transform: uppercase;
 }
