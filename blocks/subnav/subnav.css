@@ -1,26 +1,22 @@
-/* Subnav Wrapper */
 .subnav-wrapper {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 1em 11rem 0.5rem;
+    padding: 0.5rem 11rem;
     background: black;
     color: white;
     font-family: sans-serif;
-    gap: 1rem;
+    gap:1rem;
+    padding-top: 1em;
   }
   
-  /* Sign-in Button */
   .signin-trigger {
     cursor: pointer;
     margin: 0;
     font-size: 14px;
     font-weight: bold;
-    display: flex;
-    align-items: center;
   }
-  
-  /* Modal Overlay */
+ 
   .modal-overlay {
     position: fixed;
     top: 50%;
@@ -30,11 +26,9 @@
     justify-content: center;
     align-items: center;
     z-index: 999999;
-    transform: translate(-50%, -50%);
-    display: none; /* Hidden by default */
+    transform: translate(-50%,-50%);
   }
   
-  /* Modal Content */
   .modal-content {
     background: #202020;
     color: white;
@@ -42,12 +36,12 @@
     border-radius: 8px;
     width: 379px;
     box-shadow: 0 2px 12px black;
-    position: relative;
   }
   
   .modal-content h3 {
     margin: 0 0 8px;
     font-size: 40px;
+    color:white;
   }
   
   .modal-content .subheading {
@@ -62,11 +56,10 @@
     margin: 6px 0;
     border: 1px solid #ebebeb;
     border-radius: 4px;
-    background-color: #202020;
+    background-color: #2020;
     font-weight: 400;
     font-size: 18px;
     height: 3pc;
-    color: white;
   }
   
   .modal-content .forgot-link {
@@ -75,13 +68,18 @@
     text-decoration: none;
     margin: 0 0 13.5px;
     display: block;
+    line-height: normal;
+  }
+  
+  .modal-content .forgot-link:hover {
+    color: white;
   }
   
   .modal-content .signin-btn {
-    background: #ffea00;
+    background:#ffea00 0 0 no-repeat padding-box;
     color: black;
     border: none;
-    padding: 0.75rem 1rem;
+    padding: .75rem 1rem;
     width: 180px;
     border-radius: 1px;
     cursor: pointer;
@@ -91,8 +89,7 @@
     font-size: 15px;
     font-weight: 600;
   }
-  
-  /* Close Button */
+ 
   .modal-close {
     position: absolute;
     top: 8px;
@@ -101,8 +98,7 @@
     cursor: pointer;
     color: white;
   }
-  
-  /* Separator inside Modal */
+ 
   .signin-separator {
     border: none;
     border-top: 1px solid #444;
@@ -110,24 +106,21 @@
     height: 2px;
   }
   
-  /* Language Select Text */
   .language-text {
     margin-left: 1rem;
     font-size: 14px;
     font-weight: bold;
     color: white;
-    cursor: pointer;
+    cursor: default;
+  }
+  
+  .signin-trigger, .language-text {
+    margin: 0;
+    line-height: 1;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
   }
-  
-  .language-text .caret-icon {
-    font-size: 10px;
-    margin-left: 4px;
-  }
-  
-  /* Language Dropdown Menu */
+ 
   .language-dropdown {
     position: absolute;
     background-color: #1a1a1a;
@@ -138,10 +131,8 @@
     min-width: 220px;
     margin-left: 60px;
     width: 23em;
-    display: none; /* Hidden by default */
   }
   
-  /* Language Item */
   .language-item {
     display: flex;
     align-items: center;
@@ -155,7 +146,6 @@
     background-color: #2a2a2a;
   }
   
-  /* Flag Icon */
   .flag-icon {
     width: 24px;
     height: auto;
@@ -163,7 +153,7 @@
     object-fit: contain;
   }
   
-  /* Language Info Block */
+  
   .language-info {
     display: flex;
     flex-direction: column;
@@ -179,8 +169,15 @@
     opacity: 0.8;
   }
   
-  /* Optional Language Separator */
-  .language-separator {
+  /* Positioning fix (optional based on layout)
+  .subnav-wrapper {
+    position: relative;
+    display: flex;
+    gap: 16px;
+  }
+   */
+ 
+   .language-separator {
     border: none;
     border-bottom: 0.5px solid dimgray;
     margin: 4px 0;
