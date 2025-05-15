@@ -127,8 +127,10 @@
     margin-top: 8px;
     z-index: 1000;
     min-width: 220px;
-    margin-left: 0;
+    margin-left: 10em;
     width: 20em;
+    transform: translate(-50%,-50%);
+    top:90%;
   }
   
   .language-item {
