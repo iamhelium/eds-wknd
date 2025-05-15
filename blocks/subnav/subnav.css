@@ -6,7 +6,7 @@
     background: black;
     color: white;
     font-family: sans-serif;
-    gap: 1rem;
+    gap:1rem;
     padding-top: 1em;
   }
   
@@ -16,7 +16,7 @@
     font-size: 14px;
     font-weight: bold;
   }
-  
+
   .modal-overlay {
     position: fixed;
     top: 50%;
@@ -26,7 +26,7 @@
     justify-content: center;
     align-items: center;
     z-index: 999999;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%,-50%);
   }
   
   .modal-content {
@@ -36,13 +36,12 @@
     border-radius: 8px;
     width: 379px;
     box-shadow: 0 2px 12px black;
-    position: relative;
   }
   
   .modal-content h3 {
     margin: 0 0 8px;
     font-size: 40px;
-    color: white;
+    color:white;
   }
   
   .modal-content .subheading {
@@ -77,10 +76,10 @@
   }
   
   .modal-content .signin-btn {
-    background: #ffea00 0 0 no-repeat padding-box;
+    background:#ffea00 0 0 no-repeat padding-box;
     color: black;
     border: none;
-    padding: 0.75rem 1rem;
+    padding: .75rem 1rem;
     width: 180px;
     border-radius: 1px;
     cursor: pointer;
@@ -90,7 +89,7 @@
     font-size: 15px;
     font-weight: 600;
   }
-  
+
   .modal-close {
     position: absolute;
     top: 8px;
@@ -99,7 +98,7 @@
     cursor: pointer;
     color: white;
   }
-  
+
   .signin-separator {
     border: none;
     border-top: 1px solid #444;
@@ -112,67 +111,12 @@
     font-size: 14px;
     font-weight: bold;
     color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    position: relative;
-    user-select: none;
+    cursor: default;
   }
   
-  /* Keep your original */
-  .signin-trigger,
-  .language-text {
+  .signin-trigger, .language-text {
     margin: 0;
     line-height: 1;
     display: flex;
     align-items: center;
   }
-  
-  /* New CSS for flag + dropdown */
-  
-  .language-flag {
-    width: 20px;
-    height: 14px;
-    margin-right: 6px;
-    object-fit: contain;
-    border-radius: 2px;
-    box-shadow: 0 0 2px gray;
-  }
-  
-  .language-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: #202020;
-    border: 1px solid #444;
-    border-radius: 4px;
-    margin-top: 4px;
-    min-width: 130px;
-    box-shadow: 0 2px 8px gray;
-    z-index: 1000000;
-    display: none; /* hidden by default */
-    flex-direction: column;
-    padding: 0;
-    list-style: none;
-  }
-  
-  .language-dropdown.show {
-    display: flex;
-  }
-  
-  .language-dropdown li {
-    padding: 8px 12px;
-    color: white;
-    font-weight: normal;
-    font-size: 14px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    white-space: nowrap;
-  }
-  
-  .language-dropdown li:hover {
-    background: #444;
-  }
-  
