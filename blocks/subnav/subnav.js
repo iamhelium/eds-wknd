@@ -5,6 +5,16 @@ export default function decorate(block) {
   signInTrigger.className = 'signin-trigger';
   signInTrigger.textContent = 'SIGN IN';
 
+  const languageText = document.createElement('p');
+  languageText.className = 'language-text';
+  languageText.textContent = 'EN-US';
+
+  const navWrapper = document.createElement('div');
+  navWrapper.className = 'subnav-wrapper';
+
+  navWrapper.appendChild(signInTrigger);
+  navWrapper.appendChild(languageText);
+
   const modalOverlay = document.createElement('div');
   modalOverlay.className = 'modal-overlay';
   modalOverlay.style.display = 'none';
@@ -39,6 +49,6 @@ export default function decorate(block) {
     modalOverlay.style.display = 'none';
   });
 
-  block.appendChild(signInTrigger);
+  block.appendChild(navWrapper);
   block.appendChild(modalOverlay);
 }

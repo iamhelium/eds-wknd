@@ -104,3 +104,11 @@
     height: 2px;
   }
   
+  .language-text {
+    margin-left: 1rem;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    cursor: default;
+  }
+  
