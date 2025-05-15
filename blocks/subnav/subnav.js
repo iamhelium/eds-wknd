@@ -6,17 +6,12 @@ export default function decorate(block) {
   signInTrigger.className = 'signin-trigger';
   signInTrigger.textContent = 'SIGN IN';
 
-  // Language container with flag, code, and caret icon
   const languageText = document.createElement('p');
   languageText.className = 'language-text';
-
   languageText.innerHTML = `
-      <img src="https://flagcdn.com/us.svg" alt="US Flag" class="flag-icon top-flag" />
-      <span class="lang-code">EN-US</span>
-      <span class="caret-icon">⌄</span>
-    `;
-
-  const caretIcon = languageText.querySelector('.caret-icon');
+  <img src="https://flagcdn.com/us.svg" alt="US Flag" class="flag-icon top-flag" />
+  <span class="lang-code">EN-US</span>
+`;
 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'subnav-wrapper';
@@ -85,6 +80,7 @@ export default function decorate(block) {
       `;
     languageDropdown.appendChild(item);
 
+    // Add separator except after the last item
     if (index < languages.length - 1) {
       const separator = document.createElement('hr');
       separator.className = 'language-separator';
@@ -92,18 +88,15 @@ export default function decorate(block) {
     }
   });
 
-  // Toggle dropdown ONLY on caretIcon click
-  caretIcon.addEventListener('click', (e) => {
+  // Toggle dropdown on languageText click
+  languageText.addEventListener('click', (e) => {
     e.stopPropagation();
-    const isOpen = languageDropdown.style.display === 'block';
-    languageDropdown.style.display = isOpen ? 'none' : 'block';
-    caretIcon.textContent = isOpen ? '⌄' : '⌃';
+    languageDropdown.style.display = languageDropdown.style.display === 'block' ? 'none' : 'block';
   });
 
   // Hide dropdown when clicking elsewhere
   document.addEventListener('click', () => {
     languageDropdown.style.display = 'none';
-    caretIcon.textContent = '⌄';
   });
 
   // ========== MODAL ==========
