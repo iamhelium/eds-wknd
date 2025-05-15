@@ -182,7 +182,7 @@
     border-bottom: 0.5px solid dimgray;
     margin: 4px 0;
   }
-  
+
   .language-text .top-flag {
     width: 20px;
     height: auto;
@@ -195,3 +195,9 @@
     color: white;
   }
   
+  .caret-icon {
+  font-size: 14px;
+  cursor: pointer; /* Only caret is clickable */
+  user-select: none;
+  transition: transform 0.3s ease;
+}
