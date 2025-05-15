@@ -1,4 +1,4 @@
-export default function decorateTripDetail(block) {
+export default function decorate(block) {
   const dl = document.createElement('dl');
   dl.classList.add('cmp-trip-detail');
 
