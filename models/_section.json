@@ -87,7 +87,8 @@
         "form",
         "embed-adaptive-form",
         "profile",
-        "tabs"
+        "tabs",
+        "tripdetail"
       ]
     }
   ]

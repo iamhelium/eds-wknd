@@ -5678,6 +5678,23 @@
     ]
   },
   {
+    "id": "item",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Item Title",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "value",
+        "label": "Item Value",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "text",
     "fields": [
       {
