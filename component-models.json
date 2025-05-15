@@ -5473,6 +5473,36 @@
     ]
   },
   {
+    "id": "tabs",
+    "fields": [
+      {
+        "component": "text",
+        "label": "Aria Label",
+        "name": "aria-label",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "tab",
+    "fields": [
+      {
+        "component": "text",
+        "label": "Title",
+        "name": "title",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "reference",
+        "label": "Tab Fragment",
+        "validation": {
+          "rootPath": "/content/eds-wknd"
+        }
+      }
+    ]
+  },
+  {
     "id": "teaser",
     "fields": [
       {
