@@ -82,5 +82,11 @@
       "tnc",
       "wizard"
     ]
+  },
+  {
+    "id": "tabs",
+    "components": [
+      "tab"
+    ]
   }
 ]
