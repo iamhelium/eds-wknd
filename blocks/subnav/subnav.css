@@ -122,7 +122,7 @@
   .language-dropdown {
     position: fixed;
     background-color: #1a1a1a;
-    border-radius: 6px;
+    border-radius: 0;
     padding: 10px;
     margin-top: 8px;
     z-index: 1000;
