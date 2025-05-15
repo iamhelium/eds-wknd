@@ -63,12 +63,6 @@ export default function decorate(block) {
       country: 'Italy',
       languages: 'IT-IT',
     },
-    {
-      code: 'en-au',
-      flag: 'https://flagcdn.com/au.svg',
-      country: 'Australia',
-      languages: 'EN-AU',
-    },
   ];
 
   languages.forEach((lang) => {
