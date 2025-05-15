@@ -2,11 +2,12 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 1em 1rem 0.5rem;
+    padding: 0.5rem 1rem;
     background: black;
     color: white;
     font-family: sans-serif;
     gap: 1rem;
+    padding-top: 1em;
   }
   
   .signin-trigger {
@@ -14,7 +15,6 @@
     margin: 0;
     font-size: 14px;
     font-weight: bold;
-    user-select: none;
   }
   
   .modal-overlay {
@@ -27,7 +27,6 @@
     align-items: center;
     z-index: 999999;
     transform: translate(-50%, -50%);
-    display: none;
   }
   
   .modal-content {
@@ -108,90 +107,72 @@
     height: 2px;
   }
   
-  .language-wrapper {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    user-select: none;
-    gap: 6px;
-    position: relative;
-    color: white;
-    font-weight: bold;
-    font-size: 14px;
-  }
-  
-  .flag-icon {
-    width: 20px;
-    height: 14px;
-    object-fit: contain;
-    border-radius: 2px;
-    box-shadow: 0 0 2px gray;
-  }
-  
-  .dropdown-arrow {
-    font-size: 12px;
-    line-height: 1;
-    user-select: none;
-  }
-  
-  /* Dropdown container */
-  .language-dropdown {
-    position: absolute;
-    top: calc(100% + 6px);
-    right: 0;
-    background: #202020;
-    border: 1px solid #444;
-    border-radius: 4px;
-    min-width: 150px;
-    box-shadow: 0 2px 8px gray;
-    display: none;
-    flex-direction: column;
-    padding: 0;
-    z-index: 1000000;
-    font-size: 14px;
-    color: white;
-  }
-  
-  /* When visible, override display */
-  .language-dropdown[style*="flex"] {
-    display: flex;
-  }
-  
-  /* Each language item */
-  .language-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .language-item:hover {
-    background-color: #444;
-  }
-  
   .language-text {
+    margin-left: 1rem;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
     display: flex;
-    flex-direction: column;
-    line-height: 1.2;
+    align-items: center;
+    position: relative;
+    user-select: none;
   }
   
-  .country-name {
-    font-weight: 600;
-  }
-  
-  .lang-code-item {
-    font-size: 12px;
-    opacity: 0.7;
-  }
-  
-  /* Preserve original signin-trigger and language text styles */
+  /* Keep your original */
   .signin-trigger,
   .language-text {
     margin: 0;
     line-height: 1;
     display: flex;
     align-items: center;
+  }
+  
+  /* New CSS for flag + dropdown */
+  
+  .language-flag {
+    width: 20px;
+    height: 14px;
+    margin-right: 6px;
+    object-fit: contain;
+    border-radius: 2px;
+    box-shadow: 0 0 2px gray;
+  }
+  
+  .language-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #202020;
+    border: 1px solid #444;
+    border-radius: 4px;
+    margin-top: 4px;
+    min-width: 130px;
+    box-shadow: 0 2px 8px gray;
+    z-index: 1000000;
+    display: none; /* hidden by default */
+    flex-direction: column;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .language-dropdown.show {
+    display: flex;
+  }
+  
+  .language-dropdown li {
+    padding: 8px 12px;
+    color: white;
+    font-weight: normal;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+  
+  .language-dropdown li:hover {
+    background: #444;
   }
   
