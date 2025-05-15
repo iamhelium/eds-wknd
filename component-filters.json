@@ -28,7 +28,14 @@
       "embed-adaptive-form",
       "profile",
       "tabs",
-      "tripdetail"
+      "tripdetail",
+      "articlelist"
+    ]
+  },
+  {
+    "id": "articlelist",
+    "components": [
+      "list"
     ]
   },
   {
