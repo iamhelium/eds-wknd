@@ -14,8 +14,8 @@ export default function decorate(block) {
 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'subnav-wrapper';
-  navWrapper.appendChild(languageText);
   navWrapper.appendChild(signInTrigger);
+  navWrapper.appendChild(languageText);
 
   const languageDropdown = document.createElement('div');
   languageDropdown.className = 'language-dropdown';
