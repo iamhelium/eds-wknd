@@ -87,7 +87,10 @@
         "form",
         "embed-adaptive-form",
         "profile",
-        "list"
+        "list",
+        "tabs",
+        "tripdetail",
+        "articlelist"
       ]
     }
   ]
