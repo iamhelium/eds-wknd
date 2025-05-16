@@ -21,7 +21,7 @@ module.exports = {
     'xwalk/max-cells': ['error', {
       '*': 5,
       teaser: 10, // custom rule for specific model
-      articles: 10,
+      articles: 15,
       form: 15,
       wizard: 12,
       'form-button': 7,
