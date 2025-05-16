@@ -204,3 +204,14 @@
   user-select: none;
   transition: transform 0.3s ease;
 }
+
+@media (width <= 767px) {
+  .subnav-wrapper {
+    padding: 0.5rem 1rem;
+    justify-content: space-between !important;
+  }
+
+.language-text{
+  margin-left:9rem;
+}
+}
