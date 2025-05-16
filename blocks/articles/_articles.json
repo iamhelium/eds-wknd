@@ -200,6 +200,14 @@
               "value": "descending"
             }
           ]
+        },
+        {
+          "component": "aem-tag",
+          "name": "tags",
+          "label": "AEM Tag Picker",
+          "value": "",
+          "valueType": "string",
+          "rootPath": "/content/cq:tags/eds-wknd"
         }
       ]
     }
