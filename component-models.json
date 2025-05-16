@@ -245,7 +245,7 @@
             "label": "Choose Tags for filter",
             "name": "tags",
             "valueType": "string",
-            "rootPath": "/content/cq:tags/eds-wknd",
+            "rootPath": "/content/cq:tags/eds-helium-xwalk",
             "condition": {
               "===": [
                 {
