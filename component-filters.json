@@ -26,6 +26,7 @@
       "breadcrumbs",
       "form",
       "embed-adaptive-form",
+      "subnav",
       "profile",
       "tabs",
       "tripdetail",
@@ -36,6 +37,7 @@
     "id": "articlelist",
     "components": [
       "list"
+
     ]
   },
   {
