@@ -9,6 +9,7 @@
     gap:2rem;
     padding-top: 0.2em;
     padding-bottom: 0.2em;
+    position: relative;
   }
   
   .signin-trigger {
@@ -121,7 +122,7 @@
   }
  
   .language-dropdown {
-    position: fixed;
+    position: absolute;
     background-color: #1a1a1a;
     border-radius: 0;
     padding: 10px;
@@ -130,8 +131,9 @@
     min-width: 220px;
     margin-left: 10em;
     width: 20em;
-    transform: translate(-50%,-50%);
-    top:46%;
+    transform:none;
+    top:100%;
+    left:auto;
   }
   
   .language-item {
