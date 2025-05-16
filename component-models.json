@@ -194,15 +194,15 @@
         "options": [
           {
             "name": "All Articles",
-            "value": "child-article"
-          },
-          {
-            "name": "All Articles with tags",
-            "value": "child-article-tag"
+            "value": "child-articles"
           },
           {
             "name": "Recent Articles",
-            "value": "recent-article"
+            "value": "recent-articles"
+          },
+          {
+            "name": "Create Articles Manually",
+            "value": "manual-articles"
           }
         ]
       },
@@ -233,6 +233,27 @@
               "numberMin": 1,
               "customErrorMsg": "Value cannot be less than 1."
             }
+          },
+          {
+            "component": "boolean",
+            "label": "List all Articles with Tags filter",
+            "name": "tag-filter",
+            "valueType": "boolean"
+          },
+          {
+            "component": "aem-tag",
+            "label": "Choose Tags for filter",
+            "name": "cq:tags",
+            "valueType": "string",
+            "rootPath": "/content/cq:tags/eds-wknd",
+            "condition": {
+              "===": [
+                {
+                  "var": "tag-filter"
+                },
+                true
+              ]
+            }
           }
         ],
         "condition": {
@@ -240,7 +261,7 @@
             {
               "var": "layout-type"
             },
-            "child-article"
+            "child-articles"
           ]
         }
       },
@@ -366,6 +387,61 @@
             "value": "descending"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "article",
+    "fields": [
+      {
+        "component": "select",
+        "label": "Article Type",
+        "name": "article-type",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default Article",
+            "value": "article"
+          },
+          {
+            "name": "Locked Article",
+            "value": "locked-article"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Article Image"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alternative text for accessibility",
+        "required": true
+      },
+      {
+        "component": "text",
+        "label": "Title",
+        "name": "article-title",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "label": "Description",
+        "name": "article-description",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "label": "Article Link",
+        "name": "article-link",
+        "valueType": "string",
+        "validation": {
+          "rootPath": "/content/eds-wknd"
+        }
       }
     ]
   },
