@@ -158,6 +158,32 @@
     ]
   },
   {
+    "id": "list",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link",
+        "valueType": "string",
+        "validation": {
+          "rootPath": "/content/eds-wknd"
+        }
+      }
+    ]
+  },
+  {
     "id": "articles",
     "fields": [
       {
@@ -5473,6 +5499,36 @@
     ]
   },
   {
+    "id": "tabs",
+    "fields": [
+      {
+        "component": "text",
+        "label": "Aria Label",
+        "name": "aria-label",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "tab",
+    "fields": [
+      {
+        "component": "text",
+        "label": "Title",
+        "name": "title",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "reference",
+        "label": "Tab Fragment",
+        "validation": {
+          "rootPath": "/content/eds-wknd"
+        }
+      }
+    ]
+  },
+  {
     "id": "teaser",
     "fields": [
       {
@@ -5644,6 +5700,23 @@
             false
           ]
         }
+      }
+    ]
+  },
+  {
+    "id": "item",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Item Title",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "value",
+        "label": "Item Value",
+        "valueType": "string"
       }
     ]
   },

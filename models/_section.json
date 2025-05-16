@@ -86,8 +86,11 @@
         "breadcrumbs",
         "form",
         "embed-adaptive-form",
-        "subnav",
-        "profile"
+        "subnav"
+        "profile",
+        "tabs",
+        "tripdetail",
+        "articlelist"
       ]
     }
   ]

@@ -27,7 +27,17 @@
       "form",
       "embed-adaptive-form",
       "subnav",
-      "profile"
+      "profile",
+      "tabs",
+      "tripdetail",
+      "articlelist"
+    ]
+  },
+  {
+    "id": "articlelist",
+    "components": [
+      "list"
+
     ]
   },
   {
@@ -82,6 +92,18 @@
       "text-input",
       "tnc",
       "wizard"
+    ]
+  },
+  {
+    "id": "tabs",
+    "components": [
+      "tab"
+    ]
+  },
+  {
+    "id": "tripdetail",
+    "components": [
+      "item"
     ]
   }
 ]
