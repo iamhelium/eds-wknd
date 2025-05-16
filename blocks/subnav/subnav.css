@@ -1,6 +1,6 @@
 .subnav-wrapper {
   display: flex;
-  justify-content: flex-end; /* desktop: all right */
+  justify-content: flex-end;
   align-items: center;
   padding: 0.5rem 11rem;
   background: black;
@@ -12,32 +12,31 @@
   position: relative;
 }
 
-/* Wrap sign in and language in containers for easier flex control */
-.signin-container, .language-container {
-  display: flex;
-  align-items: center;
+/* Containers for better flex control */
+.signin-container {
+  order: 1;
 }
 
-/* SIGN IN text style */
+.language-container {
+  order: 2;
+  margin-left: auto; /* Push language container to the right */
+}
+
 .signin-trigger {
   cursor: pointer;
   margin: 0;
   font-size: 14px;
-  display: flex;
-  align-items: center;
 }
 
-/* LANGUAGE text style */
 .language-text {
   font-size: 14px;
   color: white;
-  cursor: pointer; /* changed from default */
+  cursor: default;
+  margin: 0;
   display: flex;
   align-items: center;
-  margin-left: 0; /* remove left margin so it can be controlled by container */
 }
 
-/* Modal styles */
 .modal-overlay {
   position: fixed;
   top: 50%;
@@ -57,7 +56,6 @@
   border-radius: 8px;
   width: 379px;
   box-shadow: 0 2px 12px black;
-  position: relative;
 }
 
 .modal-content h3 {
@@ -128,7 +126,6 @@
   height: 2px;
 }
 
-/* Language dropdown */
 .language-dropdown {
   position: absolute;
   background-color: #1a1a1a;
@@ -144,7 +141,6 @@
   left: auto;
 }
 
-/* Language items */
 .language-item {
   display: flex;
   align-items: center;
@@ -205,35 +201,26 @@
   transition: transform 0.3s ease;
 }
 
-/* ===== Responsive: Tablet and Mobile ===== */
-@media (width <= 1024px) {
+/* Responsive */
+
+@media (width <= 767px) {
   .subnav-wrapper {
-    justify-content: space-between !important;
     padding: 0.5rem 1rem;
+    justify-content: space-between !important;
   }
 
-  /* Signin on left */
-  .signin-container {
-    order: 0;
-  }
-
-  /* Language on right */
-  .language-container {
-    order: 1;
-  }
-
-  /* Remove any margin-left on language-text to align right */
   .language-text {
     margin-left: 0;
   }
 }
 
-/* You can optionally keep margin-left for language-text on very small screens if needed */
+@media (width >= 768px) and (width <= 1024px) {
+  .subnav-wrapper {
+    padding: 0.5rem 1rem;
+    justify-content: space-between !important;
+  }
 
-/*
-@media (max-width: 767px) {
   .language-text {
     margin-left: 0;
   }
 }
-*/
