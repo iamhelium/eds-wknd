@@ -93,7 +93,7 @@
             {
               "component": "aem-tag",
               "label": "Choose Tags for filter",
-              "name": "cq:tags",
+              "name": "tags",
               "valueType": "string",
               "rootPath": "/content/cq:tags/eds-wknd",
               "condition": {
