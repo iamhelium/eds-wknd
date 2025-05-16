@@ -12,14 +12,14 @@
   position: relative;
 }
 
-/* Containers for better flex control */
+
 .signin-container {
   order: 1;
 }
 
 .language-container {
   order: 2;
-  margin-left: auto; /* Push language container to the right */
+  margin-left: auto; 
 }
 
 .signin-trigger {
@@ -196,12 +196,12 @@
 
 .caret-icon {
   font-size: 14px;
-  cursor: pointer; /* Only caret is clickable */
+  cursor: pointer; 
   user-select: none;
   transition: transform 0.3s ease;
 }
 
-/* Responsive */
+
 
 @media (width <= 767px) {
   .subnav-wrapper {

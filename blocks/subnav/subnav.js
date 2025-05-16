@@ -15,17 +15,14 @@ export default function decorate(block) {
   const navWrapper = document.createElement('div');
   navWrapper.className = 'subnav-wrapper';
 
-  // Wrap signInTrigger inside signin-container
   const signinContainer = document.createElement('div');
   signinContainer.className = 'signin-container';
   signinContainer.appendChild(signInTrigger);
 
-  // Wrap languageText inside language-container
   const languageContainer = document.createElement('div');
   languageContainer.className = 'language-container';
   languageContainer.appendChild(languageText);
 
-  // Append both containers to navWrapper
   navWrapper.appendChild(signinContainer);
   navWrapper.appendChild(languageContainer);
 
