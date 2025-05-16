@@ -1,18 +1,9 @@
 export default function decorate(block) {
   block.innerHTML = '';
 
-  // Wrap sign-in inside a container
-  const signInContainer = document.createElement('div');
-  signInContainer.className = 'signin-container';
-
   const signInTrigger = document.createElement('p');
   signInTrigger.className = 'signin-trigger';
   signInTrigger.textContent = 'SIGN IN';
-  signInContainer.appendChild(signInTrigger);
-
-  // Wrap language inside a container
-  const languageContainer = document.createElement('div');
-  languageContainer.className = 'language-container';
 
   const languageText = document.createElement('p');
   languageText.className = 'language-text';
@@ -20,13 +11,22 @@ export default function decorate(block) {
     <img src="https://flagcdn.com/us.svg" alt="US Flag" class="flag-icon top-flag" />
     <span class="lang-code">EN-US</span>
   `;
-  languageContainer.appendChild(languageText);
 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'subnav-wrapper';
 
-  // Append containers instead of direct elements
-  navWrapper.appendChild(signInContainer);
+  // Wrap signInTrigger inside signin-container
+  const signinContainer = document.createElement('div');
+  signinContainer.className = 'signin-container';
+  signinContainer.appendChild(signInTrigger);
+
+  // Wrap languageText inside language-container
+  const languageContainer = document.createElement('div');
+  languageContainer.className = 'language-container';
+  languageContainer.appendChild(languageText);
+
+  // Append both containers to navWrapper
+  navWrapper.appendChild(signinContainer);
   navWrapper.appendChild(languageContainer);
 
   const languageDropdown = document.createElement('div');
@@ -82,12 +82,12 @@ export default function decorate(block) {
     const item = document.createElement('div');
     item.className = 'language-item';
     item.innerHTML = `
-      <img src="${lang.flag}" alt="${lang.country} Flag" class="flag-icon"/>
-      <div class="language-info">
-        <div class="country-name">${lang.country}</div>
-        <div class="language-codes">${lang.languages}</div>
-      </div>
-    `;
+        <img src="${lang.flag}" alt="${lang.country} Flag" class="flag-icon"/>
+        <div class="language-info">
+          <div class="country-name">${lang.country}</div>
+          <div class="language-codes">${lang.languages}</div>
+        </div>
+      `;
     languageDropdown.appendChild(item);
 
     if (index < languages.length - 1) {
@@ -113,15 +113,15 @@ export default function decorate(block) {
   const modalContent = document.createElement('div');
   modalContent.className = 'modal-content';
   modalContent.innerHTML = `
-    <span class="modal-close">&times;</span>
-    <h3>Sign In</h3>
-    <p class="subheading">Welcome back</p>
-    <input type="text" placeholder="Username" />
-    <input type="password" placeholder="Password" />
-    <a href="#" class="forgot-link">Forgot password?</a>
-    <button class="signin-btn">Sign In</button>
-    <hr class="signin-separator">
-  `;
+      <span class="modal-close">&times;</span>
+      <h3>Sign In</h3>
+      <p class="subheading">Welcome back</p>
+      <input type="text" placeholder="Username" />
+      <input type="password" placeholder="Password" />
+      <a href="#" class="forgot-link">Forgot password?</a>
+      <button class="signin-btn">Sign In</button>
+      <hr class="signin-separator">
+    `;
 
   modalOverlay.appendChild(modalContent);
 
