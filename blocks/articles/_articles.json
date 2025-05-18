@@ -9,7 +9,23 @@
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
               "name": "Articles",
-              "model": "articles"
+              "model": "articles",
+              "filter": "articles"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Article",
+      "id": "article",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Article",
+              "model": "article"
             }
           }
         }
@@ -28,15 +44,15 @@
           "options": [
             {
               "name": "All Articles",
-              "value": "child-article"
-            },
-            {
-              "name": "All Articles with tags",
-              "value": "child-article-tag"
+              "value": "child-articles"
             },
             {
               "name": "Recent Articles",
-              "value": "recent-article"
+              "value": "recent-articles"
+            },
+            {
+              "name": "Create Articles Manually",
+              "value": "manual-articles"
             }
           ]
         },
@@ -62,48 +78,30 @@
               "name": "child-article-depth",
               "label": "Child Depth",
               "valueType": "number",
-              "value": 1,
               "validation": {
                 "numberMin": 1,
                 "customErrorMsg": "Value cannot be less than 1."
-              }
-            }
-          ],
-          "condition": {
-            "===": [
-              {
-                "var": "layout-type"
-              },
-              "child-article"
-            ]
-          }
-        },
-        {
-          "component": "container",
-          "label": "List all Articles as card with Tag filter under Selected Parent Page",
-          "name": "child-article-tag-container",
-          "valueType": "string",
-          "collapsible": false,
-          "fields": [
-            {
-              "component": "aem-content",
-              "name": "child-article-tag-parent",
-              "label": "Parent Page",
-              "valueType": "string",
-              "required": true,
-              "validation": {
-                "rootPath": "/content/eds-wknd"
               }
             },
             {
-              "component": "number",
-              "name": "child-article-tag-depth",
-              "label": "Child Depth",
-              "valueType": "number",
-              "value": 1,
-              "validation": {
-                "numberMin": 1,
-                "customErrorMsg": "Value cannot be less than 1."
+              "component": "boolean",
+              "label": "List all Articles with Tags filter",
+              "name": "tag-filter",
+              "valueType": "boolean"
+            },
+            {
+              "component": "aem-tag",
+              "label": "Choose Tags for filter",
+              "name": "tags",
+              "valueType": "string",
+              "rootPath": "/content/cq:tags/eds-wknd",
+              "condition": {
+                "===": [
+                  {
+                    "var": "tag-filter"
+                  },
+                  true
+                ]
               }
             }
           ],
@@ -112,7 +110,7 @@
               {
                 "var": "layout-type"
               },
-              "child-article-tag"
+              "child-articles"
             ]
           }
         },
@@ -127,7 +125,7 @@
               "component": "aem-content",
               "name": "recent-article-parent",
               "label": "Parent Page",
-              "valueType": "string[]",
+              "valueType": "string",
               "required": true,
               "validation": {
                 "rootPath": "/content/eds-wknd"
@@ -135,10 +133,9 @@
             },
             {
               "component": "number",
-              "name": "recent-article-parent-depth",
+              "name": "recent-article-depth",
               "label": "Child Depth",
               "valueType": "number",
-              "value": 1,
               "validation": {
                 "numberMin": 1,
                 "customErrorMsg": "Value cannot be less than 1."
@@ -146,10 +143,9 @@
             },
             {
               "component": "number",
-              "name": "recent-article-parent-count",
+              "name": "recent-article-count",
               "label": "Article Count",
               "valueType": "number",
-              "value": 4,
               "validation": {
                 "numberMin": 1,
                 "customErrorMsg": "Value cannot be less than 1."
@@ -161,7 +157,7 @@
               {
                 "var": "layout-type"
               },
-              "recent-article"
+              "recent-articles"
             ]
           }
         },
@@ -183,7 +179,17 @@
               "name": "Last modified date",
               "value": "last-modified-date"
             }
-          ]
+          ],
+          "condition": {
+            "in": [
+              {
+                "var": "layout-type"
+              },
+              [
+                "child-articles"
+              ]
+            ]
+          }
         },
         {
           "component": "select",
@@ -199,18 +205,66 @@
               "name": "Descending",
               "value": "descending"
             }
-          ]
+          ],
+          "condition": {
+            "in": [
+              {
+                "var": "layout-type"
+              },
+              [
+                "child-articles"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "article",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Article Image"
         },
         {
-          "component": "aem-tag",
-          "name": "tags",
-          "label": "AEM Tag Picker",
-          "value": "",
+          "component": "text",
           "valueType": "string",
-          "rootPath": "/content/cq:tags/eds-wknd"
+          "name": "imageAlt",
+          "label": "Alternative text for accessibility",
+          "required": true
+        },
+        {
+          "component": "text",
+          "label": "Title",
+          "name": "article-title",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "label": "Description",
+          "name": "article-description",
+          "valueType": "string"
+        },
+        {
+          "component": "aem-content",
+          "label": "Article Link",
+          "name": "article-link",
+          "valueType": "string",
+          "validation": {
+            "rootPath": "/content/eds-wknd"
+          }
         }
       ]
     }
   ],
-  "filters": []
+  "filters": [
+    {
+      "id": "articles",
+      "components": [
+        "article"
+      ]
+    }
+  ]
 }
