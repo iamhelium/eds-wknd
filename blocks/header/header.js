@@ -95,7 +95,7 @@ export default async function decorate(block) {
 
   const [subnav, brand, sections, tools] = [...fragment.children];
 
-  // Add subnav block
+  // Add subnav block inside nav wrapper
   if (subnav) {
     navWrapper.append(subnav);
   }
