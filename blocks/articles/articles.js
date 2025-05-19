@@ -173,8 +173,7 @@ export default async function decorate(block) {
         return;
       }
 
-      const filteredTags = tags.filter((t) => filterTags.includes(t.tag))
-        .sort((a, b) => a.tag.localeCompare(b.tag));
+      const filteredTags = tags.filter((t) => filterTags.includes(t.tag));
       const uid = generateUID();
 
       const tabList = document.createElement('ol');
