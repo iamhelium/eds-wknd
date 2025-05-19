@@ -29,6 +29,7 @@ export default async function decorate(block) {
             fragment.loadBlockData = fragment; // Custom property to mark for loading
           });
 
+          console.log(fragments);
           return fragments;
         }
         return [];
