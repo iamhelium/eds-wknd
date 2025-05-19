@@ -245,7 +245,7 @@
       .nav-container{
         justify-content: space-between;
       }
-      
+
       .subnav.block {
         width: 100%;
     }
@@ -275,4 +275,12 @@
       .language-text {
         line-height: 0.8;
       }
+      
+      .nav-container{
+        justify-content: space-between;
+      }
+      
+      .subnav.block {
+        width: 100%;
+    }
   }
