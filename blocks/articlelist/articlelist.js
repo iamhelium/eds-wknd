@@ -11,12 +11,12 @@ export default function decorate(block) {
     const linkEl = item.querySelector(':scope > div:nth-child(3) a');
     const href = linkEl?.getAttribute('href');
 
-    const hasContent = title && description && href;
+    const hasContent = !!href;
     if (hasContent || isAuthorMode) {
       const li = document.createElement('li');
       li.className = 'cmp-list__item';
 
-      // Always copy AUE attributes if in author mode
+      // Copy AUE attributes in author mode
       if (isAuthorMode) {
         [...item.attributes].forEach((attr) => {
           if (attr.name.startsWith('data-aue')) {
@@ -32,11 +32,11 @@ export default function decorate(block) {
 
         const spanTitle = document.createElement('span');
         spanTitle.className = 'cmp-list__item-title';
-        spanTitle.textContent = title;
+        spanTitle.textContent = title || '';
 
         const spanDesc = document.createElement('span');
         spanDesc.className = 'cmp-list__item-description';
-        spanDesc.textContent = description;
+        spanDesc.textContent = description || '';
 
         a.append(spanTitle, spanDesc);
         li.append(a);

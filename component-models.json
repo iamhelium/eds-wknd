@@ -181,6 +181,7 @@
         "name": "link",
         "label": "Link",
         "valueType": "string",
+        "required": true,
         "validation": {
           "rootPath": "/content/eds-wknd"
         }
