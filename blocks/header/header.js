@@ -93,8 +93,11 @@ export default async function decorate(block) {
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
 
-  const [brand, sections, tools] = [...fragment.children];
-
+  const [subnav, brand, sections, tools] = [...fragment.children];
+  // Add subnav block inside nav wrapper
+  if (subnav) {
+    navWrapper.append(subnav);
+  }
   // ===== Desktop Nav =====
   const navDesktop = document.createElement('nav');
   navDesktop.id = 'nav-desktop';
