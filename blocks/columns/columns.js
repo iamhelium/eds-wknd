@@ -22,7 +22,7 @@ export default async function decorate(block) {
         // In author mode, find all fragments inside <p> column wrapper
         if (node.nodeType === Node.ELEMENT_NODE) {
           const fragments = [...node.querySelectorAll('.fragment[data-aue-model="fragment"]')];
-
+          console.log(fragments);
           fragments.forEach((fragment) => {
             fragment.classList.add('block');
             fragment.dataset.blockName = 'fragment';
@@ -30,7 +30,6 @@ export default async function decorate(block) {
             // fragment.loadBlockData = fragment; // Custom property to mark for loading
           });
 
-          console.log(fragments);
           return fragments;
         }
         return [];
