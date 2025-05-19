@@ -11,7 +11,9 @@ export function highlightActiveLink(container) {
 
   links.forEach((link) => {
     const linkPath = new URL(link.href, window.location.origin).pathname.replace(/\/$/, '');
-    if (linkPath === currentPath) {
+
+    // Make sure linkPath is not just '/' to avoid matching everything
+    if ((linkPath !== '/' && currentPath.startsWith(linkPath)) || linkPath === currentPath) {
       link.classList.add('active');
     }
   });
