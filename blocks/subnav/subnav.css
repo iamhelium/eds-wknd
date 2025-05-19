@@ -232,6 +232,11 @@
       .language-text {
         line-height: 0.2;
       }
+      
+      .language-dropdown{
+        margin-left:5em;
+        width:15em;
+      }
   }
   
   @media (width >= 768px) and (width <= 1024px) {
