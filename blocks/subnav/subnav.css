@@ -247,6 +247,14 @@
       .subnav.block {
         width: 100%;
     }
+
+    .lang-code::after {
+        top: 0.15em;
+      }
+      
+      .language-text.open .lang-code::after {
+        top: 0.35em;
+      }
   }
 
   .lang-code::after {
@@ -302,7 +310,7 @@
       .subnav.block {
         width: 100%;
     }
-    
+
     .language-dropdown{
         margin-left: 22em;
     }
