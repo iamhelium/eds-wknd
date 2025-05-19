@@ -267,7 +267,7 @@
   
   .language-text.open .lang-code::after {
     transform: rotate(-45deg); 
-    top: 0.65em;
+    top: 0.50em;
   }
   
   @media (width >= 768px) and (width <= 1024px) {
