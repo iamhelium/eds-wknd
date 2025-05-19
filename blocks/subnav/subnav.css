@@ -2,7 +2,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 0.5rem 11rem;
+    padding: 0.5rem 18rem;
     background: black;
     color: #ebebeb;
 
@@ -20,7 +20,6 @@
   
   .language-container {
     order: 2;
-    margin-left: auto; 
   }
   
   .signin-trigger {
@@ -29,6 +28,11 @@
     font-size: 12px;
   }
   
+  .nav-container {
+    display: flex;
+    gap: 1em;
+}
+
   .language-text {
     font-size: 14px;
     color: #ebebeb;
