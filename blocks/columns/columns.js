@@ -20,6 +20,7 @@ export default async function decorate(block) {
       ? childNodes.flatMap((node) => {
         // In author mode, find all fragments inside <p> column wrapper
         if (node.nodeType === Node.ELEMENT_NODE) {
+          console.log(...node);
           const fragments = [...node.querySelectorAll('.fragment[data-aue-model="fragment"]')];
 
           fragments.forEach((fragment) => {
