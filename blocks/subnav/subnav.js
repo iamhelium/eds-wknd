@@ -10,7 +10,7 @@ export default function decorate(block) {
   languageText.innerHTML = `
         <img src="https://flagcdn.com/us.svg" alt="US Flag" class="flag-icon top-flag" />
         <span class="lang-code">EN-US</span>
-          <span class="caret-icon">∨</span>
+          <span class="caret-icon">&#8744;</span>
       `;
 
   const navWrapper = document.createElement('div');
