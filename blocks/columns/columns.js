@@ -19,6 +19,7 @@ export default async function decorate(block) {
           && node.matches('[data-aue-model="fragment"].fragment')
         ) {
           node.loadBlockData = node; // Point directly to the existing fragment
+          console.log(node);
           return node;
         }
       } else {
