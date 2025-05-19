@@ -27,7 +27,7 @@ export default async function decorate(block) {
             fragment.classList.add('block');
             fragment.dataset.blockName = 'fragment';
             fragment.dataset.blockStatus = 'initialized';
-            fragment.loadBlockData = fragment; // Custom property to mark for loading
+            // fragment.loadBlockData = fragment; // Custom property to mark for loading
           });
 
           console.log(fragments);
