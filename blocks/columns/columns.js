@@ -11,7 +11,7 @@ export default async function decorate(block) {
   const isAuthor = block.hasAttribute('data-aue-resource');
 
   const columns = isAuthor
-    ? [...block.querySelectorAll(':scope > div > p[data-aue-filter="column"]')]
+    ? [...block.querySelectorAll(':scope > div > div > p[data-aue-filter="column"]')]
     : [...block.querySelectorAll(':scope > div > div')];
 
   await Promise.all(columns.map(async (column) => {
