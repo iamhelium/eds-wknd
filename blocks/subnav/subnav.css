@@ -2,7 +2,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 0.5rem 18rem;
+    padding: 0.5rem 23rem;
     background: black;
     color: #ebebeb;
     gap: 2rem;
@@ -314,7 +314,7 @@
     .language-dropdown{
         margin-left: 22em;
     }
-    
+
     .lang-code::after {
         top: 0.15em !important;
       }
