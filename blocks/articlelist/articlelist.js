@@ -2,6 +2,7 @@ export default function decorate(block) {
   const list = document.createElement('ul');
   list.className = 'cmp-list';
 
+  const isAuthorMode = block.hasAttribute('data-aue-resource');
   const items = block.querySelectorAll(':scope > div');
 
   items.forEach((item) => {
@@ -10,24 +11,37 @@ export default function decorate(block) {
     const linkEl = item.querySelector(':scope > div:nth-child(3) a');
     const href = linkEl?.getAttribute('href');
 
-    if (title && description && href) {
+    const hasContent = !!href;
+    if (hasContent || isAuthorMode) {
       const li = document.createElement('li');
       li.className = 'cmp-list__item';
 
-      const a = document.createElement('a');
-      a.className = 'cmp-list__item-link';
-      a.setAttribute('href', href);
+      // Copy AUE attributes in author mode
+      if (isAuthorMode) {
+        [...item.attributes].forEach((attr) => {
+          if (attr.name.startsWith('data-aue')) {
+            li.setAttribute(attr.name, attr.value);
+          }
+        });
+      }
 
-      const spanTitle = document.createElement('span');
-      spanTitle.className = 'cmp-list__item-title';
-      spanTitle.textContent = title;
+      if (hasContent) {
+        const a = document.createElement('a');
+        a.className = 'cmp-list__item-link';
+        a.setAttribute('href', href);
 
-      const spanDesc = document.createElement('span');
-      spanDesc.className = 'cmp-list__item-description';
-      spanDesc.textContent = description;
+        const spanTitle = document.createElement('span');
+        spanTitle.className = 'cmp-list__item-title';
+        spanTitle.textContent = title || '';
 
-      a.append(spanTitle, spanDesc);
-      li.append(a);
+        const spanDesc = document.createElement('span');
+        spanDesc.className = 'cmp-list__item-description';
+        spanDesc.textContent = description || '';
+
+        a.append(spanTitle, spanDesc);
+        li.append(a);
+      }
+
       list.append(li);
     }
   });
