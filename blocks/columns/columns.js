@@ -1,13 +1,15 @@
+/* eslint-disable operator-linebreak */
+/* eslint-disable no-nested-ternary */
+/* eslint-disable no-lonely-if */
 import { loadBlock } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
-  const isAuthor = block.hasAttribute('data-aue-resource');
-
-  // Determine number of columns based on children count
+  // const isAuthor = block.hasAttribute('data-aue-resource');
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
 
-  // Get all column containers
+  const isAuthor = block.hasAttribute('data-aue-resource');
+
   const columns = isAuthor
     ? [...block.querySelectorAll(':scope > div > div > p[data-aue-filter="column"]')]
     : [...block.querySelectorAll(':scope > div > div')];
@@ -15,31 +17,27 @@ export default async function decorate(block) {
   await Promise.all(columns.map(async (column) => {
     const childNodes = isAuthor ? [...column.children] : [...column.childNodes];
 
-    // Normalize children: transform and collect all fragment blocks
-    const orderedChildren = isAuthor
-      ? childNodes.flatMap((node) => {
-        console.log(node);
-        // In author mode, find all fragments inside <p> column wrapper
-        if (node.nodeType === Node.ELEMENT_NODE) {
-          const fragments = [...node.querySelectorAll('.fragment[data-aue-model="fragment"]')];
-          console.log('fragment', fragments);
-          fragments.forEach((fragment) => {
-            fragment.classList.add('block');
-            fragment.dataset.blockName = 'fragment';
-            fragment.dataset.blockStatus = 'initialized';
-            // fragment.loadBlockData = fragment; // Custom property to mark for loading
-          });
+    const orderedChildren = childNodes.map((node) => {
+      if (isAuthor) {
+        // Look for .fragment inside <p>
+        const fragment = node.nodeType === Node.ELEMENT_NODE
+          ? node.matches('.fragment[data-aue-model="fragment"]')
+            ? node
+            : node.querySelector?.('.fragment[data-aue-model="fragment"]')
+          : null;
 
-          return fragments;
+        if (fragment) {
+          fragment.classList.add('block');
+          fragment.dataset.blockName = 'fragment';
+          fragment.dataset.blockStatus = 'initialized';
+          fragment.loadBlockData = fragment;
+          return fragment;
         }
-        return [];
-      })
-      : childNodes.map((node) => {
-        // In published mode, wrap button-container <p> into a fragment structure
+      } else {
         if (
-          node.nodeType === Node.ELEMENT_NODE
-          && node.matches('p.button-container')
-          && node.querySelector('a')
+          node.nodeType === Node.ELEMENT_NODE &&
+          node.matches('p.button-container') &&
+          node.querySelector('a')
         ) {
           const fragmentWrapper = document.createElement('div');
           fragmentWrapper.className = 'fragment-wrapper';
@@ -59,23 +57,20 @@ export default async function decorate(block) {
           fragmentWrapper.loadBlockData = fragmentBlock;
           return fragmentWrapper;
         }
+      }
 
-        // Return non-fragment nodes as-is
-        return node;
-      }).filter(Boolean); // Filter out any null/undefined returns
+      return node;
+    }).filter(Boolean);
 
-    // Clear the current column DOM and re-insert transformed children
     column.textContent = '';
     orderedChildren.forEach((child) => column.appendChild(child));
 
-    // Load all fragments marked for loading
     await Promise.all(
       orderedChildren
         .filter((el) => el.loadBlockData)
         .map((el) => loadBlock(el.loadBlockData)),
     );
 
-    // If column contains only an image, apply styling
     const picWrapper = column.querySelector('picture')?.closest('div');
     if (picWrapper && picWrapper.children.length === 1) {
       picWrapper.classList.add('columns-img-col');
