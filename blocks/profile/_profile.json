@@ -1,0 +1,105 @@
+{
+  "definitions": [
+    {
+      "title": "Profile",
+      "id": "profile",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Profile",
+              "model": "profile"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "profile",
+      "fields": [
+        {
+          "component": "select",
+          "name": "classes",
+          "label": "Variation",
+          "options": [
+            {
+              "name": "Our Contributors",
+              "value": "our-contributors"
+            },
+            {
+              "name": "WKND Guides",
+              "value": "wknd-guides"
+            },
+            {
+              "name": "Custom Profile",
+              "value": "custom-profile"
+            }
+          ]
+        },
+        {
+          "component": "container",
+          "name": "profile-detail",
+          "valueType": "string",
+          "collapsible": false,
+          "fields": [
+            {
+              "component": "reference",
+              "valueType": "string",
+              "name": "image",
+              "label": "Profile Image"
+            },
+            {
+              "component": "text",
+              "valueType": "string",
+              "name": "imageAlt",
+              "label": "Alternative text for accessibility",
+              "required": true
+            },
+            {
+              "component": "text",
+              "name": "name",
+              "label": "Full Name",
+              "valueType": "string"
+            },
+            {
+              "component": "text",
+              "name": "description",
+              "label": "Description",
+              "valueType": "string"
+            },
+            {
+              "component": "text",
+              "name": "profile-facebook",
+              "label": "Facebook Link",
+              "valueType": "string"
+            },
+            {
+              "component": "text",
+              "name": "profile-twitter",
+              "label": "Twitter Link",
+              "valueType": "string"
+            },
+            {
+              "component": "text",
+              "name": "profile-instagram",
+              "label": "Instagram Link",
+              "valueType": "string"
+            }
+          ],
+          "condition": {
+            "===": [
+              {
+                "var": "classes"
+              },
+              "custom-profile"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

@@ -43,6 +43,10 @@
                 {
                   "name": "Full Width",
                   "value": "full-width"
+                },
+                {
+                  "name": "Teaser Section",
+                  "value": "teaser-section"
                 }
               ]
             },
@@ -83,8 +87,14 @@
         "articles",
         "search",
         "accordion",
+        "breadcrumbs",
         "form",
-        "embed-adaptive-form"
+        "embed-adaptive-form",
+        "subnav",
+        "profile",
+        "tabs",
+        "tripdetail",
+        "articlelist"
       ]
     }
   ]

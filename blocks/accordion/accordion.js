@@ -1,8 +1,15 @@
-/* eslint-disable linebreak-style */
+/* eslint-disable no-console */
+import { getAEMDomain } from '../../scripts/helper.js';
+
 export default async function decorate(block) {
   try {
-    const response = await fetch('/graphql/execute.json/eds-wknd/faqs');
-    const data = await response.json();
+    const domain = getAEMDomain();
+    const endpoint = '/graphql/execute.json/eds-wknd/faqs';
+    const url = domain ? `https://${domain}${endpoint}` : endpoint;
+
+    const response = await fetch(url);
+    const data = await response?.json();
+
     const faqs = data?.data?.faqModelList?.items || [];
 
     block.replaceChildren();
@@ -26,8 +33,9 @@ export default async function decorate(block) {
         const isExpanded = questionButton.getAttribute('aria-expanded') === 'true';
 
         block.querySelectorAll('.accordion-question').forEach((btn) => btn.setAttribute('aria-expanded', 'false'));
-        // eslint-disable-next-line no-return-assign
-        block.querySelectorAll('.accordion-answer').forEach((ans) => ans.style.display = 'none');
+        block.querySelectorAll('.accordion-answer').forEach((ans) => {
+          ans.style.display = 'none';
+        });
 
         if (!isExpanded) {
           questionButton.setAttribute('aria-expanded', 'true');
@@ -42,7 +50,6 @@ export default async function decorate(block) {
 
     block.appendChild(accordionContainer);
   } catch (error) {
-    // eslint-disable-next-line no-console
     console.error('Error fetching FAQs:', error);
   }
 }

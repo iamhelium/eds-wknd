@@ -136,13 +136,7 @@
     {
       "id": "column",
       "components": [
-        "text",
-        "image",
-        "button",
-        "title",
-        "teaser",
-        "hero",
-        "accordion"
+        "fragment"
       ]
     }
   ]

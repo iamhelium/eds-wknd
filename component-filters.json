@@ -23,8 +23,26 @@
       "articles",
       "search",
       "accordion",
+      "breadcrumbs",
       "form",
-      "embed-adaptive-form"
+      "embed-adaptive-form",
+      "subnav",
+      "profile",
+      "tabs",
+      "tripdetail",
+      "articlelist"
+    ]
+  },
+  {
+    "id": "articlelist",
+    "components": [
+      "list"
+    ]
+  },
+  {
+    "id": "articles",
+    "components": [
+      "article"
     ]
   },
   {
@@ -49,13 +67,7 @@
   {
     "id": "column",
     "components": [
-      "text",
-      "image",
-      "button",
-      "title",
-      "teaser",
-      "hero",
-      "accordion"
+      "fragment"
     ]
   },
   {
@@ -85,6 +97,18 @@
       "text-input",
       "tnc",
       "wizard"
+    ]
+  },
+  {
+    "id": "tabs",
+    "components": [
+      "tab"
+    ]
+  },
+  {
+    "id": "tripdetail",
+    "components": [
+      "item"
     ]
   }
 ]

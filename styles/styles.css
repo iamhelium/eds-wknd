@@ -21,6 +21,7 @@
 
 :root {
   /* colors */
+  --color-dark-black: #000;
   --color-black: #202020;
   --color-gray: #696969;
   --color-gray-three: #333;
@@ -370,7 +371,7 @@ img {
   background-color:var(--color-white);
 }
  
-.button-container.social-container a.button.social-icon.social-button {
+.button-container.social-container a.button.social-button {
   background:var( --color-gray-light);
   display: flex;
   justify-content: center;

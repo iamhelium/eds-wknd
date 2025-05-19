@@ -122,6 +122,10 @@
               {
                 "name": "Full Width",
                 "value": "full-width"
+              },
+              {
+                "name": "Teaser Section",
+                "value": "teaser-section"
               }
             ]
           },
@@ -158,6 +162,32 @@
     ]
   },
   {
+    "id": "list",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link",
+        "valueType": "string",
+        "validation": {
+          "rootPath": "/content/eds-wknd"
+        }
+      }
+    ]
+  },
+  {
     "id": "articles",
     "fields": [
       {
@@ -168,21 +198,21 @@
         "options": [
           {
             "name": "All Articles",
-            "value": "child-article"
-          },
-          {
-            "name": "All Articles with tags",
-            "value": "child-article-tag"
+            "value": "child-articles"
           },
           {
             "name": "Recent Articles",
-            "value": "recent-article"
+            "value": "recent-articles"
+          },
+          {
+            "name": "Create Articles Manually",
+            "value": "manual-articles"
           }
         ]
       },
       {
         "component": "container",
-        "label": "List all Articles as card under the Selected Parent Page",
+        "label": "List all Articles as card under the Selected Parent Page.",
         "name": "child-article-container",
         "valueType": "string",
         "collapsible": false,
@@ -202,10 +232,30 @@
             "name": "child-article-depth",
             "label": "Child Depth",
             "valueType": "number",
-            "value": 1,
             "validation": {
               "numberMin": 1,
               "customErrorMsg": "Value cannot be less than 1."
+            }
+          },
+          {
+            "component": "boolean",
+            "label": "List all Articles with Tags filter.",
+            "name": "tag-filter",
+            "valueType": "boolean"
+          },
+          {
+            "component": "aem-tag",
+            "label": "Choose Tags for filter",
+            "name": "tags",
+            "valueType": "string",
+            "rootPath": "/content/cq:tags/eds-wknd",
+            "condition": {
+              "===": [
+                {
+                  "var": "tag-filter"
+                },
+                true
+              ]
             }
           }
         ],
@@ -214,20 +264,20 @@
             {
               "var": "layout-type"
             },
-            "child-article"
+            "child-articles"
           ]
         }
       },
       {
         "component": "container",
-        "label": "List all Articles as card with Tag filter under Selected Parent Page",
-        "name": "child-article-tag-container",
+        "label": "List recent Article Cards from Selected Parent Page.",
+        "name": "recent-article-container",
         "valueType": "string",
         "collapsible": false,
         "fields": [
           {
             "component": "aem-content",
-            "name": "child-article-tag-parent",
+            "name": "recent-article-parent",
             "label": "Parent Page",
             "valueType": "string",
             "required": true,
@@ -237,48 +287,9 @@
           },
           {
             "component": "number",
-            "name": "child-article-tag-depth",
+            "name": "recent-article-depth",
             "label": "Child Depth",
             "valueType": "number",
-            "value": 1,
-            "validation": {
-              "numberMin": 1,
-              "customErrorMsg": "Value cannot be less than 1."
-            }
-          }
-        ],
-        "condition": {
-          "===": [
-            {
-              "var": "layout-type"
-            },
-            "child-article-tag"
-          ]
-        }
-      },
-      {
-        "component": "container",
-        "label": "List recent Article Cards from Selected Parent Page",
-        "name": "recent-article-container",
-        "valueType": "string",
-        "collapsible": false,
-        "fields": [
-          {
-            "component": "aem-content",
-            "name": "recent-article-parent",
-            "label": "Parent Page",
-            "valueType": "string[]",
-            "required": true,
-            "validation": {
-              "rootPath": "/content/eds-wknd"
-            }
-          },
-          {
-            "component": "number",
-            "name": "recent-article-parent-depth",
-            "label": "Child Depth",
-            "valueType": "number",
-            "value": 1,
             "validation": {
               "numberMin": 1,
               "customErrorMsg": "Value cannot be less than 1."
@@ -286,10 +297,9 @@
           },
           {
             "component": "number",
-            "name": "recent-article-parent-count",
+            "name": "recent-article-count",
             "label": "Article Count",
             "valueType": "number",
-            "value": 4,
             "validation": {
               "numberMin": 1,
               "customErrorMsg": "Value cannot be less than 1."
@@ -301,7 +311,7 @@
             {
               "var": "layout-type"
             },
-            "recent-article"
+            "recent-articles"
           ]
         }
       },
@@ -323,7 +333,17 @@
             "name": "Last modified date",
             "value": "last-modified-date"
           }
-        ]
+        ],
+        "condition": {
+          "in": [
+            {
+              "var": "layout-type"
+            },
+            [
+              "child-articles"
+            ]
+          ]
+        }
       },
       {
         "component": "select",
@@ -339,7 +359,80 @@
             "name": "Descending",
             "value": "descending"
           }
-        ]
+        ],
+        "condition": {
+          "in": [
+            {
+              "var": "layout-type"
+            },
+            [
+              "child-articles"
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "article",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Article Image"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alternative text for accessibility",
+        "required": true
+      },
+      {
+        "component": "text",
+        "label": "Title",
+        "name": "article-title",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "label": "Description",
+        "name": "article-description",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "label": "Article Link",
+        "name": "article-link",
+        "valueType": "string",
+        "validation": {
+          "rootPath": "/content/eds-wknd"
+        }
+      }
+    ]
+  },
+  {
+    "id": "breadcrumbs",
+    "fields": [
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "label": "Hide Breadcrumb",
+        "name": "hideBreadcrumb"
+      },
+      {
+        "component": "text-input",
+        "valueType": "number",
+        "label": "Navigation Start Level",
+        "name": "navigationStartLevel",
+        "value": ""
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "label": "Hide Current Page",
+        "name": "hideCurrentPage"
       }
     ]
   },
@@ -5332,7 +5425,10 @@
       {
         "component": "aem-content",
         "name": "reference",
-        "label": "Reference"
+        "label": "Reference",
+        "validation": {
+          "rootPath": "/content/eds-wknd"
+        }
       }
     ]
   },
@@ -5356,6 +5452,89 @@
         "name": "imageAlt",
         "label": "Alt",
         "value": ""
+      }
+    ]
+  },
+  {
+    "id": "profile",
+    "fields": [
+      {
+        "component": "select",
+        "name": "classes",
+        "label": "Variation",
+        "options": [
+          {
+            "name": "Our Contributors",
+            "value": "our-contributors"
+          },
+          {
+            "name": "WKND Guides",
+            "value": "wknd-guides"
+          },
+          {
+            "name": "Custom Profile",
+            "value": "custom-profile"
+          }
+        ]
+      },
+      {
+        "component": "container",
+        "name": "profile-detail",
+        "valueType": "string",
+        "collapsible": false,
+        "fields": [
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "image",
+            "label": "Profile Image"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "imageAlt",
+            "label": "Alternative text for accessibility",
+            "required": true
+          },
+          {
+            "component": "text",
+            "name": "name",
+            "label": "Full Name",
+            "valueType": "string"
+          },
+          {
+            "component": "text",
+            "name": "description",
+            "label": "Description",
+            "valueType": "string"
+          },
+          {
+            "component": "text",
+            "name": "profile-facebook",
+            "label": "Facebook Link",
+            "valueType": "string"
+          },
+          {
+            "component": "text",
+            "name": "profile-twitter",
+            "label": "Twitter Link",
+            "valueType": "string"
+          },
+          {
+            "component": "text",
+            "name": "profile-instagram",
+            "label": "Instagram Link",
+            "valueType": "string"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "classes"
+            },
+            "custom-profile"
+          ]
+        }
       }
     ]
   },
@@ -5391,11 +5570,57 @@
     "id": "seperator",
     "fields": [
       {
+        "component": "select",
+        "label": "Separator Style",
+        "name": "classes",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Margin - 64px",
+            "value": "margin-lxiv"
+          },
+          {
+            "name": "Margin - 36px",
+            "value": "margin-xxxvi"
+          }
+        ]
+      },
+      {
         "component": "text",
         "valueType": "string",
         "name": "title",
         "label": "Title",
         "value": "Seperator"
+      }
+    ]
+  },
+  {
+    "id": "tabs",
+    "fields": [
+      {
+        "component": "text",
+        "label": "Aria Label",
+        "name": "aria-label",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "tab",
+    "fields": [
+      {
+        "component": "text",
+        "label": "Title",
+        "name": "title",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "reference",
+        "label": "Tab Fragment",
+        "validation": {
+          "rootPath": "/content/eds-wknd"
+        }
       }
     ]
   },
@@ -5425,6 +5650,10 @@
               {
                 "name": "Teaser Banner",
                 "value": "teaser-banner"
+              },
+              {
+                "name": "Teaser Secure",
+                "value": "teaser-secure"
               }
             ]
           },
@@ -5571,6 +5800,23 @@
             false
           ]
         }
+      }
+    ]
+  },
+  {
+    "id": "item",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Item Title",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "value",
+        "label": "Item Value",
+        "valueType": "string"
       }
     ]
   },
