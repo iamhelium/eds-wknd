@@ -192,7 +192,7 @@
   
   .language-text .lang-code {
     font-size: 12px;
-    color: white;
+    color:#ebebeb;
   }
   
   .caret-icon {
@@ -232,7 +232,7 @@
       .language-text {
         line-height: 0.2;
       }
-      
+
       .language-dropdown{
         margin-left:5em;
         width:15em;
