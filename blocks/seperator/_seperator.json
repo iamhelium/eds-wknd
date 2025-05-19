@@ -23,7 +23,7 @@
         {
           "component": "select",
           "label": "Separator Style",
-          "name": "separator-style",
+          "name": "classes",
           "valueType": "string",
           "options": [
             {
