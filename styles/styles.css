@@ -183,6 +183,10 @@ main > .section.bottom-margin {
   }
 }
 
+.magazine-section .default-content-wrapper img {
+  padding: 0 var(--gutter-padding);
+}
+
 /* headings */
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
