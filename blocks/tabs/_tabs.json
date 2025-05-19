@@ -58,7 +58,7 @@
           "name": "reference",
           "label": "Tab Fragment",
           "validation": {
-            "rootPath": "/content/eds-wknd"
+            "rootPath": "/content/eds-wknd/fragments"
           }
         }
       ]
