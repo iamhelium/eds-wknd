@@ -223,11 +223,11 @@
     }
 
     .language-text .lang-code{
-        font-size:17px;
+        font-size:14px;
       }
 
       .signin-trigger{
-        font-size:17px;
+        font-size:14px;
       }
 
       .signin-trigger,
@@ -301,5 +301,9 @@
       
       .subnav.block {
         width: 100%;
+    }
+    
+    .language-dropdown{
+        margin-left: 22em;
     }
   }
