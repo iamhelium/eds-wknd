@@ -5,8 +5,6 @@
     padding: 0.5rem 18rem;
     background: black;
     color: #ebebeb;
-
-    /* font-family: sans-serif; */
     gap: 2rem;
     padding-top: 0.2rem;
     padding-bottom: 0.2rem;
@@ -201,18 +199,14 @@
   
   .caret-icon {
     font-size: 14px;
-    margin-left: 1px;
-    color: #ebebeb;
+    cursor: pointer; 
+    user-select: none;
     transition: transform 0.3s ease;
-    top:-3px;
-    position: relative;
   }
-  
-  
   
 .signin-trigger,
 .language-text {
-  line-height: 2;
+  line-height: 1;
 }
 
   
@@ -238,7 +232,7 @@
 
       .signin-trigger,
       .language-text {
-        line-height: 1;
+        line-height: 0.8;
       }
 
       .language-dropdown{
@@ -279,7 +273,7 @@
       .language-text {
         line-height: 0.8;
       }
-
+      
       .nav-container{
         justify-content: space-between;
       }
@@ -287,8 +281,4 @@
       .subnav.block {
         width: 100%;
     }
-    
-    .language-dropdown{
-        left:18em;
-      }
   }

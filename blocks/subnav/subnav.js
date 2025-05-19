@@ -10,7 +10,6 @@ export default function decorate(block) {
   languageText.innerHTML = `
         <img src="https://flagcdn.com/us.svg" alt="US Flag" class="flag-icon top-flag" />
         <span class="lang-code">EN-US</span>
-          <span class="caret-icon">&#8744;</span>
       `;
 
   const navWrapper = document.createElement('div');
@@ -97,16 +96,11 @@ export default function decorate(block) {
 
   languageText.addEventListener('click', (e) => {
     e.stopPropagation();
-    const isOpen = languageDropdown.style.display === 'block';
-    languageDropdown.style.display = isOpen ? 'none' : 'block';
-    const caret = languageText.querySelector('.caret-icon');
-    caret.textContent = isOpen ? '∨' : '∧';
+    languageDropdown.style.display = languageDropdown.style.display === 'block' ? 'none' : 'block';
   });
 
   document.addEventListener('click', () => {
     languageDropdown.style.display = 'none';
-    const caret = languageText.querySelector('.caret-icon');
-    if (caret) caret.textContent = '∨';
   });
 
   const modalOverlay = document.createElement('div');
