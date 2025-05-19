@@ -1,4 +1,4 @@
-/* eslint-disable no-console, object-curly-newline */
+/* eslint-disable no-console, object-curly-newline, no-nested-ternary */
 import ffetch from '../../scripts/ffetch.js';
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { cleanUrl, generateUID, getDepth } from '../../scripts/helper.js';
@@ -8,9 +8,9 @@ import { cleanUrl, generateUID, getDepth } from '../../scripts/helper.js';
  */
 function sortArticles(articles, orderBy, sortDir) {
   return articles.sort((a, b) => {
-    const valA = orderBy === 'title' ? a.title?.toLowerCase() || '' : new Date(a.lastModified || 0);
-    const valB = orderBy === 'title' ? b.title?.toLowerCase() || '' : new Date(b.lastModified || 0);
-    const result = Math.sign(valA - valB);
+    const valA = (orderBy === 'title') ? a.title?.toLowerCase() || '' : new Date(a.lastModified || 0);
+    const valB = (orderBy === 'title') ? b.title?.toLowerCase() || '' : new Date(b.lastModified || 0);
+    const result = valA > valB ? 1 : valA < valB ? -1 : 0;
     return sortDir === 'ascending' ? result : -result;
   });
 }
