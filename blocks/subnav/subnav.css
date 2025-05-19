@@ -248,6 +248,27 @@
         width: 100%;
     }
   }
+
+  .lang-code::after {
+    content: "";
+    display: inline-block;
+    width: 0.45em;
+    height: 0.45em;
+    border-style: solid;
+    border-width: 0.1em 0.1em 0 0;
+    position: relative;
+    top: 0.35em; 
+    left: 0.45em;
+    transform: rotate(135deg);
+    vertical-align: top;
+    margin-left: 0.2em;
+    transition: transform 0.3s ease, top 0.3s ease;
+  }
+  
+  .language-text.open .lang-code::after {
+    transform: rotate(-45deg); 
+    top: 0.65em;
+  }
   
   @media (width >= 768px) and (width <= 1024px) {
     .subnav-wrapper {
