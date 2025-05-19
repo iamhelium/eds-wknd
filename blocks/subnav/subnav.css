@@ -4,8 +4,8 @@
     align-items: center;
     padding: 0.5rem 11rem;
     background: black;
-    color: white;
-    
+    color: #ebebeb;
+
     /* font-family: sans-serif; */
     gap: 2rem;
     padding-top: 0.2rem;
@@ -31,7 +31,7 @@
   
   .language-text {
     font-size: 14px;
-    color: white;
+    color: #ebebeb;
     cursor: default;
     margin: 0;
     display: flex;
