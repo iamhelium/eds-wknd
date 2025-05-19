@@ -21,6 +21,22 @@
       "id": "seperator",
       "fields": [
         {
+          "component": "select",
+          "label": "Separator Style",
+          "name": "separator-style",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Margin - 64px",
+              "value": "margin-lxiv"
+            },
+            {
+              "name": "Margin - 36px",
+              "value": "margin-xxxvi"
+            }
+          ]
+        },
+        {
           "component": "text",
           "valueType": "string",
           "name": "title",
