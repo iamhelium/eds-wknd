@@ -201,10 +201,10 @@
   
   .caret-icon {
     font-size: 14px;
-    margin-left: 6px;
+    margin-left: 1px;
     color: #ebebeb;
     transition: transform 0.3s ease;
-    top:-4px;
+    top:-3px;
     position: relative;
   }
   
