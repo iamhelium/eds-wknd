@@ -99,7 +99,7 @@
   --icon-size: var(--font-size-large);
 
   /* page layout */
-  --header-height: 10.625rem; /* 170px */
+  --header-height: 13rem; /* 208px */
   --header-mobile-height: 5.625rem; /* 90px */
   --utility-nav-height: 1.5625rem; /* 25px */
 
