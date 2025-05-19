@@ -23,6 +23,10 @@ export default async function decorate(block) {
           : null;
 
         if (fragment) {
+          // Normalize fragment DOM to match expected structure
+          fragment.classList.add('block');
+          fragment.dataset.blockName = 'fragment';
+          fragment.dataset.blockStatus = 'initialized';
           fragment.loadBlockData = fragment;
           return fragment;
         }
