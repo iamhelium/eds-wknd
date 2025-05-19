@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity, selector-class-pattern */
 :root {
     --background-color-primary: #fff;
     --label-color: #666;
@@ -787,4 +788,56 @@ main div.form-wrapper {
 
         margin: 0;
     }
+}
+
+/* Contact us form style */
+.contact-us-form-section .form-wrapper {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+@media (width <=767px) {
+    .contact-us-form-section .form-wrapper {
+        margin: 0 10px;
+        padding: 32px;
+    }
+}
+
+.contact-us-form-section .field-form-title .cmp-title__text {
+    margin-top: 0;
+}
+
+.contact-us-form-section .field-form-title .cmp-title__text::after {
+    content: "";
+    display: block;
+    border-bottom: 2px solid var(--color-yellow);
+    width: 84px;
+    padding-top: 8px;
+}
+
+.contact-us-form-section form fieldset.field-namepanel {
+    display: flex;
+    flex-direction: row;
+    column-gap: 18px;
+    width: auto;
+}
+
+@media (width <=767px) {
+    .contact-us-form-section form fieldset.field-namepanel {
+        flex-direction: column;
+    }
+}
+
+.contact-us-form-section form fieldset.field-namepanel .text-wrapper {
+    flex: 1;
+    margin: 0;
+}
+
+.contact-us-form-section form .field-submit {
+    width: auto;
+}
+
+.contact-us-form-section form .field-submit button {
+    background-color: var(--color-yellow);
+    color: var(--color-black);
 }
