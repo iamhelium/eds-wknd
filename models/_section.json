@@ -47,6 +47,10 @@
                 {
                   "name": "Teaser Section",
                   "value": "teaser-section"
+                },
+                {
+                  "name": "Magazine Article Section",
+                  "value": "magazine-section"
                 }
               ]
             },

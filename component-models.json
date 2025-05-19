@@ -126,6 +126,10 @@
               {
                 "name": "Teaser Section",
                 "value": "teaser-section"
+              },
+              {
+                "name": "Magazine Article Section",
+                "value": "magazine-section"
               }
             ]
           },
@@ -5391,7 +5395,7 @@
         "name": "reference",
         "label": "Reference",
         "validation": {
-          "rootPath": "/content/eds-wknd"
+          "rootPath": "/content/eds-wknd/fragments"
         }
       }
     ]
