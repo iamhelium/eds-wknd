@@ -10,7 +10,7 @@ export default function decorate(block) {
   languageText.innerHTML = `
       <img src="https://flagcdn.com/us.svg" alt="US Flag" class="flag-icon top-flag" />
       <span class="lang-code">EN-US</span>
-        <span class="caret-icon">∨</span>
+     <i class="fa-solid fa-chevron-down caret-icon"></i>        
 
     `;
 
@@ -101,13 +101,17 @@ export default function decorate(block) {
     const isOpen = languageDropdown.style.display === 'block';
     languageDropdown.style.display = isOpen ? 'none' : 'block';
     const caret = languageText.querySelector('.caret-icon');
-    caret.textContent = isOpen ? '∨' : '∧';
+    caret.classList.toggle('fa-chevron-down', !isOpen);
+    caret.classList.toggle('fa-chevron-up', isOpen);
   });
 
   document.addEventListener('click', () => {
     languageDropdown.style.display = 'none';
     const caret = languageText.querySelector('.caret-icon');
-    if (caret) caret.textContent = '∨';
+    if (caret) {
+      caret.classList.remove('fa-chevron-up');
+      caret.classList.add('fa-chevron-down');
+    }
   });
 
   const modalOverlay = document.createElement('div');
