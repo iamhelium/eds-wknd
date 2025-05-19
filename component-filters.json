@@ -96,7 +96,9 @@
       "telephone-input",
       "text-input",
       "tnc",
-      "wizard"
+      "wizard",
+      "title",
+      "text"
     ]
   },
   {
