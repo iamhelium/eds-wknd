@@ -7,8 +7,8 @@
     color: white;
     font-family: sans-serif;
     gap: 2rem;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
     position: relative;
   }
   
@@ -183,9 +183,9 @@
   }
   
   .language-text .top-flag {
-    width: 24px;
+    width: 26px;
     height: auto;
-    margin-right: 6px;
+    margin-right: 8px;
     object-fit: contain;
   }
   
