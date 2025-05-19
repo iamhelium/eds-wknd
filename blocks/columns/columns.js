@@ -12,6 +12,7 @@ export default async function decorate(block) {
     const childNodes = [...column.childNodes];
 
     const orderedChildren = childNodes.map((node) => {
+      console.log('outside node: ', node);
       if (isAuthor) {
         // AUTHOR: Fragment is already present in DOM
         if (
