@@ -13,7 +13,7 @@ export default function decorate(block) {
     `;
 
   const navWrapper = document.createElement('div');
-  navWrapper.className = 'subnav-wrapper';
+  navWrapper.className = 'subnav-container';
 
   const signinContainer = document.createElement('div');
   signinContainer.className = 'signin-container';
