@@ -287,4 +287,8 @@
       .subnav.block {
         width: 100%;
     }
+    
+    .language-dropdown{
+        left:18em;
+      }
   }
