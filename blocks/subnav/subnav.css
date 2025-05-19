@@ -249,11 +249,11 @@
     }
 
     .lang-code::after {
-        top: 0.15em;
+        top: 0.15em !important;
       }
-      
+
       .language-text.open .lang-code::after {
-        top: 0.35em;
+        top: 0.35em !important;
       }
   }
 
@@ -291,11 +291,11 @@
     }
 
     .language-text .lang-code{
-        font-size:20px;
+        font-size:16px;
       }
 
       .signin-trigger{
-        font-size:20px;
+        font-size:16px;
       }
 
       .signin-trigger,
@@ -314,4 +314,12 @@
     .language-dropdown{
         margin-left: 22em;
     }
+    
+    .lang-code::after {
+        top: 0.15em !important;
+      }
+
+      .language-text.open .lang-code::after {
+        top: 0.30em !important;
+      }
   }
