@@ -96,11 +96,13 @@ export default function decorate(block) {
 
   languageText.addEventListener('click', (e) => {
     e.stopPropagation();
-    languageDropdown.style.display = languageDropdown.style.display === 'block' ? 'none' : 'block';
+    const isOpen = languageDropdown.style.display === 'block';
+    languageDropdown.style.display = isOpen ? 'none' : 'block';
+    languageText.classList.toggle('open', !isOpen);
   });
-
   document.addEventListener('click', () => {
     languageDropdown.style.display = 'none';
+    languageText.classList.remove('open');
   });
 
   const modalOverlay = document.createElement('div');
