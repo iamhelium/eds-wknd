@@ -14,6 +14,13 @@ export default function decorate(block) {
       const li = document.createElement('li');
       li.className = 'cmp-list__item';
 
+      // Copy AUE attributes from raw block item to <li>
+      [...item.attributes].forEach((attr) => {
+        if (attr.name.startsWith('data-aue')) {
+          li.setAttribute(attr.name, attr.value);
+        }
+      });
+
       const a = document.createElement('a');
       a.className = 'cmp-list__item-link';
       a.setAttribute('href', href);
