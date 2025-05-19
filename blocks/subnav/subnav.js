@@ -10,9 +10,8 @@ export default function decorate(block) {
   languageText.innerHTML = `
       <img src="https://flagcdn.com/us.svg" alt="US Flag" class="flag-icon top-flag" />
       <span class="lang-code">EN-US</span>
-       <svg class="caret-icon" width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M2 2L6 6L2 10" stroke="#ebebeb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
+        <span class="caret-icon">∨</span>
+
     `;
 
   const navWrapper = document.createElement('div');
@@ -99,11 +98,16 @@ export default function decorate(block) {
 
   languageText.addEventListener('click', (e) => {
     e.stopPropagation();
-    languageDropdown.style.display = languageDropdown.style.display === 'block' ? 'none' : 'block';
+    const isOpen = languageDropdown.style.display === 'block';
+    languageDropdown.style.display = isOpen ? 'none' : 'block';
+    const caret = languageText.querySelector('.caret-icon');
+    caret.textContent = isOpen ? '∨' : '∧';
   });
 
   document.addEventListener('click', () => {
     languageDropdown.style.display = 'none';
+    const caret = languageText.querySelector('.caret-icon');
+    if (caret) caret.textContent = '∨';
   });
 
   const modalOverlay = document.createElement('div');

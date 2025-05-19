@@ -200,16 +200,13 @@
   }
   
   .caret-icon {
+    font-size: 14px;
     margin-left: 6px;
-    vertical-align: middle;
-    cursor: pointer;
+    color: #ebebeb;
     transition: transform 0.3s ease;
-    stroke: #ebebeb; /* arrow color */
   }
   
-  .language-text.open .caret-icon {
-    transform: rotate(90deg); /* rotate arrow down on open */
-  }
+  
   
 .signin-trigger,
 .language-text {
