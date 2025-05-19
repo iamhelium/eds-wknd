@@ -6,6 +6,8 @@ export default async function decorate(block) {
 
   const columns = [...block.querySelectorAll(':scope > div > div')];
 
+  console.log(columns);
+
   await Promise.all(columns.map(async (column) => {
     const childNodes = [...column.childNodes];
 
