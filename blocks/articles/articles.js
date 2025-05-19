@@ -23,7 +23,7 @@ function sortByLastPublished(articles) {
 }
 
 /**
- * Create a tab element for filtering articles by tag
+ * Create a tab element for filtering articles by tag.
  */
 function createTab({ tag, title }, uid, isActive = false) {
   const li = document.createElement('li');
