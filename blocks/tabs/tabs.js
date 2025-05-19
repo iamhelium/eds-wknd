@@ -2,7 +2,6 @@ import { loadBlock } from '../../scripts/aem.js';
 import { generateUID } from '../../scripts/helper.js';
 
 export default async function decorate(block) {
-  const isAuthorMode = block.hasAttribute('data-aue-resource');
   const tabsId = `tabs-${generateUID()}`;
   const tabContainer = document.createElement('div');
   tabContainer.id = tabsId;
@@ -23,18 +22,15 @@ export default async function decorate(block) {
 
   tabItems.forEach((tabItem, index) => {
     const [titleDiv, buttonDiv] = tabItem.children;
-    const tabTitle = titleDiv?.textContent?.trim();
+    const tabTitle = titleDiv?.textContent.trim();
     const link = buttonDiv?.querySelector('a');
-
-    const hasContent = tabTitle && link?.href;
-
-    // Skip if no content and not in author mode
-    if (!hasContent && !isAuthorMode) return;
+    if (!link || !tabTitle) return;
 
     const uid = generateUID();
     const tabId = `${tabsId}-item-${uid}-tab`;
     const panelId = `${tabsId}-item-${uid}-tabpanel`;
 
+    // --- Tab Element ---
     const tabEl = document.createElement('li');
     tabEl.id = tabId;
     tabEl.className = `cmp-tabs__tab${index === 0 ? ' cmp-tabs__tab--active' : ''}`;
@@ -43,19 +39,18 @@ export default async function decorate(block) {
     tabEl.setAttribute('tabindex', index === 0 ? '0' : '-1');
     tabEl.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
     tabEl.setAttribute('data-cmp-hook-tabs', 'tab');
-    tabEl.textContent = tabTitle || 'Tab';
-    tabList.appendChild(tabEl);
+    tabEl.textContent = tabTitle;
     tabs.push(tabEl);
+    tabList.appendChild(tabEl);
 
-    // --- Fragment Block creation (if link exists) ---
+    // --- Fragment Block ---
     const fragmentBlock = document.createElement('div');
     fragmentBlock.className = 'fragment block';
     fragmentBlock.dataset.blockName = 'fragment';
     fragmentBlock.dataset.blockStatus = 'initialized';
 
     const p = document.createElement('p');
-    if (link) p.appendChild(link.cloneNode(true));
-
+    p.appendChild(link.cloneNode(true));
     const wrapperDiv = document.createElement('div');
     wrapperDiv.appendChild(p);
     const outerDiv = document.createElement('div');
@@ -66,6 +61,7 @@ export default async function decorate(block) {
     fragmentWrapper.className = 'fragment-wrapper';
     fragmentWrapper.appendChild(fragmentBlock);
 
+    // --- Panel Element ---
     const panelEl = document.createElement('div');
     panelEl.id = panelId;
     panelEl.className = `cmp-tabs__tabpanel${index === 0 ? ' cmp-tabs__tabpanel--active' : ''}`;
@@ -74,22 +70,9 @@ export default async function decorate(block) {
     panelEl.setAttribute('tabindex', '0');
     panelEl.setAttribute('aria-hidden', index === 0 ? 'false' : 'true');
     panelEl.appendChild(fragmentWrapper);
+
     panels.push(panelEl);
-
-    // Preserve authoring attributes
-    if (isAuthorMode) {
-      [...tabItem.attributes].forEach((attr) => {
-        if (attr.name.startsWith('data-aue')) {
-          tabEl.setAttribute(attr.name, attr.value);
-          panelEl.setAttribute(attr.name, attr.value);
-        }
-      });
-    }
-
-    // Load only if we have a real link
-    if (link?.href) {
-      loadPromises.push(loadBlock(fragmentBlock));
-    }
+    loadPromises.push(loadBlock(fragmentBlock));
   });
 
   await Promise.all(loadPromises);
