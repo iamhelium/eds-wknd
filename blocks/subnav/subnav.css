@@ -204,6 +204,8 @@
     margin-left: 6px;
     color: #ebebeb;
     transition: transform 0.3s ease;
+    top:-4px;
+    position: relative;
   }
   
   
