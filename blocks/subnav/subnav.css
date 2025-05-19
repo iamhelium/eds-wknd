@@ -241,6 +241,14 @@
         margin-left:5em;
         width:15em;
       }
+
+      .nav-container{
+        justify-content: space-between;
+      }
+      
+      .subnav.block {
+        width: 100%;
+    }
   }
   
   @media (width >= 768px) and (width <= 1024px) {
