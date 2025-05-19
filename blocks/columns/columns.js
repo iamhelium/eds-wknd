@@ -1,3 +1,5 @@
+/* eslint-disable operator-linebreak */
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-lonely-if */
 import { loadBlock } from '../../scripts/aem.js';
 
@@ -12,23 +14,23 @@ export default async function decorate(block) {
     const childNodes = [...column.childNodes];
 
     const orderedChildren = childNodes.map((node) => {
-      console.log('outside node: ', node);
       if (isAuthor) {
-        // AUTHOR: Fragment is already present in DOM
-        if (
-          node.nodeType === Node.ELEMENT_NODE
-          && node.matches('[data-aue-model="fragment"].fragment')
-        ) {
-          node.loadBlockData = node; // Point directly to the existing fragment
-          console.log(node);
-          return node;
+        // Check if this node or any child contains a .fragment block
+        const fragment = node.nodeType === Node.ELEMENT_NODE
+          ? node.matches('.fragment[data-aue-model="fragment"]')
+            ? node
+            : node.querySelector?.('.fragment[data-aue-model="fragment"]')
+          : null;
+
+        if (fragment) {
+          fragment.loadBlockData = fragment;
+          return fragment;
         }
       } else {
-        // PUBLISH: Detect <p.button-container><a>...</a></p> and build fragment
         if (
-          node.nodeType === Node.ELEMENT_NODE
-          && node.matches('p.button-container')
-          && node.querySelector('a')
+          node.nodeType === Node.ELEMENT_NODE &&
+          node.matches('p.button-container') &&
+          node.querySelector('a')
         ) {
           const fragmentWrapper = document.createElement('div');
           fragmentWrapper.className = 'fragment-wrapper';
@@ -50,6 +52,7 @@ export default async function decorate(block) {
         }
       }
 
+      // Default return
       return node;
     }).filter(Boolean);
 
