@@ -18,9 +18,9 @@ export default async function decorate(block) {
     // Normalize children: transform and collect all fragment blocks
     const orderedChildren = isAuthor
       ? childNodes.flatMap((node) => {
+        console.log(node);
         // In author mode, find all fragments inside <p> column wrapper
         if (node.nodeType === Node.ELEMENT_NODE) {
-          console.log(...node);
           const fragments = [...node.querySelectorAll('.fragment[data-aue-model="fragment"]')];
 
           fragments.forEach((fragment) => {
