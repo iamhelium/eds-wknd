@@ -212,7 +212,7 @@
       },
       {
         "component": "container",
-        "label": "List all Articles as card under the Selected Parent Page",
+        "label": "List all Articles as card under the Selected Parent Page.",
         "name": "child-article-container",
         "valueType": "string",
         "collapsible": false,
@@ -239,7 +239,7 @@
           },
           {
             "component": "boolean",
-            "label": "List all Articles with Tags filter",
+            "label": "List all Articles with Tags filter.",
             "name": "tag-filter",
             "valueType": "boolean"
           },
@@ -270,7 +270,7 @@
       },
       {
         "component": "container",
-        "label": "List recent Article Cards from Selected Parent Page",
+        "label": "List recent Article Cards from Selected Parent Page.",
         "name": "recent-article-container",
         "valueType": "string",
         "collapsible": false,
