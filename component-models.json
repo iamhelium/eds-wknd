@@ -126,6 +126,10 @@
               {
                 "name": "Teaser Section",
                 "value": "teaser-section"
+              },
+              {
+                "name": "Contact Us Form Section",
+                "value": "contact-us-form-section"
               }
             ]
           },
