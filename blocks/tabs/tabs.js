@@ -81,7 +81,6 @@ export default async function decorate(block) {
       [...tabItem.attributes].forEach((attr) => {
         if (attr.name.startsWith('data-aue')) {
           tabEl.setAttribute(attr.name, attr.value);
-          // panelEl.setAttribute(attr.name, attr.value);
         }
       });
     }
