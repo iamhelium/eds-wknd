@@ -211,6 +211,8 @@
     .subnav-wrapper {
       padding: 0.5rem 1rem;
       justify-content: space-between !important;
+      padding-top:0.3em;
+      padding-bottom:0.3em;
     }
   
     .language-text {
@@ -223,6 +225,11 @@
 
       .signin-trigger{
         font-size:18px;
+      }
+
+      .signin-trigger,
+      .language-text {
+        line-height: 0.2;
       }
   }
   
@@ -230,6 +237,8 @@
     .subnav-wrapper {
       padding: 0.5rem 1rem;
       justify-content: space-between !important;
+      padding-top:0.3em;
+      padding-bottom:0.3em;
     }
   
     .language-text {
@@ -239,8 +248,13 @@
     .language-text .lang-code{
         font-size:20px;
       }
-      
+
       .signin-trigger{
         font-size:20px;
+      }
+
+      .signin-trigger,
+      .language-text {
+        line-height: 0.2;
       }
   }
