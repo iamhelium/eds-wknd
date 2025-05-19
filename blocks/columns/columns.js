@@ -4,18 +4,22 @@
 import { loadBlock } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
-  const isAuthor = block.hasAttribute('data-aue-resource');
+  // const isAuthor = block.hasAttribute('data-aue-resource');
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
 
-  const columns = [...block.querySelectorAll(':scope > div > div')];
+  const isAuthor = block.hasAttribute('data-aue-resource');
+
+  const columns = isAuthor
+    ? [...block.querySelectorAll(':scope > div > p[data-aue-filter="column"]')]
+    : [...block.querySelectorAll(':scope > div > div')];
 
   await Promise.all(columns.map(async (column) => {
-    const childNodes = [...column.childNodes];
+    const childNodes = isAuthor ? [...column.children] : [...column.childNodes];
 
     const orderedChildren = childNodes.map((node) => {
       if (isAuthor) {
-        // Check if this node or any child contains a .fragment block
+        // Look for .fragment inside <p>
         const fragment = node.nodeType === Node.ELEMENT_NODE
           ? node.matches('.fragment[data-aue-model="fragment"]')
             ? node
@@ -23,7 +27,6 @@ export default async function decorate(block) {
           : null;
 
         if (fragment) {
-          // Normalize fragment DOM to match expected structure
           fragment.classList.add('block');
           fragment.dataset.blockName = 'fragment';
           fragment.dataset.blockStatus = 'initialized';
@@ -56,7 +59,6 @@ export default async function decorate(block) {
         }
       }
 
-      // Default return
       return node;
     }).filter(Boolean);
 
