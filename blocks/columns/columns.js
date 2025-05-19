@@ -22,7 +22,7 @@ export default async function decorate(block) {
         // In author mode, find all fragments inside <p> column wrapper
         if (node.nodeType === Node.ELEMENT_NODE) {
           const fragments = [...node.querySelectorAll('.fragment[data-aue-model="fragment"]')];
-          console.log(fragments);
+          console.log('fragment', fragments);
           fragments.forEach((fragment) => {
             fragment.classList.add('block');
             fragment.dataset.blockName = 'fragment';
