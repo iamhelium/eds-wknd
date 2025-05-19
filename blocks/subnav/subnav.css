@@ -210,7 +210,7 @@
   
 .signin-trigger,
 .language-text {
-  line-height: 1;
+  line-height: 2;
 }
 
   
@@ -236,7 +236,7 @@
 
       .signin-trigger,
       .language-text {
-        line-height: 0.8;
+        line-height: 1;
       }
 
       .language-dropdown{
