@@ -10,17 +10,17 @@ export default function decorate(block) {
     const linkEl = item.querySelector(':scope > div:nth-child(3) a');
     const href = linkEl?.getAttribute('href');
 
+    const li = document.createElement('li');
+    li.className = 'cmp-list__item';
+
+    // Copy AUE attributes even for empty items
+    [...item.attributes].forEach((attr) => {
+      if (attr.name.startsWith('data-aue')) {
+        li.setAttribute(attr.name, attr.value);
+      }
+    });
+
     if (title && description && href) {
-      const li = document.createElement('li');
-      li.className = 'cmp-list__item';
-
-      // Copy AUE attributes from raw block item to <li>
-      [...item.attributes].forEach((attr) => {
-        if (attr.name.startsWith('data-aue')) {
-          li.setAttribute(attr.name, attr.value);
-        }
-      });
-
       const a = document.createElement('a');
       a.className = 'cmp-list__item-link';
       a.setAttribute('href', href);
@@ -35,8 +35,9 @@ export default function decorate(block) {
 
       a.append(spanTitle, spanDesc);
       li.append(a);
-      list.append(li);
     }
+
+    list.append(li); // Append even if li is empty
   });
 
   block.innerHTML = '';
