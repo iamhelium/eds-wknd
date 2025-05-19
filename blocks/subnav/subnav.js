@@ -8,11 +8,10 @@ export default function decorate(block) {
   const languageText = document.createElement('p');
   languageText.className = 'language-text';
   languageText.innerHTML = `
-      <img src="https://flagcdn.com/us.svg" alt="US Flag" class="flag-icon top-flag" />
-      <span class="lang-code">EN-US</span>
-     <i class="fa-solid fa-chevron-down caret-icon"></i>        
-
-    `;
+        <img src="https://flagcdn.com/us.svg" alt="US Flag" class="flag-icon top-flag" />
+        <span class="lang-code">EN-US</span>
+          <span class="caret-icon">∨</span>
+      `;
 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-container';
@@ -81,12 +80,12 @@ export default function decorate(block) {
     const item = document.createElement('div');
     item.className = 'language-item';
     item.innerHTML = `
-          <img src="${lang.flag}" alt="${lang.country} Flag" class="flag-icon"/>
-          <div class="language-info">
-            <div class="country-name">${lang.country}</div>
-            <div class="language-codes">${lang.languages}</div>
-          </div>
-        `;
+            <img src="${lang.flag}" alt="${lang.country} Flag" class="flag-icon"/>
+            <div class="language-info">
+              <div class="country-name">${lang.country}</div>
+              <div class="language-codes">${lang.languages}</div>
+            </div>
+          `;
     languageDropdown.appendChild(item);
 
     if (index < languages.length - 1) {
@@ -101,17 +100,13 @@ export default function decorate(block) {
     const isOpen = languageDropdown.style.display === 'block';
     languageDropdown.style.display = isOpen ? 'none' : 'block';
     const caret = languageText.querySelector('.caret-icon');
-    caret.classList.toggle('fa-chevron-down', !isOpen);
-    caret.classList.toggle('fa-chevron-up', isOpen);
+    caret.textContent = isOpen ? '∨' : '∧';
   });
 
   document.addEventListener('click', () => {
     languageDropdown.style.display = 'none';
     const caret = languageText.querySelector('.caret-icon');
-    if (caret) {
-      caret.classList.remove('fa-chevron-up');
-      caret.classList.add('fa-chevron-down');
-    }
+    if (caret) caret.textContent = '∨';
   });
 
   const modalOverlay = document.createElement('div');
@@ -121,15 +116,15 @@ export default function decorate(block) {
   const modalContent = document.createElement('div');
   modalContent.className = 'modal-content';
   modalContent.innerHTML = `
-        <span class="modal-close">&times;</span>
-        <h3>Sign In</h3>
-        <p class="subheading">Welcome back</p>
-        <input type="text" placeholder="Username" />
-        <input type="password" placeholder="Password" />
-        <a href="#" class="forgot-link">Forgot password?</a>
-        <button class="signin-btn">Sign In</button>
-        <hr class="signin-separator">
-      `;
+          <span class="modal-close">&times;</span>
+          <h3>Sign In</h3>
+          <p class="subheading">Welcome back</p>
+          <input type="text" placeholder="Username" />
+          <input type="password" placeholder="Password" />
+          <a href="#" class="forgot-link">Forgot password?</a>
+          <button class="signin-btn">Sign In</button>
+          <hr class="signin-separator">
+        `;
 
   modalOverlay.appendChild(modalContent);
 
