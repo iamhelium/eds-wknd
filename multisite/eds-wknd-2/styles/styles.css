@@ -17,4 +17,5 @@
   /* colors */
   --color-alice-blue: #F0F8FF;
   --color-dodger-blue: #1e90ff9c;
+  --color-yellow: var(--color-dodger-blue);
 }
