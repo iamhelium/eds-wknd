@@ -10,21 +10,17 @@ const getPageTitle = async (url) => {
 
 const getAllParentPaths = async (fullPath, startLevel = 1) => {
   const segments = fullPath.replace(/^\/|\/$/g, '').split('/');
-  const indexIdx = segments.indexOf('index');
-  if (indexIdx === -1) return [];
-
-  const usefulSegments = segments.slice(indexIdx);
   const allPaths = [];
 
   // eslint-disable-next-line no-plusplus
-  for (let i = startLevel; i < usefulSegments.length; i++) {
-    const subPathParts = segments.slice(0, indexIdx + i + 1);
+  for (let i = startLevel; i < segments.length; i++) {
+    const subPathParts = segments.slice(0, i + 1);
     const fullSubPath = `/${subPathParts.join('/')}`;
-    const url = `${window.location.origin}${fullSubPath}.html`;
+    const url = `${window.location.origin}${fullSubPath}`;
 
     // eslint-disable-next-line no-await-in-loop
     const name = await getPageTitle(url);
-    const displayName = name || usefulSegments[i];
+    const displayName = name || segments[i];
     allPaths.push({ name: displayName, url });
   }
 
