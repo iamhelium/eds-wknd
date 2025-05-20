@@ -19,8 +19,7 @@ const getAllParentPaths = async (fullPath, startLevel = 1) => {
   // eslint-disable-next-line no-plusplus
   for (let i = startLevel; i < segments.length; i++) {
     const subPathParts = segments.slice(0, i + 1);
-    // Removed trailing slash here to prevent 404
-    const fullSubPath = `/${subPathParts.join('/')}`;
+    const fullSubPath = `/${subPathParts.join('/')}/`;
     const url = `${window.location.origin}${fullSubPath}`;
 
     // eslint-disable-next-line no-await-in-loop
@@ -59,6 +58,7 @@ export default async function decorate(block) {
   const parentPaths = await getAllParentPaths(path, startLevel);
 
   parentPaths.forEach((p, i) => {
+    breadcrumbLinks.push('<span class="breadcrumb-separator"> › </span>');
     const isLast = i === parentPaths.length - 1;
 
     if (isLast && hideCurrentPage) return;
