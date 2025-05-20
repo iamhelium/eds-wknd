@@ -1,31 +1,30 @@
 const getPageTitle = async (url) => {
-  const resp = await fetch(url);
-  if (resp.ok) {
-    const html = document.createElement('div');
-    html.innerHTML = await resp.text();
-    return html.querySelector('title')?.innerText || '';
+  try {
+    const resp = await fetch(url);
+    if (resp.ok) {
+      const html = document.createElement('div');
+      html.innerHTML = await resp.text();
+      return html.querySelector('title')?.innerText || '';
+    }
+  } catch (e) {
+    // Silent fail
   }
   return '';
 };
 
 const getAllParentPaths = async (fullPath, startLevel = 1) => {
   const segments = fullPath.replace(/^\/|\/$/g, '').split('/');
-  const indexIdx = segments.indexOf('index');
-  if (indexIdx === -1) return [];
-
-  const usefulSegments = segments.slice(indexIdx);
   const allPaths = [];
 
   // eslint-disable-next-line no-plusplus
-  for (let i = startLevel; i < usefulSegments.length; i++) {
-    const subPathParts = segments.slice(0, indexIdx + i + 1);
-    const cleanPath = subPathParts.filter((seg) => seg !== 'index'); // ✅ Remove 'index' from URL
-    const fullSubPath = `/${cleanPath.join('/')}`;
-    const url = `${window.location.origin}${fullSubPath}/`; // ✅ Use trailing slash instead of .html
+  for (let i = startLevel; i < segments.length; i++) {
+    const subPathParts = segments.slice(0, i + 1);
+    const fullSubPath = `/${subPathParts.join('/')}/`;
+    const url = `${window.location.origin}${fullSubPath}`;
 
     // eslint-disable-next-line no-await-in-loop
     const name = await getPageTitle(url);
-    const displayName = name || usefulSegments[i];
+    const displayName = name || decodeURIComponent(segments[i]);
     allPaths.push({ name: displayName, url });
   }
 
@@ -53,14 +52,13 @@ export default async function decorate(block) {
   breadcrumb.setAttribute('aria-label', 'Breadcrumb');
 
   const breadcrumbLinks = [];
-  const homeURL = `${window.location.origin}/`; // ✅ Use clean home URL
-  breadcrumbLinks.push(createLink('Home', homeURL).outerHTML);
+  breadcrumbLinks.push(createLink('Home', `${window.location.origin}/`).outerHTML);
 
   const path = window.location.pathname;
   const parentPaths = await getAllParentPaths(path, startLevel);
 
   parentPaths.forEach((p, i) => {
-    breadcrumbLinks.push('<span class="breadcrumb-separator"> </span>');
+    breadcrumbLinks.push('<span class="breadcrumb-separator"> › </span>');
     const isLast = i === parentPaths.length - 1;
 
     if (isLast && hideCurrentPage) return;
