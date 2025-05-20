@@ -58,7 +58,6 @@ export default async function decorate(block) {
   const parentPaths = await getAllParentPaths(path, startLevel);
 
   parentPaths.forEach((p, i) => {
-    breadcrumbLinks.push('<span class="breadcrumb-separator"> › </span>');
     const isLast = i === parentPaths.length - 1;
 
     if (isLast && hideCurrentPage) return;
