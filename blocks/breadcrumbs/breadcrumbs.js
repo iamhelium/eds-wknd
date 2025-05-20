@@ -20,7 +20,7 @@ const getAllParentPaths = async (fullPath, startLevel = 1) => {
   for (let i = startLevel; i < usefulSegments.length; i++) {
     const subPathParts = segments.slice(0, indexIdx + i + 1);
     const fullSubPath = `/${subPathParts.join('/')}`;
-    const url = `${window.location.origin}${fullSubPath}.html`;
+    const url = `${window.location.origin}${fullSubPath}`;
 
     // eslint-disable-next-line no-await-in-loop
     const name = await getPageTitle(url);
