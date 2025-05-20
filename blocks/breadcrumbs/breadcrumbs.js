@@ -19,8 +19,9 @@ const getAllParentPaths = async (fullPath, startLevel = 1) => {
   // eslint-disable-next-line no-plusplus
   for (let i = startLevel; i < usefulSegments.length; i++) {
     const subPathParts = segments.slice(0, indexIdx + i + 1);
-    const fullSubPath = `/${subPathParts.join('/')}`;
-    const url = `${window.location.origin}${fullSubPath}.html`;
+    const cleanPath = subPathParts.filter((seg) => seg !== 'index'); // ✅ Remove 'index' from URL
+    const fullSubPath = `/${cleanPath.join('/')}`;
+    const url = `${window.location.origin}${fullSubPath}/`; // ✅ Use trailing slash instead of .html
 
     // eslint-disable-next-line no-await-in-loop
     const name = await getPageTitle(url);
@@ -52,7 +53,7 @@ export default async function decorate(block) {
   breadcrumb.setAttribute('aria-label', 'Breadcrumb');
 
   const breadcrumbLinks = [];
-  const homeURL = `${window.location.origin}/content/eds-wknd/index.html`;
+  const homeURL = `${window.location.origin}/`; // ✅ Use clean home URL
   breadcrumbLinks.push(createLink('Home', homeURL).outerHTML);
 
   const path = window.location.pathname;
