@@ -246,11 +246,11 @@
 }
 
 .teaser.teaser-secure .cmp-teaser__image img {
+    display: inline-block;
     max-height: 200px;
     object-fit: cover;
     height: auto;
     margin-bottom: 7px;
     margin-top: 7px;
     width: 100%;
-    display: inline-block;
 }

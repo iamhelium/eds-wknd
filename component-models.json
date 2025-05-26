@@ -110,7 +110,7 @@
         "label": "Section Styles",
         "valueType": "string",
         "required": true,
-        "maxSize": 2,
+        "maxSize": 3,
         "options": [
           {
             "name": "Layout",
@@ -126,6 +126,23 @@
               {
                 "name": "Teaser Section",
                 "value": "teaser-section"
+              },
+              {
+                "name": "Contact Us Form Section",
+                "value": "contact-us-form-section"
+              }
+            ]
+          },
+          {
+            "name": "Article Layout",
+            "children": [
+              {
+                "name": "Magazine Article Section",
+                "value": "magazine-section"
+              },
+              {
+                "name": "Adventures Article Section",
+                "value": "adventures-section"
               }
             ]
           },
@@ -181,6 +198,7 @@
         "name": "link",
         "label": "Link",
         "valueType": "string",
+        "required": true,
         "validation": {
           "rootPath": "/content/eds-wknd"
         }
@@ -5390,7 +5408,7 @@
         "name": "reference",
         "label": "Reference",
         "validation": {
-          "rootPath": "/content/eds-wknd"
+          "rootPath": "/content/eds-wknd/fragments"
         }
       }
     ]
@@ -5461,13 +5479,13 @@
           },
           {
             "component": "text",
-            "name": "name",
+            "name": "profile-name",
             "label": "Full Name",
             "valueType": "string"
           },
           {
             "component": "text",
-            "name": "description",
+            "name": "profile-description",
             "label": "Description",
             "valueType": "string"
           },
@@ -5533,11 +5551,20 @@
     "id": "seperator",
     "fields": [
       {
-        "component": "text",
+        "component": "select",
+        "label": "Separator Style",
+        "name": "classes",
         "valueType": "string",
-        "name": "title",
-        "label": "Title",
-        "value": "Seperator"
+        "options": [
+          {
+            "name": "Margin - 64px",
+            "value": "margin-lxiv"
+          },
+          {
+            "name": "Margin - 36px",
+            "value": "margin-xxxvi"
+          }
+        ]
       }
     ]
   },
@@ -5566,7 +5593,7 @@
         "name": "reference",
         "label": "Tab Fragment",
         "validation": {
-          "rootPath": "/content/eds-wknd"
+          "rootPath": "/content/eds-wknd/fragments"
         }
       }
     ]
@@ -5795,6 +5822,10 @@
               {
                 "name": "Quoteblock",
                 "value": "quoteblock"
+              },
+              {
+                "name": "Arrow List",
+                "value": "arrow-list"
               }
             ]
           },

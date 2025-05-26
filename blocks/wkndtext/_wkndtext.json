@@ -45,6 +45,10 @@
                       {
                         "name": "Quoteblock",
                         "value": "quoteblock"
+                      },
+                      {
+                        "name": "Arrow List",
+                        "value": "arrow-list"
                       }
                     ]
                   },

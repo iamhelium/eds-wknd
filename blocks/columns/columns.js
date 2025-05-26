@@ -1,62 +1,89 @@
 import { loadBlock } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
+  // Check if we are in author mode
+  const isAuthor = block.hasAttribute('data-aue-resource');
+
+  // Determine number of columns and add a class like "columns-3-cols"
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
 
-  const columns = [...block.querySelectorAll(':scope > div > div')];
+  // Select columns differently for author and publish mode
+  const columns = isAuthor
+    ? [...block.querySelectorAll(':scope > div > div > p[data-aue-filter="column"]')]
+    : [...block.querySelectorAll(':scope > div > div')];
 
   await Promise.all(columns.map(async (column) => {
-    const childNodes = [...column.childNodes];
+    // Get child nodes differently for author vs publish mode
+    const childNodes = isAuthor ? [...column.children] : [...column.childNodes];
 
-    // Map over child nodes and identify fragment blocks button containers
-    const orderedChildren = childNodes
-      .map((node) => {
-        if (
-          node.nodeType === Node.ELEMENT_NODE
-          && node.matches('p.button-container')
-          && node.querySelector('a')
-        ) {
-          // === Construct fragment block to initialize with loadBlock ===
-          const fragmentWrapper = document.createElement('div');
-          fragmentWrapper.className = 'fragment-wrapper';
+    const orderedChildren = childNodes.map((node) => {
+      if (isAuthor) {
+        // In author mode, find fragment either on node itself or inside node
+        let fragment = null;
 
-          const fragmentBlock = document.createElement('div');
-          fragmentBlock.className = 'fragment block';
-          fragmentBlock.dataset.blockName = 'fragment';
-
-          // Nested div structure for proper placement
-          const innerDiv1 = document.createElement('div');
-          const innerDiv2 = document.createElement('div');
-
-          innerDiv2.appendChild(node); // move <p> into structure
-          innerDiv1.appendChild(innerDiv2);
-          fragmentBlock.appendChild(innerDiv1);
-          fragmentWrapper.appendChild(fragmentBlock);
-
-          // Defer loadBlock until after DOM is rebuilt
-          fragmentWrapper.loadBlockData = fragmentBlock;
-
-          return fragmentWrapper;
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          if (node.matches('.fragment[data-aue-model="fragment"]')) {
+            fragment = node;
+          } else {
+            fragment = node.querySelector?.('.fragment[data-aue-model="fragment"]') || null;
+          }
         }
 
-        // Return the node if it does not match the condition
-        return node;
-      })
-      .filter(Boolean); // Remove any null or undefined entries
+        if (fragment) {
+          fragment.classList.add('block');
+          fragment.dataset.blockName = 'fragment';
+          fragment.dataset.blockStatus = 'initialized';
+          fragment.loadBlockData = fragment; // Mark fragment for block loading
+          return fragment;
+        }
 
-    // Clear existing content in the column and re-append children in order
-    column.textContent = ''; // Clear without breaking event listeners
+        // Return node as is if no fragment found
+        return node;
+      }
+
+      // Publish mode: wrap <p class="button-container"> with fragment block structure
+      if (
+        node.nodeType === Node.ELEMENT_NODE
+        && node.matches('p.button-container')
+        && node.querySelector('a')
+      ) {
+        const fragmentWrapper = document.createElement('div');
+        fragmentWrapper.className = 'fragment-wrapper';
+
+        const fragmentBlock = document.createElement('div');
+        fragmentBlock.className = 'fragment block';
+        fragmentBlock.dataset.blockName = 'fragment';
+        fragmentBlock.dataset.blockStatus = 'initialized';
+
+        // Nest original node inside two div wrappers for styling and structure
+        const innerDiv1 = document.createElement('div');
+        const innerDiv2 = document.createElement('div');
+        innerDiv2.appendChild(node);
+        innerDiv1.appendChild(innerDiv2);
+        fragmentBlock.appendChild(innerDiv1);
+        fragmentWrapper.appendChild(fragmentBlock);
+
+        fragmentWrapper.loadBlockData = fragmentBlock; // Flag for loading
+        return fragmentWrapper;
+      }
+
+      // Return node as is if no special conditions met
+      return node;
+    }).filter(Boolean);
+
+    // Clear existing column content and append processed children
+    column.textContent = '';
     orderedChildren.forEach((child) => column.appendChild(child));
 
-    // Load fragment blocks that need to be processed
+    // Load all fragment blocks flagged for loading
     await Promise.all(
       orderedChildren
-        .filter((el) => el.loadBlockData) // Only process elements that need loading
-        .map((el) => loadBlock(el.loadBlockData)), // Load block asynchronously
+        .filter((el) => el.loadBlockData)
+        .map((el) => loadBlock(el.loadBlockData)),
     );
 
-    // Image column styling: Apply 'columns-img-col' class if there is a single picture
+    // Add styling class if the column contains exactly one picture element
     const picWrapper = column.querySelector('picture')?.closest('div');
     if (picWrapper && picWrapper.children.length === 1) {
       picWrapper.classList.add('columns-img-col');

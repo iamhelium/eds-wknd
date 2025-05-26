@@ -21,11 +21,20 @@
       "id": "seperator",
       "fields": [
         {
-          "component": "text",
+          "component": "select",
+          "label": "Separator Style",
+          "name": "classes",
           "valueType": "string",
-          "name": "title",
-          "label": "Title",
-          "value": "Seperator"
+          "options": [
+            {
+              "name": "Margin - 64px",
+              "value": "margin-lxiv"
+            },
+            {
+              "name": "Margin - 36px",
+              "value": "margin-xxxvi"
+            }
+          ]
         }
       ]
     }

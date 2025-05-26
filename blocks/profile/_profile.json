@@ -60,13 +60,13 @@
             },
             {
               "component": "text",
-              "name": "name",
+              "name": "profile-name",
               "label": "Full Name",
               "valueType": "string"
             },
             {
               "component": "text",
-              "name": "description",
+              "name": "profile-description",
               "label": "Description",
               "valueType": "string"
             },

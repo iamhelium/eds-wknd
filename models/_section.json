@@ -31,7 +31,7 @@
           "label": "Section Styles",
           "valueType": "string",
           "required": true,
-          "maxSize": 2,
+          "maxSize": 3,
           "options": [
             {
               "name": "Layout",
@@ -47,6 +47,23 @@
                 {
                   "name": "Teaser Section",
                   "value": "teaser-section"
+                },
+                {
+                  "name": "Contact Us Form Section",
+                  "value": "contact-us-form-section"
+                }
+              ]
+            },
+            {
+              "name": "Article Layout",
+              "children": [
+                {
+                  "name": "Magazine Article Section",
+                  "value": "magazine-section"
+                },
+                {
+                  "name": "Adventures Article Section",
+                  "value": "adventures-section"
                 }
               ]
             },
