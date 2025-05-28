@@ -93,13 +93,25 @@
   },
   "eds-wknd-2": {
     "blocks": {
-      "header": {
-        "js": true,
+      "articles": {
+        "js": false,
         "css": true
       },
-      "wkndtitle": {
-        "js": true,
-        "css": false
+      "footer": {
+        "js": false,
+        "css": true
+      },
+      "header": {
+        "js": false,
+        "css": true
+      },
+      "subnav": {
+        "js": false,
+        "css": true
+      },
+      "teaser": {
+        "js": false,
+        "css": true
       }
     }
   }

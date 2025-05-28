@@ -13,9 +13,16 @@
  * governing permissions and limitations under the License.
  */
 
- :root {
+:root {
   /* colors */
   --color-alice-blue: #F0F8FF;
   --color-dodger-blue: #1e90ff9c;
+  --color-dark-blue: #00296b;
   --color-yellow: var(--color-dodger-blue);
+}
+
+/* buttons style */
+a.button:any-link,
+button {
+  border-radius: 24px;
 }
