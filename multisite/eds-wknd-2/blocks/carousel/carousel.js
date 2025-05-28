@@ -1,5 +1,5 @@
-import { loadBlock } from '../../scripts/aem.js';
-import { generateUID } from '../../scripts/helper.js';
+import { loadBlock } from '../../../../scripts/aem.js';
+import { generateUID } from '../../../../scripts/helper.js';
 
 // Main decorate function for initializing the carousel block
 export default async function decorate(block) {
