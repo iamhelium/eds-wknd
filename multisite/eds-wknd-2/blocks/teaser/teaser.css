@@ -38,7 +38,7 @@
     margin-bottom: 1em;
     width: 100%;
     box-shadow: rgba(99, 99, 99, 20%) 0 2px 8px 0;
-    border-radius: 16px;
+    border-radius: 1rem;
 }
 
 @media (width >=767px) {
@@ -51,7 +51,7 @@
     display: flex;
     flex: 2;
     flex-direction: column;
-    border-radius: 0 0 16px 16px;
+    border-radius: 0 0 1rem 1rem;
     overflow: hidden;
 }
 
@@ -76,17 +76,17 @@
     flex-direction: column;
     padding: 3.5em 2em 2em;
     margin-top: -1em;
-    border-radius: 16px 16px 0 0;
+    border-radius: 1rem 1rem 0 0;
 }
 
 @media (width >=767px) {
     .teaser.teaser-featured .cmp-teaser .cmp-teaser__image {
-        border-radius: 0 16px 16px 0;
+        border-radius: 0 1rem 1rem 0;
     }
 
     .teaser.teaser-featured .cmp-teaser .cmp-teaser__content {
         margin-top: 0;
-        border-radius: 16px 0 0 16px;
+        border-radius: 1rem 0 0 1rem;
     }
 }
 
@@ -121,7 +121,7 @@
         padding: 0 1.75rem;
         position: absolute;
         width: 71pc;
-        border-radius: 16px;
+        border-radius: 1rem;
         bottom: 40px;
     }
 }
@@ -214,12 +214,11 @@
 .teaser.teaser-secure::before {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: linear-gradient(
-        to top left,
-        hsla(0deg, 0%, 100%, 0%) 0%,
-        hsla(0deg, 0%, 100%, 0%) 50%,
-        var(--color-yellow) 50%,
-        var(--color-yellow) 100%);
+    background: linear-gradient(to top left,
+            hsla(0deg, 0%, 100%, 0%) 0%,
+            hsla(0deg, 0%, 100%, 0%) 50%,
+            var(--color-yellow) 50%,
+            var(--color-yellow) 100%);
     color: var(--color-dark-black);
     content: var(--wkndicon-lock);
     font-family: var(--icomoon-font-family);
