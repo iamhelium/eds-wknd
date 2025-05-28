@@ -4,7 +4,7 @@
   General Header and Navigation Layout
 ============================================================ */
 header .nav-wrapper {
-  background-color: var(--color-alice-blue);
+  background-color: var(--color-white);
   position: fixed;
   width: 100%;
   z-index: 2;
@@ -152,7 +152,8 @@ footer {
 
 .nav-wrapper-desktop .nav-sections ul li a.active,
 .nav-wrapper-desktop .nav-sections ul li a:hover {
-  background-color: var(--color-dodger-blue);
+  background-color: transparent;
+  border-bottom: 3px solid var(--brand-primary);
 }
 
 

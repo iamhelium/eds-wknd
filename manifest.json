@@ -1,0 +1,118 @@
+{
+  "default": {
+    "blocks": {
+      "accordion": {
+        "js": true,
+        "css": true
+      },
+      "articlelist": {
+        "js": true,
+        "css": true
+      },
+      "articles": {
+        "js": true,
+        "css": true
+      },
+      "breadcrumbs": {
+        "js": true,
+        "css": true
+      },
+      "cards": {
+        "js": true,
+        "css": true
+      },
+      "carousel": {
+        "js": true,
+        "css": true
+      },
+      "columns": {
+        "js": true,
+        "css": true
+      },
+      "embed-adaptive-form": {
+        "js": true,
+        "css": true
+      },
+      "footer": {
+        "js": true,
+        "css": true
+      },
+      "form": {
+        "js": true,
+        "css": true
+      },
+      "fragment": {
+        "js": true,
+        "css": true
+      },
+      "header": {
+        "js": true,
+        "css": true
+      },
+      "hero": {
+        "js": true,
+        "css": true
+      },
+      "profile": {
+        "js": true,
+        "css": true
+      },
+      "search": {
+        "js": true,
+        "css": true
+      },
+      "seperator": {
+        "js": true,
+        "css": true
+      },
+      "subnav": {
+        "js": true,
+        "css": true
+      },
+      "tabs": {
+        "js": true,
+        "css": true
+      },
+      "teaser": {
+        "js": true,
+        "css": true
+      },
+      "tripdetail": {
+        "js": true,
+        "css": true
+      },
+      "wkndtext": {
+        "js": true,
+        "css": true
+      },
+      "wkndtitle": {
+        "js": true,
+        "css": true
+      }
+    }
+  },
+  "eds-wknd-2": {
+    "blocks": {
+      "articles": {
+        "js": false,
+        "css": true
+      },
+      "footer": {
+        "js": false,
+        "css": true
+      },
+      "header": {
+        "js": false,
+        "css": true
+      },
+      "subnav": {
+        "js": false,
+        "css": true
+      },
+      "teaser": {
+        "js": false,
+        "css": true
+      }
+    }
+  }
+}

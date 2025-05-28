@@ -2,7 +2,7 @@
 .subnav-wrapper {
   display: flex;
   align-items: center;
-  background: var(--color-black);
+  background: var(--color-dark-blue);
   color: var(--color-gray-light);
   gap: 2rem;
   position: relative;
