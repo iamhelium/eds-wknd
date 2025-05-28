@@ -21,26 +21,31 @@ function getBlockMetadata(blockPath) {
 
   return {
     name: blockName,
-    hasJS: fs.existsSync(jsFile),
-    hasCSS: fs.existsSync(cssFile),
+    js: fs.existsSync(jsFile),
+    css: fs.existsSync(cssFile),
   };
 }
 
-function getBlocksMetadata(basePath) {
-  return getBlockDirs(basePath)
+function getBlocksMap(basePath) {
+  const metadataArray = getBlockDirs(basePath)
     .map(getBlockMetadata)
-    .filter((b) => b.hasJS || b.hasCSS);
+    .filter((b) => b.js || b.css);
+
+  const blocksMap = {};
+  for (const block of metadataArray) {
+    blocksMap[block.name] = { js: block.js, css: block.css };
+  }
+
+  return blocksMap;
 }
 
 function generateManifest() {
   const manifest = {};
 
   // Default blocks
-  const defaultBlocks = getBlocksMetadata(blocksRoot);
+  const defaultBlocks = getBlocksMap(blocksRoot);
   manifest.default = {
-    blocks: defaultBlocks.map((b) => b.name),
-    metadata: Object.fromEntries(defaultBlocks
-      .map((b) => [b.name, { js: b.hasJS, css: b.hasCSS }])),
+    blocks: defaultBlocks,
   };
 
   // Multisite overrides
@@ -50,10 +55,9 @@ function generateManifest() {
     const siteBlocksPath = path.join(sitePath, 'blocks');
     if (!fs.existsSync(siteBlocksPath)) continue;
 
-    const siteBlocks = getBlocksMetadata(siteBlocksPath);
+    const siteBlocks = getBlocksMap(siteBlocksPath);
     manifest[siteName] = {
-      blocks: siteBlocks.map((b) => b.name),
-      metadata: Object.fromEntries(siteBlocks.map((b) => [b.name, { js: b.hasJS, css: b.hasCSS }])),
+      blocks: siteBlocks,
     };
   }
 

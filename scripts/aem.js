@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 /*
  * Copyright 2025 Adobe. All rights reserved.
@@ -726,28 +727,41 @@ async function loadBlock(block) {
 
     try {
       const manifest = await getBlockManifest();
-      const overrideBlocks = manifest[currentSite]?.blocks || [];
-      const isOverride = overrideBlocks.includes(blockName);
+      const siteBlocks = manifest[currentSite]?.blocks || {};
+      const defaultBlocks = manifest.default?.blocks || {};
+
+      const isOverride = !!siteBlocks[blockName];
+      const hasJS = isOverride ? siteBlocks[blockName]?.js : defaultBlocks[blockName]?.js;
+      const hasCSS = isOverride ? siteBlocks[blockName]?.css : defaultBlocks[blockName]?.css;
 
       const basePath = window.hlx.codeBasePath;
       const defaultPath = `${basePath}/blocks/${blockName}`;
       const overridePath = `${basePath}/multisite/${currentSite}/blocks/${blockName}`;
 
-      const cssTasks = [loadCSS(`${defaultPath}/${blockName}.css`)];
-
-      const decorationTasks = [
-        (async () => {
-          try {
-            const mod = await import(`${defaultPath}/${blockName}.js`);
-            if (mod.default) await mod.default(block);
-          } catch (err) {
-            console.log(`Failed to load default module for ${blockName}`, err);
-          }
-        })(),
-      ];
-
-      if (isOverride) {
+      const cssTasks = [];
+      if (defaultBlocks[blockName]?.css) {
+        cssTasks.push(loadCSS(`${defaultPath}/${blockName}.css`));
+      }
+      if (isOverride && siteBlocks[blockName]?.css) {
         cssTasks.push(loadCSS(`${overridePath}/${blockName}.css`));
+      }
+
+      const decorationTasks = [];
+
+      if (defaultBlocks[blockName]?.js) {
+        decorationTasks.push(
+          (async () => {
+            try {
+              const mod = await import(`${defaultPath}/${blockName}.js`);
+              if (mod.default) await mod.default(block);
+            } catch (err) {
+              console.log(`Failed to load default module for ${blockName}`, err);
+            }
+          })(),
+        );
+      }
+
+      if (isOverride && siteBlocks[blockName]?.js) {
         decorationTasks.push(
           (async () => {
             try {
