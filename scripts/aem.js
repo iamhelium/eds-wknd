@@ -707,7 +707,7 @@ let blockManifest = null;
 async function getBlockManifest() {
   if (!blockManifest) {
     try {
-      const res = await fetch(`${window.hlx.codeBasePath}/multisite/manifest.json`);
+      const res = await fetch(`${window.hlx.codeBasePath}/manifest.json`);
       blockManifest = await res.json();
     } catch (e) {
       console.error('Could not load block manifest', e);
