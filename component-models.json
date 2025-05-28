@@ -270,10 +270,7 @@
             "name": "child-article-parent",
             "label": "Parent Page",
             "valueType": "string",
-            "required": true,
-            "validation": {
-              "rootPath": "/content/eds-wknd"
-            }
+            "required": true
           },
           {
             "component": "number",
@@ -328,10 +325,7 @@
             "name": "recent-article-parent",
             "label": "Parent Page",
             "valueType": "string",
-            "required": true,
-            "validation": {
-              "rootPath": "/content/eds-wknd"
-            }
+            "required": true
           },
           {
             "component": "number",
@@ -453,10 +447,7 @@
         "component": "aem-content",
         "label": "Article Link",
         "name": "article-link",
-        "valueType": "string",
-        "validation": {
-          "rootPath": "/content/eds-wknd"
-        }
+        "valueType": "string"
       }
     ]
   },
