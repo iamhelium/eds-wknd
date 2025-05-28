@@ -607,100 +607,100 @@ function buildBlock(blockName, content) {
  * Loads JS and CSS for a block.
  * @param {Element} block The block element
  */
-// async function loadBlock(block) {
-//   const status = block.dataset.blockStatus;
-//   if (status !== 'loading' && status !== 'loaded') {
-//     block.dataset.blockStatus = 'loading';
-//     const { blockName } = block.dataset;
-//     try {
-//       const cssLoaded = loadCSS(`${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.css`);
-//       const decorationComplete = new Promise((resolve) => {
-//         (async () => {
-//           try {
-//             const mod = await import(
-//               `${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.js`
-//             );
-//             if (mod.default) {
-//               await mod.default(block);
-//             }
-//           } catch (error) {
-//             // eslint-disable-next-line no-console
-//             console.log(`failed to load module for ${blockName}`, error);
-//           }
-//           resolve();
-//         })();
-//       });
-//       await Promise.all([cssLoaded, decorationComplete]);
-//     } catch (error) {
-//       // eslint-disable-next-line no-console
-//       console.log(`failed to load block ${blockName}`, error);
-//     }
-//     block.dataset.blockStatus = 'loaded';
-//   }
-//   return block;
-// }
-
 async function loadBlock(block) {
   const status = block.dataset.blockStatus;
   if (status !== 'loading' && status !== 'loaded') {
     block.dataset.blockStatus = 'loading';
     const { blockName } = block.dataset;
-
-    const isEdsWknd2 = window.location.href.includes('eds-wknd-2');
-    const defaultPath = `${window.hlx.codeBasePath}/blocks/${blockName}`;
-    const overridePath = `${window.hlx.codeBasePath}/multisite/eds-wknd-2/blocks/${blockName}`;
-
     try {
-      // Always load default CSS
-      const cssTasks = [loadCSS(`${defaultPath}/${blockName}.css`)];
-
-      // Always load default JS
-      const decorationTasks = [
+      const cssLoaded = loadCSS(`${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.css`);
+      const decorationComplete = new Promise((resolve) => {
         (async () => {
           try {
-            const mod = await import(`${defaultPath}/${blockName}.js`);
+            const mod = await import(
+              `${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.js`
+            );
             if (mod.default) {
               await mod.default(block);
             }
-          } catch (err) {
-            console.log(`Failed to load default module for ${blockName}`, err);
+          } catch (error) {
+            // eslint-disable-next-line no-console
+            console.log(`failed to load module for ${blockName}`, error);
           }
-        })(),
-      ];
-
-      // If override exists, load override CSS and JS
-      if (isEdsWknd2) {
-        const overrideExists = await fetch(`${overridePath}/${blockName}.js`, { method: 'HEAD' })
-          .then((res) => res.ok)
-          .catch(() => false);
-
-        if (overrideExists) {
-          cssTasks.push(loadCSS(`${overridePath}/${blockName}.css`));
-          decorationTasks.push(
-            (async () => {
-              try {
-                const overrideMod = await import(`${overridePath}/${blockName}.js`);
-                if (overrideMod.default) {
-                  await overrideMod.default(block);
-                }
-              } catch (err) {
-                console.log(`Failed to load override module for ${blockName}`, err);
-              }
-            })(),
-          );
-        }
-      }
-
-      await Promise.all([...cssTasks, ...decorationTasks]);
+          resolve();
+        })();
+      });
+      await Promise.all([cssLoaded, decorationComplete]);
     } catch (error) {
-      console.log(`Failed to load block ${blockName}`, error);
+      // eslint-disable-next-line no-console
+      console.log(`failed to load block ${blockName}`, error);
     }
-
     block.dataset.blockStatus = 'loaded';
   }
-
   return block;
 }
+
+// async function loadBlock(block) {
+//   const status = block.dataset.blockStatus;
+//   if (status !== 'loading' && status !== 'loaded') {
+//     block.dataset.blockStatus = 'loading';
+//     const { blockName } = block.dataset;
+
+//     const isEdsWknd2 = window.location.href.includes('eds-wknd-2');
+//     const defaultPath = `${window.hlx.codeBasePath}/blocks/${blockName}`;
+//     const overridePath = `${window.hlx.codeBasePath}/multisite/eds-wknd-2/blocks/${blockName}`;
+
+//     try {
+//       // Always load default CSS
+//       const cssTasks = [loadCSS(`${defaultPath}/${blockName}.css`)];
+
+//       // Always load default JS
+//       const decorationTasks = [
+//         (async () => {
+//           try {
+//             const mod = await import(`${defaultPath}/${blockName}.js`);
+//             if (mod.default) {
+//               await mod.default(block);
+//             }
+//           } catch (err) {
+//             console.log(`Failed to load default module for ${blockName}`, err);
+//           }
+//         })(),
+//       ];
+
+//       // If override exists, load override CSS and JS
+//       if (isEdsWknd2) {
+//         const overrideExists = await fetch(`${overridePath}/${blockName}.js`, { method: 'HEAD' })
+//           .then((res) => res.ok)
+//           .catch(() => false);
+
+//         if (overrideExists) {
+//           cssTasks.push(loadCSS(`${overridePath}/${blockName}.css`));
+//           decorationTasks.push(
+//             (async () => {
+//               try {
+//                 const overrideMod = await import(`${overridePath}/${blockName}.js`);
+//                 if (overrideMod.default) {
+//                   await overrideMod.default(block);
+//                 }
+//               } catch (err) {
+//                 console.log(`Failed to load override module for ${blockName}`, err);
+//               }
+//             })(),
+//           );
+//         }
+//       }
+
+//       await Promise.all([...cssTasks, ...decorationTasks]);
+//     } catch (error) {
+//       console.log(`Failed to load block ${blockName}`, error);
+//     }
+
+//     block.dataset.blockStatus = 'loaded';
+//   }
+
+//   return block;
+// }
 
 /**
  * Decorates a block.
