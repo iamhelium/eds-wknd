@@ -18,3 +18,14 @@ if (modifledPartials.length > 0) {
   console.log(output);
   await run('git add component-models.json component-definition.json component-filters.json');
 }
+
+// check if there are any block files staged
+const modifiedBlockFiles = modifiedFiles.filter((file) =>
+  file.startsWith('blocks/') || file.startsWith('multisite/') && file.includes('/blocks/')
+);
+
+if (modifiedBlockFiles.length > 0) {
+  const { stdout: manifestOut } = await run('npm run build:manifest --silent');
+  console.log(manifestOut);
+  await run('git add manifest.json');
+}
