@@ -99,7 +99,7 @@
       },
       "wkndtitle": {
         "js": true,
-        "css": true
+        "css": false
       }
     }
   }
