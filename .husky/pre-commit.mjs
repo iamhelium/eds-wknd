@@ -8,7 +8,7 @@ const run = (cmd) => new Promise((resolve, reject) => exec(
   }
 ));
 
-const changeset = await run('git diff --cached --name-only --diff-filter=ACMR');
+const changeset = await run('git diff --cached --name-only --diff-filter=ACMRD');
 const modifiedFiles = changeset.split('\n').filter(Boolean);
 
 // check if there are any model files staged
