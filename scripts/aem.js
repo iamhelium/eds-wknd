@@ -729,7 +729,7 @@ async function loadBlock(block) {
       const siteBlocks = manifest[currentSite]?.blocks || {};
       const defaultBlocks = manifest.default?.blocks || {};
 
-      const isOverride = !!siteBlocks[blockName];
+      const isOverride = currentSite !== 'default' && !!siteBlocks[blockName];
 
       const basePath = window.hlx.codeBasePath;
       const defaultPath = `${basePath}/blocks/${blockName}`;
