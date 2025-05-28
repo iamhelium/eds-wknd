@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable max-len */
+/* eslint-disable no-console */
 /*
  * Copyright 2025 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -614,7 +613,7 @@ function buildBlock(blockName, content) {
 //     block.dataset.blockStatus = 'loading';
 //     const { blockName } = block.dataset;
 //     try {
-//       const cssLoaded = loadCSS(`${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.css`);
+//  const cssLoaded = loadCSS(`${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.css`);
 //       const decorationComplete = new Promise((resolve) => {
 //         (async () => {
 //           try {
@@ -731,8 +730,6 @@ async function loadBlock(block) {
       const defaultBlocks = manifest.default?.blocks || {};
 
       const isOverride = !!siteBlocks[blockName];
-      const hasJS = isOverride ? siteBlocks[blockName]?.js : defaultBlocks[blockName]?.js;
-      const hasCSS = isOverride ? siteBlocks[blockName]?.css : defaultBlocks[blockName]?.css;
 
       const basePath = window.hlx.codeBasePath;
       const defaultPath = `${basePath}/blocks/${blockName}`;
