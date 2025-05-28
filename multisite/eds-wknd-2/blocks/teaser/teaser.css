@@ -217,8 +217,8 @@
     background: linear-gradient(to top left,
             hsla(0deg, 0%, 100%, 0%) 0%,
             hsla(0deg, 0%, 100%, 0%) 50%,
-            var(--color-yellow) 50%,
-            var(--color-yellow) 100%);
+            var(--color-dodger-blue-dark) 50%,
+            var(--color-dodger-blue-dark) 100%);
     color: var(--color-dark-black);
     content: var(--wkndicon-lock);
     font-family: var(--icomoon-font-family);
