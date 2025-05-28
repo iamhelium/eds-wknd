@@ -13,6 +13,7 @@
   max-width: var(--max-width);
   min-height: 25px;
   width: 100%;
+  position: relative;
 }
 
 .signin-container {
@@ -177,7 +178,13 @@
   width: 18em;
   transform: none;
   top: 100%;
-  left: auto;
+  right: 60px;
+}
+
+@media (width <=1024px) {
+  .language-dropdown {
+    right: 0;
+  }
 }
 
 .language-item {
