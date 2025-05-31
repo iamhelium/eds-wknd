@@ -16,6 +16,42 @@
         }
       }
     ],
-    "models": [],
-    "filters": []
+    "models": [
+       {
+      "id": "subnav",
+      "fields": [
+        {
+          "component": "text",
+          "name": "greet",
+          "label": "Greeting Label",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "login",
+          "label": "Login Label",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "logout",
+          "label": "Logout Label",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "label": "Language Navigation",
+          "name": "langnav",
+          "valueType": "string"
+        }
+      ]}
+    ],
+    "filters": [
+       {
+      "id": "subnav",
+      "components": [
+        "form"
+      ]
+    }
+    ]
   }
