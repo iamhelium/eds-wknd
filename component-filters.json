@@ -100,12 +100,6 @@
     ]
   },
   {
-    "id": "subnav",
-    "components": [
-      "form"
-    ]
-  },
-  {
     "id": "tabs",
     "components": [
       "tab"

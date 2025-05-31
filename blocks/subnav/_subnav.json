@@ -46,12 +46,5 @@
         }
       ]}
     ],
-    "filters": [
-       {
-      "id": "subnav",
-      "components": [
-        "form"
-      ]
-    }
-    ]
+    "filters": []
   }
